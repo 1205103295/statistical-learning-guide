@@ -1,0 +1,6 @@
+X_train = np.array([[10.0], [20.0], [30.0], [40.0], [50.0]])
+y_train = np.array([4.0, 7.0, 8.0, 11.0, 12.0])
+X_new = np.array([[25.0]])
+print("X_train shape:", X_train.shape)
+print("y_train shape:", y_train.shape)
+print("X_new shape:", X_new.shape)

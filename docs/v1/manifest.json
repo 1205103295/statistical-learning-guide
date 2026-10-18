@@ -1,0 +1,47 @@
+[
+  {
+    "id": "2.1.2-01",
+    "page": "ch02/code/212-01.html",
+    "sha256": "cb7c568dda0c5b499ebbe0ae381a63e27b55770ec11d2f352cebfa59d706c87d"
+  },
+  {
+    "id": "2.1.2-02",
+    "page": "ch02/code/212-02.html",
+    "sha256": "5c1829f206e8d887706ced2b7a477055fde72fe86c679b43d32ea3884b8d77d5"
+  },
+  {
+    "id": "2.1.2-03",
+    "page": "ch02/code/212-03.html",
+    "sha256": "819a965d830c84a48c30dbf8c19b3c047cc8fff0a3d64212422567d4be08c49c"
+  },
+  {
+    "id": "2.1.2-04",
+    "page": "ch02/code/212-04.html",
+    "sha256": "0f23441e0dc448e8219f81d32772a9593099b33586adb55dbcf74056becf1208"
+  },
+  {
+    "id": "2.1.2-05",
+    "page": "ch02/code/212-05.html",
+    "sha256": "cd3621b9b5d6c7577a150cdc0f3024425b4d03b00a74b38901471284e19e06d6"
+  },
+  {
+    "id": "2.1.2-06",
+    "page": "ch02/code/212-06.html",
+    "sha256": "557c6c0ec84478db2fdf2e8be8afa7069c90924919debe49cae26046288267c2"
+  },
+  {
+    "id": "2.1.2-07",
+    "page": "ch02/code/212-07.html",
+    "sha256": "2b78d81a0d77b3cc3dd7c1740b2819e01acb39a99ef39b81df0944d8cf991c7a"
+  },
+  {
+    "id": "2.1.2-08",
+    "page": "ch02/code/212-08.html",
+    "sha256": "d05b5a052fca287ed6f0a31160b9620f51cf2c5b31eb1208ba4028385f92324d"
+  },
+  {
+    "id": "2.1.2-09",
+    "page": "ch02/code/212-09.html",
+    "sha256": "7322a344e4500930ca6fb75b76f9dadd905ee18054b08d2f763cba2fa42279f8"
+  }
+]

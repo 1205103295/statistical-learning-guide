@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>代码 2.1.2-09 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head>
+<body><header><div><a href="../../index.html">零基础统计学习指南</a><span class="eyebrow">配套代码 · v1</span></div></header><main><div class="eyebrow">第二章 / 2.1.2 How Do We Estimate f?</div><h1>绘制并保存图形</h1>
+<p>对应讲义中的代码 2.1.2-09。共 9 块，当前为第 9 块。</p>
+<div class="note">这一块使用前面代码块定义的变量，请先按顺序运行前面的代码。网页用于复制代码；运行请使用本地 Jupyter。</div>
+<section class="codepanel"><div class="codehead"><h2>代码 2.1.2-09</h2><button id="copy" type="button">复制整块代码</button></div>
+<label for="code" class="eyebrow">Python · 可选中复制</label><textarea id="code" readonly spellcheck="false" rows="18" aria-label="代码 2.1.2-09">fig, ax = plt.subplots(figsize=(7, 4))
+ax.scatter(X_train[:, 0], y_train, color=&quot;black&quot;, label=&quot;Training data&quot;)
+ax.plot(X_grid[:, 0], linear_curve, color=&quot;#314887&quot;, label=&quot;Linear regression&quot;)
+ax.plot(X_grid[:, 0], knn_curve, color=&quot;#24735A&quot;, label=&quot;KNN (k=2)&quot;)
+ax.axvline(X_new[0, 0], color=&quot;gray&quot;, linestyle=&quot;:&quot;)
+ax.scatter(X_new[:, 0], linear_prediction, color=&quot;#314887&quot;, marker=&quot;s&quot;, s=60)
+ax.scatter(X_new[:, 0], knn_prediction, color=&quot;#24735A&quot;, marker=&quot;^&quot;, s=60)
+ax.set_xlabel(&quot;Advertising budget (arbitrary units)&quot;)
+ax.set_ylabel(&quot;Sales (arbitrary units)&quot;)
+ax.legend(frameon=False)
+fig.tight_layout()
+
+image_dir = Path(&quot;图片&quot;)
+image_dir.mkdir(exist_ok=True)
+fig.savefig(image_dir / &quot;212-linear-knn.pdf&quot;, bbox_inches=&quot;tight&quot;)
+fig.savefig(image_dir / &quot;212-linear-knn.png&quot;, dpi=180, bbox_inches=&quot;tight&quot;)
+plt.show()
+</textarea><p id="status" class="status" role="status" aria-live="polite"></p></section>
+<section class="panel"><h2>实际运行图形</h2><img src="../images/212-linear-knn.png" alt="五个训练点、线性回归预测直线与 k=2 的 KNN 回归预测曲线"><p><a href="../images/212-linear-knn.pdf" download>下载矢量图 PDF</a></p></section><div class="toolbar"><a class="button secondary" href="../../notebooks/ch02/2.1.2-estimating-f.ipynb" download>下载本节 Notebook</a><a href="212-09.py" download>下载本块 .py</a><a href="../../index.html">全部代码块</a></div>
+<nav class="nav" aria-label="代码块导航"><a href="212-08.html">← 上一块</a><a href="../../index.html">返回目录 →</a></nav></main>
+<footer>配合 PDF 阅读 · Python / Jupyter · 按顺序运行各代码块<br>v1 保存本版讲义对应的代码与运行结果。</footer>
+<script src="../../assets/copy.js" defer></script></body></html>
