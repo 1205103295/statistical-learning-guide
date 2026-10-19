@@ -253,5 +253,85 @@
     "id": "2.3.9-18",
     "page": "ch02/code/239-18.html",
     "sha256": "6f705ceea26060526a366ddc6acec63943627dd0f7494cdb8bb772fce3c6237d"
+  },
+  {
+    "id": "2.4-01",
+    "page": "ch02/code/240-01.html",
+    "sha256": "d33e762a001796f11b7387c48facb1c6a52162aba0df9ab1d21beb8d7c224dee"
+  },
+  {
+    "id": "2.4-02",
+    "page": "ch02/code/240-02.html",
+    "sha256": "f23fb6d4b3e33702f4ff0f24c948e2fb06b833b4d8632ec5e83d5ecb4c68386f"
+  },
+  {
+    "id": "2.4-03",
+    "page": "ch02/code/240-03.html",
+    "sha256": "502dc16e1e7828fedac9639e5ba37a02fcfb8c96fe0153ef08c88acc6fa9cea5"
+  },
+  {
+    "id": "2.4-04",
+    "page": "ch02/code/240-04.html",
+    "sha256": "b3e7cac6b2144933f61344750d9a113248d559f80ed116c3dd9ad71fdfa287fd"
+  },
+  {
+    "id": "2.4-05",
+    "page": "ch02/code/240-05.html",
+    "sha256": "19e8a5483cf73442e0a71ed5a63e6a095db06b0ba250828810aaa12889ce87dd"
+  },
+  {
+    "id": "2.4-06",
+    "page": "ch02/code/240-06.html",
+    "sha256": "b82e4dc95be3665b2a3075fd487fcc3b49be44af3e979c0fb282aa8c95e9ed0f"
+  },
+  {
+    "id": "2.4-07",
+    "page": "ch02/code/240-07.html",
+    "sha256": "b9b713c5c6d365664f37fcd4d1490c2602d218928bee151402716fabc4703269"
+  },
+  {
+    "id": "2.4-08",
+    "page": "ch02/code/240-08.html",
+    "sha256": "64eb3ed969c0b06e77f29b23784968f2bc37a4c4e38fe69e399047b6b34f1000"
+  },
+  {
+    "id": "2.4-09",
+    "page": "ch02/code/240-09.html",
+    "sha256": "7bfb9a68d5c4bd23b2ba99464e85899769a438af444cc7b5ca12bf13776654b9"
+  },
+  {
+    "id": "2.4-10",
+    "page": "ch02/code/240-10.html",
+    "sha256": "be0ca3943116e0fcd5f4a0d8d1dcf9e0d912c5af1711bc696e9ce599794b2dae"
+  },
+  {
+    "id": "2.4-11",
+    "page": "ch02/code/240-11.html",
+    "sha256": "ad60a9de8a811c826066bf361e0a8752528f472416f400f573d84d361814802a"
+  },
+  {
+    "id": "2.4-12",
+    "page": "ch02/code/240-12.html",
+    "sha256": "2cbc677ca3b92ac809a4d45363dd32d4e502ff585e32f0fcd1767981114d9bba"
+  },
+  {
+    "id": "2.4-13",
+    "page": "ch02/code/240-13.html",
+    "sha256": "5d967d12d9435588fd587bc54195029738e5ebb72b342a44cf2e6bebb38f1220"
+  },
+  {
+    "id": "2.4-14",
+    "page": "ch02/code/240-14.html",
+    "sha256": "da681dfed619fbea6050d5fbcbff71f438ccbb4084d8abb413e9c24846be673f"
+  },
+  {
+    "id": "2.4-15",
+    "page": "ch02/code/240-15.html",
+    "sha256": "6714aa3460e5fddb0fe0e31419879110f8ccf43cf17c94134a00ce8b412e54a9"
+  },
+  {
+    "id": "2.4-16",
+    "page": "ch02/code/240-16.html",
+    "sha256": "e15e0a565403c016e3ce3629c138a092dd0bc9cf8691b77e2555f19edfbabe22"
   }
 ]

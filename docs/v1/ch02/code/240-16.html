@@ -1,0 +1,16 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>2.4-16</title><link rel="stylesheet" href="../../assets/style.css"><header><div><a href="../../auto-project.html">Auto项目目录</a><a href="../../index.html">全书代码目录</a></div></header><main><h1>代码 2.4-16 · 导出可复现的项目报告</h1><p>按Notebook顺序运行。后续代码依赖前面定义的变量。真实数据来自教材官网。</p><button id="copy">复制整块代码</button><textarea id="code" readonly rows="15">report = {
+    &quot;source&quot;: source_url, &quot;sha256&quot;: data_sha256,
+    &quot;features&quot;: feature_columns, &quot;target&quot;: target_column,
+    &quot;n_raw&quot;: len(auto), &quot;n_complete&quot;: len(clean_auto),
+    &quot;n_train&quot;: len(X_train), &quot;n_validation&quot;: len(X_val),
+    &quot;n_test&quot;: len(X_test), &quot;seeds&quot;: [42, 24],
+    &quot;selected_method&quot;: chosen_name,
+    &quot;test_mse&quot;: float(test_mse), &quot;test_rmse&quot;: float(test_rmse),
+    &quot;test_mae&quot;: float(test_mae),
+    &quot;baseline_test_mse&quot;: float(baseline_test_mse),
+}
+report_path = result_dir / &quot;auto_report.json&quot;
+report_path.write_text(json.dumps(report, indent=2), encoding=&quot;utf-8&quot;)
+print(&quot;Saved:&quot;, report_path.as_posix())
+</textarea><p id="status" role="status"></p><h2>实际运行输出</h2><pre>Saved: 结果/auto_report.json
+</pre><p><a href="../../notebooks/ch02/2.4-auto-project.ipynb" download>下载已执行Notebook</a> · <a href="../../auto-project.html">返回项目目录</a></p></main><script src="../../assets/copy.js" defer></script></html>

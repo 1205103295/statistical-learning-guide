@@ -1,0 +1,9 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>2.4-11</title><link rel="stylesheet" href="../../assets/style.css"><header><div><a href="../../auto-project.html">Auto项目目录</a><a href="../../index.html">全书代码目录</a></div></header><main><h1>代码 2.4-11 · 在开发集上重新拟合选定方法</h1><p>按Notebook顺序运行。后续代码依赖前面定义的变量。真实数据来自教材官网。</p><button id="copy">复制整块代码</button><textarea id="code" readonly rows="7">from sklearn.base import clone
+
+final_model = clone(models[chosen_name])
+final_model.fit(X_dev, y_dev)
+print(&quot;fixed method:&quot;, chosen_name)
+print(&quot;development rows:&quot;, len(X_dev))
+</textarea><p id="status" role="status"></p><h2>实际运行输出</h2><pre>fixed method: linear
+development rows: 313
+</pre><p><a href="../../notebooks/ch02/2.4-auto-project.ipynb" download>下载已执行Notebook</a> · <a href="../../auto-project.html">返回项目目录</a></p></main><script src="../../assets/copy.js" defer></script></html>

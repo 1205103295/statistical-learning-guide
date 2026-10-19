@@ -1,0 +1,13 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>2.4-10</title><link rel="stylesheet" href="../../assets/style.css"><header><div><a href="../../auto-project.html">Auto项目目录</a><a href="../../index.html">全书代码目录</a></div></header><main><h1>代码 2.4-10 · 固定选择并检查训练参数</h1><p>按Notebook顺序运行。后续代码依赖前面定义的变量。真实数据来自教材官网。</p><button id="copy">复制整块代码</button><textarea id="code" readonly rows="9">chosen_name = scores[&quot;validation_mse&quot;].idxmin()
+print(&quot;chosen:&quot;, chosen_name)
+print(&quot;training target mean:&quot;, y_train.mean())
+scaler = models[&quot;knn5&quot;].named_steps[&quot;standardscaler&quot;]
+print(&quot;scaler mean:&quot;, scaler.mean_)
+print(&quot;scaler scale:&quot;, scaler.scale_)
+assert np.allclose(scaler.mean_, X_train.mean().to_numpy())
+assert np.allclose(scaler.scale_, X_train.std(ddof=0).to_numpy())
+</textarea><p id="status" role="status"></p><h2>实际运行输出</h2><pre>chosen: linear
+training target mean: 22.922649572649576
+scaler mean: [ 108.10683761 3058.4017094 ]
+scaler scale: [ 39.95373013 854.99762643]
+</pre><p><a href="../../notebooks/ch02/2.4-auto-project.ipynb" download>下载已执行Notebook</a> · <a href="../../auto-project.html">返回项目目录</a></p></main><script src="../../assets/copy.js" defer></script></html>

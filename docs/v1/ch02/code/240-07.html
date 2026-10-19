@@ -1,0 +1,12 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>2.4-07</title><link rel="stylesheet" href="../../assets/style.css"><header><div><a href="../../auto-project.html">Auto项目目录</a><a href="../../index.html">全书代码目录</a></div></header><main><h1>代码 2.4-07 · 观察训练数据的关系</h1><p>按Notebook顺序运行。后续代码依赖前面定义的变量。真实数据来自教材官网。</p><button id="copy">复制整块代码</button><textarea id="code" readonly rows="12">fig, axes = plt.subplots(1, 2, figsize=(9, 3.6))
+for ax, feature in zip(axes, feature_columns):
+    ax.scatter(X_train[feature], y_train, s=17, alpha=0.6,
+               color=&quot;#314887&quot;)
+    ax.set_xlabel(feature)
+    ax.set_ylabel(&quot;mpg&quot;)
+fig.tight_layout()
+fig.savefig(image_dir / &quot;240-train-scatter.pdf&quot;)
+fig.savefig(image_dir / &quot;240-train-scatter.png&quot;, dpi=180)
+display(fig)
+plt.close(fig)
+</textarea><p id="status" role="status"></p><img src="../images/240-train-scatter.png" alt="观察训练数据的关系"><p><a href="../../notebooks/ch02/2.4-auto-project.ipynb" download>下载已执行Notebook</a> · <a href="../../auto-project.html">返回项目目录</a></p></main><script src="../../assets/copy.js" defer></script></html>

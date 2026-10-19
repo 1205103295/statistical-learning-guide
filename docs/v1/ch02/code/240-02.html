@@ -1,0 +1,11 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>2.4-02</title><link rel="stylesheet" href="../../assets/style.css"><header><div><a href="../../auto-project.html">Auto项目目录</a><a href="../../index.html">全书代码目录</a></div></header><main><h1>代码 2.4-02 · 定位官方数据并记录校验值</h1><p>按Notebook顺序运行。后续代码依赖前面定义的变量。真实数据来自教材官网。</p><button id="copy">复制整块代码</button><textarea id="code" readonly rows="10">from urllib.request import urlopen
+
+source_url = &quot;https://www.statlearning.com/s/Auto.data&quot;
+data_path = data_dir / &quot;Auto.data&quot;
+if not data_path.exists():
+    with urlopen(source_url, timeout=30) as response:
+        data_path.write_bytes(response.read())
+data_sha256 = hashlib.sha256(data_path.read_bytes()).hexdigest()
+print(data_sha256)
+</textarea><p id="status" role="status"></p><h2>实际运行输出</h2><pre>5fffe32212d7f8f82749e0a9c95a747215921c120257fcf3ab5bcb16757e0ba6
+</pre><p><a href="../../notebooks/ch02/2.4-auto-project.ipynb" download>下载已执行Notebook</a> · <a href="../../auto-project.html">返回项目目录</a></p></main><script src="../../assets/copy.js" defer></script></html>

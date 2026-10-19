@@ -1,0 +1,13 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>2.4-06</title><link rel="stylesheet" href="../../assets/style.css"><header><div><a href="../../auto-project.html">Auto项目目录</a><a href="../../index.html">全书代码目录</a></div></header><main><h1>代码 2.4-06 · 查看训练集的数值范围</h1><p>按Notebook顺序运行。后续代码依赖前面定义的变量。真实数据来自教材官网。</p><button id="copy">复制整块代码</button><textarea id="code" readonly rows="4">train_table = X_train.copy()
+train_table[&quot;mpg&quot;] = y_train
+print(train_table.describe().round(2))
+</textarea><p id="status" role="status"></p><h2>实际运行输出</h2><pre>       horsepower   weight     mpg
+count      234.00   234.00  234.00
+mean       108.11  3058.40   22.92
+std         40.04   856.83    7.96
+min         46.00  1613.00    9.00
+25%         78.50  2291.25   16.12
+50%         97.00  2931.50   21.25
+75%        137.75  3728.75   28.95
+max        230.00  5140.00   46.60
+</pre><p><a href="../../notebooks/ch02/2.4-auto-project.ipynb" download>下载已执行Notebook</a> · <a href="../../auto-project.html">返回项目目录</a></p></main><script src="../../assets/copy.js" defer></script></html>

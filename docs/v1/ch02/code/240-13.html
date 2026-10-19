@@ -1,0 +1,18 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>2.4-13</title><link rel="stylesheet" href="../../assets/style.css"><header><div><a href="../../auto-project.html">Auto项目目录</a><a href="../../index.html">全书代码目录</a></div></header><main><h1>代码 2.4-13 · 保存逐车预测与残差</h1><p>按Notebook顺序运行。后续代码依赖前面定义的变量。真实数据来自教材官网。</p><button id="copy">复制整块代码</button><textarea id="code" readonly rows="12">test_results = pd.DataFrame({
+    &quot;name&quot;: clean_auto.loc[X_test.index, &quot;name&quot;],
+    &quot;actual&quot;: y_test,
+    &quot;predicted&quot;: final_pred,
+}, index=X_test.index)
+test_results[&quot;residual&quot;] = (
+    test_results[&quot;actual&quot;] - test_results[&quot;predicted&quot;]
+)
+print(test_results[[&quot;actual&quot;, &quot;predicted&quot;, &quot;residual&quot;]].head().round(3))
+test_results.to_csv(result_dir / &quot;auto_test_predictions.csv&quot;,
+                    index_label=&quot;row_id&quot;)
+</textarea><p id="status" role="status"></p><h2>实际运行输出</h2><pre>     actual  predicted  residual
+79     26.0     30.136    -4.136
+276    21.6     24.179    -2.579
+248    36.1     32.889     3.211
+56     26.0     31.458    -5.458
+392    27.0     25.721     1.279
+</pre><p><a href="../../notebooks/ch02/2.4-auto-project.ipynb" download>下载已执行Notebook</a> · <a href="../../auto-project.html">返回项目目录</a></p></main><script src="../../assets/copy.js" defer></script></html>

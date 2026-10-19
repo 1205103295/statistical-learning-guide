@@ -32,3 +32,9 @@ PDF 指向 `v1/ch02/code/212-01.html` 等固定版本地址。内部文件名与
 根据手稿整理数组、切片、布尔索引、pandas清洗、绘图与完整预测流程。每块配有中文解释和实际输出，Notebook还包含小节练习与答案。全部数据为教学用虚构数据，不是真实Auto数据项目。需要从头顺序运行，图片保存到工作目录下的“图片”目录。
 
 代码版本继续使用v1，仅追加新编号231—239，原2.1.2链接不变。
+
+## 2.4 真实Auto项目
+
+[项目代码目录](https://1205103295.github.io/statistical-learning-guide/v1/auto-project.html) · [已执行Notebook](docs/v1/notebooks/ch02/2.4-auto-project.ipynb)
+
+16个代码块，包含固定清洗、三份划分、训练集探索、均值基准、线性回归、标准化KNN、验证选择、开发集重训和最终评估。Notebook首次运行时如无本地数据，将从[教材官网](https://www.statlearning.com/s/Auto.data)下载数据。结果仅用于教学，详见Notebook的适用范围说明。

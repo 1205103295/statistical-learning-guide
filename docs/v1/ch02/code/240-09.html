@@ -1,0 +1,19 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>2.4-09</title><link rel="stylesheet" href="../../assets/style.css"><header><div><a href="../../auto-project.html">Auto项目目录</a><a href="../../index.html">全书代码目录</a></div></header><main><h1>代码 2.4-09 · 逐个训练并比较验证误差</h1><p>按Notebook顺序运行。后续代码依赖前面定义的变量。真实数据来自教材官网。</p><button id="copy">复制整块代码</button><textarea id="code" readonly rows="14">rows = []
+for name, candidate in models.items():
+    candidate.fit(X_train, y_train)
+    train_pred = candidate.predict(X_train)
+    val_pred = candidate.predict(X_val)
+    rows.append({
+        &quot;model&quot;: name,
+        &quot;train_mse&quot;: mean_squared_error(y_train, train_pred),
+        &quot;validation_mse&quot;: mean_squared_error(y_val, val_pred),
+    })
+scores = pd.DataFrame(rows).set_index(&quot;model&quot;)
+print(scores.round(4))
+scores.to_csv(result_dir / &quot;auto_validation_scores.csv&quot;)
+</textarea><p id="status" role="status"></p><h2>实际运行输出</h2><pre>          train_mse  validation_mse
+model                              
+baseline    63.1285         64.8289
+linear      17.2759         20.3014
+knn5        11.0711         24.2467
+</pre><p><a href="../../notebooks/ch02/2.4-auto-project.ipynb" download>下载已执行Notebook</a> · <a href="../../auto-project.html">返回项目目录</a></p></main><script src="../../assets/copy.js" defer></script></html>
