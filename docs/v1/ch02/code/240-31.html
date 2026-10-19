@@ -1,0 +1,14 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>2.4-31</title><link rel="stylesheet" href="../../assets/style.css"><header><div><a href="../../textbook-exercises.html">教材章末习题目录</a><a href="../../index.html">全书代码目录</a></div></header><main><h1>代码 2.4-31 · 第8(h)：检查偏态、相关与可疑毕业率</h1><p>按Notebook顺序运行。后续代码依赖前面定义的变量。真实数据来自教材官网。</p><button id="copy">复制整块代码</button><textarea id="code" readonly rows="6">print(college[[&quot;Apps&quot;, &quot;Expend&quot;]].agg([&quot;mean&quot;, &quot;median&quot;]).round(2))
+print(&quot;Apps-Enroll correlation:&quot;, round(college[&quot;Apps&quot;].corr(college[&quot;Enroll&quot;]), 4))
+unusual = college.loc[college[&quot;Grad.Rate&quot;] &gt; 100, [&quot;Grad.Rate&quot;]]
+print(&quot;Graduation rate above 100:&quot;)
+print(unusual.to_string())
+</textarea><p id="status" role="status"></p><h2>实际运行输出</h2><pre>           Apps   Expend
+mean    3001.64  9660.17
+median  1558.00  8377.00
+Apps-Enroll correlation: 0.8468
+Graduation rate above 100:
+                   Grad.Rate
+College                     
+Cazenovia College        118
+</pre><p><a href="../../notebooks/ch02/2.4-textbook-exercises.ipynb" download>下载已执行Notebook</a> · <a href="../../textbook-exercises.html">返回项目目录</a></p></main><script src="../../assets/copy.js" defer></script></html>

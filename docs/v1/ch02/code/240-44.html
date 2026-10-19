@@ -1,0 +1,25 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>2.4-44</title><link rel="stylesheet" href="../../assets/style.css"><header><div><a href="../../textbook-exercises.html">教材章末习题目录</a><a href="../../index.html">全书代码目录</a></div></header><main><h1>代码 2.4-44 · 第10(h)：保留所有最低房价并列记录</h1><p>按Notebook顺序运行。后续代码依赖前面定义的变量。真实数据来自教材官网。</p><button id="copy">复制整块代码</button><textarea id="code" readonly rows="9">lowest = boston.loc[boston[&quot;medv&quot;] == boston[&quot;medv&quot;].min()]
+print(&quot;zero-based row labels:&quot;, lowest.index.tolist())
+print(&quot;one-based observation numbers:&quot;, (lowest.index + 1).tolist())
+comparison = boston.agg([&quot;min&quot;, &quot;median&quot;, &quot;max&quot;]).T
+for index, row in lowest.iterrows():
+    comparison[f&quot;row_{index}&quot;] = row
+print(comparison.round(3).to_string())
+comparison.to_csv(result_dir / &quot;boston_min_medv_comparison.csv&quot;)
+</textarea><p id="status" role="status"></p><h2>实际运行输出</h2><pre>zero-based row labels: [398, 405]
+one-based observation numbers: [399, 406]
+             min   median      max  row_398  row_405
+crim       0.006    0.257   88.976   38.352   67.921
+zn         0.000    0.000  100.000    0.000    0.000
+indus      0.460    9.690   27.740   18.100   18.100
+chas       0.000    0.000    1.000    0.000    0.000
+nox        0.385    0.538    0.871    0.693    0.693
+rm         3.561    6.208    8.780    5.453    5.683
+age        2.900   77.500  100.000  100.000  100.000
+dis        1.130    3.207   12.126    1.490    1.425
+rad        1.000    5.000   24.000   24.000   24.000
+tax      187.000  330.000  711.000  666.000  666.000
+ptratio   12.600   19.050   22.000   20.200   20.200
+lstat      1.730   11.360   37.970   30.590   22.980
+medv       5.000   21.200   50.000    5.000    5.000
+</pre><p><a href="../../notebooks/ch02/2.4-textbook-exercises.ipynb" download>下载已执行Notebook</a> · <a href="../../textbook-exercises.html">返回项目目录</a></p></main><script src="../../assets/copy.js" defer></script></html>

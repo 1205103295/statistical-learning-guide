@@ -1,0 +1,10 @@
+fig, ax = plt.subplots(figsize=(6, 4))
+college.boxplot(column="Outstate", by="Elite", ax=ax)
+fig.suptitle("")
+ax.set(title="Tuition by Top10perc group", ylabel="Outstate")
+fig.tight_layout()
+for suffix in ["pdf", "png"]:
+    fig.savefig(image_dir / f"241-college-elite.{suffix}", dpi=180)
+print(college.groupby("Elite", observed=True)["Outstate"].median())
+display(fig)
+plt.close(fig)

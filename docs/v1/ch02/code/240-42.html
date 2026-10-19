@@ -1,0 +1,20 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>2.4-42</title><link rel="stylesheet" href="../../assets/style.css"><header><div><a href="../../textbook-exercises.html">教材章末习题目录</a><a href="../../index.html">全书代码目录</a></div></header><main><h1>代码 2.4-42 · 第10(e)：查看高犯罪率、税率与师生比记录</h1><p>按Notebook顺序运行。后续代码依赖前面定义的变量。真实数据来自教材官网。</p><button id="copy">复制整块代码</button><textarea id="code" readonly rows="5">for column in [&quot;crim&quot;, &quot;tax&quot;, &quot;ptratio&quot;]:
+    largest = boston.nlargest(3, column)[[column]]
+    print(&quot;Top 3 by&quot;, column)
+    print(largest.to_string())
+</textarea><p id="status" role="status"></p><h2>实际运行输出</h2><pre>Top 3 by crim
+        crim
+380  88.9762
+418  73.5341
+405  67.9208
+Top 3 by tax
+     tax
+488  711
+489  711
+490  711
+Top 3 by ptratio
+     ptratio
+354     22.0
+355     22.0
+127     21.2
+</pre><p><a href="../../notebooks/ch02/2.4-textbook-exercises.ipynb" download>下载已执行Notebook</a> · <a href="../../textbook-exercises.html">返回项目目录</a></p></main><script src="../../assets/copy.js" defer></script></html>

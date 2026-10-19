@@ -1,0 +1,15 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>2.4-27</title><link rel="stylesheet" href="../../assets/style.css"><header><div><a href="../../textbook-exercises.html">教材章末习题目录</a><a href="../../index.html">全书代码目录</a></div></header><main><h1>代码 2.4-27 · 第8(e)：公私立学校的州外学费</h1><p>按Notebook顺序运行。后续代码依赖前面定义的变量。真实数据来自教材官网。</p><button id="copy">复制整块代码</button><textarea id="code" readonly rows="11">fig, ax = plt.subplots(figsize=(6, 4))
+college.boxplot(column=&quot;Outstate&quot;, by=&quot;Private&quot;, ax=ax)
+fig.suptitle(&quot;&quot;)
+ax.set(title=&quot;Out-of-state tuition by school type&quot;, ylabel=&quot;Outstate&quot;)
+fig.tight_layout()
+for suffix in [&quot;pdf&quot;, &quot;png&quot;]:
+    fig.savefig(image_dir / f&quot;241-college-private.{suffix}&quot;, dpi=180)
+print(college.groupby(&quot;Private&quot;)[&quot;Outstate&quot;].agg([&quot;count&quot;, &quot;median&quot;]))
+display(fig)
+plt.close(fig)
+</textarea><p id="status" role="status"></p><h2>实际运行输出</h2><pre>         count   median
+Private                
+No         212   6609.0
+Yes        565  11200.0
+</pre><img src="../images/241-college-private.png" alt="第8(e)：公私立学校的州外学费"><p><a href="../../notebooks/ch02/2.4-textbook-exercises.ipynb" download>下载已执行Notebook</a> · <a href="../../textbook-exercises.html">返回项目目录</a></p></main><script src="../../assets/copy.js" defer></script></html>

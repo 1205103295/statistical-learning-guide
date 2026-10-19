@@ -1,0 +1,19 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>2.4-36</title><link rel="stylesheet" href="../../assets/style.css"><header><div><a href="../../textbook-exercises.html">教材章末习题目录</a><a href="../../index.html">全书代码目录</a></div></header><main><h1>代码 2.4-36 · 第9(f)：观察mpg与候选输入的关系</h1><p>按Notebook顺序运行。后续代码依赖前面定义的变量。真实数据来自教材官网。</p><button id="copy">复制整块代码</button><textarea id="code" readonly rows="12">features = [&quot;horsepower&quot;, &quot;weight&quot;, &quot;year&quot;, &quot;origin&quot;]
+fig, axes = plt.subplots(2, 2, figsize=(7, 6))
+for ax, feature in zip(axes.flat, features):
+    ax.scatter(auto_full[feature], auto_full[&quot;mpg&quot;], s=10, alpha=0.45)
+    ax.set(xlabel=feature, ylabel=&quot;mpg&quot;)
+fig.tight_layout()
+for suffix in [&quot;pdf&quot;, &quot;png&quot;]:
+    fig.savefig(image_dir / f&quot;241-auto-mpg.{suffix}&quot;, dpi=180)
+print(auto_full[quantitative].corr()[&quot;mpg&quot;].drop(&quot;mpg&quot;).round(4))
+display(fig)
+plt.close(fig)
+</textarea><p id="status" role="status"></p><h2>实际运行输出</h2><pre>cylinders      -0.7776
+displacement   -0.8051
+horsepower     -0.7784
+weight         -0.8322
+acceleration    0.4233
+year            0.5805
+Name: mpg, dtype: float64
+</pre><img src="../images/241-auto-mpg.png" alt="第9(f)：观察mpg与候选输入的关系"><p><a href="../../notebooks/ch02/2.4-textbook-exercises.ipynb" download>下载已执行Notebook</a> · <a href="../../textbook-exercises.html">返回项目目录</a></p></main><script src="../../assets/copy.js" defer></script></html>

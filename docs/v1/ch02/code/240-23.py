@@ -1,0 +1,8 @@
+college2 = pd.read_csv(college_path, index_col=0)
+college3 = college_raw.rename(columns={college_raw.columns[0]: "College"})
+college3 = college3.set_index("College")
+assert college2.equals(college3)
+college = college3.copy()
+print("shape:", college.shape)
+print("unique school names:", college.index.is_unique)
+print("first columns:", college.columns[:4].tolist())

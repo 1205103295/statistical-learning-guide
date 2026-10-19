@@ -1,0 +1,13 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>2.4-33</title><link rel="stylesheet" href="../../assets/style.css"><header><div><a href="../../textbook-exercises.html">教材章末习题目录</a><a href="../../index.html">全书代码目录</a></div></header><main><h1>代码 2.4-33 · 第9(b)(c)：范围、均值与样本标准差</h1><p>按Notebook顺序运行。后续代码依赖前面定义的变量。真实数据来自教材官网。</p><button id="copy">复制整块代码</button><textarea id="code" readonly rows="5">auto_stats = auto_full[quantitative].agg([&quot;min&quot;, &quot;max&quot;, &quot;mean&quot;, &quot;std&quot;]).T
+auto_stats[&quot;span&quot;] = auto_stats[&quot;max&quot;] - auto_stats[&quot;min&quot;]
+print(auto_stats.round(3).to_string())
+auto_stats.to_csv(result_dir / &quot;auto_full_summary.csv&quot;)
+</textarea><p id="status" role="status"></p><h2>实际运行输出</h2><pre>                 min     max      mean      std    span
+mpg              9.0    46.6    23.446    7.805    37.6
+cylinders        3.0     8.0     5.472    1.706     5.0
+displacement    68.0   455.0   194.412  104.644   387.0
+horsepower      46.0   230.0   104.469   38.491   184.0
+weight        1613.0  5140.0  2977.584  849.403  3527.0
+acceleration     8.0    24.8    15.541    2.759    16.8
+year            70.0    82.0    75.980    3.684    12.0
+</pre><p><a href="../../notebooks/ch02/2.4-textbook-exercises.ipynb" download>下载已执行Notebook</a> · <a href="../../textbook-exercises.html">返回项目目录</a></p></main><script src="../../assets/copy.js" defer></script></html>

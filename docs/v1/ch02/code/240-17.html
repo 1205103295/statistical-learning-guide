@@ -1,0 +1,14 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>2.4-17</title><link rel="stylesheet" href="../../assets/style.css"><header><div><a href="../../textbook-exercises.html">教材章末习题目录</a><a href="../../index.html">全书代码目录</a></div></header><main><h1>代码 2.4-17 · 准备章末实验目录与工具</h1><p>按Notebook顺序运行。后续代码依赖前面定义的变量。真实数据来自教材官网。</p><button id="copy">复制整块代码</button><textarea id="code" readonly rows="14">from pathlib import Path
+from urllib.request import urlopen
+import hashlib
+import json
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+data_dir = Path(&quot;数据&quot;)
+image_dir = Path(&quot;图片&quot;)
+result_dir = Path(&quot;结果/教材章末习题&quot;)
+for folder in [data_dir, image_dir, result_dir]:
+    folder.mkdir(parents=True, exist_ok=True)
+</textarea><p id="status" role="status"></p><p><a href="../../notebooks/ch02/2.4-textbook-exercises.ipynb" download>下载已执行Notebook</a> · <a href="../../textbook-exercises.html">返回项目目录</a></p></main><script src="../../assets/copy.js" defer></script></html>

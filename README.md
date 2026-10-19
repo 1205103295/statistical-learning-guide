@@ -38,3 +38,9 @@ PDF 指向 `v1/ch02/code/212-01.html` 等固定版本地址。内部文件名与
 [项目代码目录](https://1205103295.github.io/statistical-learning-guide/v1/auto-project.html) · [已执行Notebook](docs/v1/notebooks/ch02/2.4-auto-project.ipynb)
 
 16个代码块，包含固定清洗、三份划分、训练集探索、均值基准、线性回归、标准化KNN、验证选择、开发集重训和最终评估。Notebook首次运行时如无本地数据，将从[教材官网](https://www.statlearning.com/s/Auto.data)下载数据。结果仅用于教学，详见Notebook的适用范围说明。
+
+## 2.4 真实教材章末习题
+
+[项目代码目录](https://1205103295.github.io/statistical-learning-guide/v1/textbook-exercises.html) · [已执行Notebook](docs/v1/notebooks/ch02/2.4-textbook-exercises.ipynb)
+
+29个代码块，对应教材第1—10题，包含示意曲线、KNN手算、College、Auto与Boston数据探索。Notebook首次运行时如无本地数据，将从[教材官网](https://www.statlearning.com/s/Auto.data)下载数据。结果仅用于教学，详见Notebook的适用范围说明。

@@ -1,0 +1,12 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>2.4-37</title><link rel="stylesheet" href="../../assets/style.css"><header><div><a href="../../textbook-exercises.html">教材章末习题目录</a><a href="../../index.html">全书代码目录</a></div></header><main><h1>代码 2.4-37 · 第10(a)(b)：通过ISLP载入Boston</h1><p>按Notebook顺序运行。后续代码依赖前面定义的变量。真实数据来自教材官网。</p><button id="copy">复制整块代码</button><textarea id="code" readonly rows="9">from ISLP import load_data
+import ISLP
+
+boston = load_data(&quot;Boston&quot;)
+print(&quot;ISLP version:&quot;, ISLP.__version__)
+print(&quot;shape:&quot;, boston.shape)
+print(&quot;columns:&quot;, boston.columns.tolist())
+boston.to_csv(result_dir / &quot;boston_loaded.csv&quot;, index=False)
+</textarea><p id="status" role="status"></p><h2>实际运行输出</h2><pre>ISLP version: 0.4.1
+shape: (506, 13)
+columns: [&#x27;crim&#x27;, &#x27;zn&#x27;, &#x27;indus&#x27;, &#x27;chas&#x27;, &#x27;nox&#x27;, &#x27;rm&#x27;, &#x27;age&#x27;, &#x27;dis&#x27;, &#x27;rad&#x27;, &#x27;tax&#x27;, &#x27;ptratio&#x27;, &#x27;lstat&#x27;, &#x27;medv&#x27;]
+</pre><p><a href="../../notebooks/ch02/2.4-textbook-exercises.ipynb" download>下载已执行Notebook</a> · <a href="../../textbook-exercises.html">返回项目目录</a></p></main><script src="../../assets/copy.js" defer></script></html>

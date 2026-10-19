@@ -1,0 +1,13 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>2.4-22</title><link rel="stylesheet" href="../../assets/style.css"><header><div><a href="../../textbook-exercises.html">教材章末习题目录</a><a href="../../index.html">全书代码目录</a></div></header><main><h1>代码 2.4-22 · 第8(a)：读取含学校名称的官方CSV</h1><p>按Notebook顺序运行。后续代码依赖前面定义的变量。真实数据来自教材官网。</p><button id="copy">复制整块代码</button><textarea id="code" readonly rows="8">college_path = data_dir / &quot;College.csv&quot;
+college_url = &quot;https://www.statlearning.com/s/College.csv&quot;
+if not college_path.exists():
+    college_path.write_bytes(urlopen(college_url, timeout=30).read())
+college_raw = pd.read_csv(college_path)
+print(&quot;raw shape:&quot;, college_raw.shape)
+print(college_raw.iloc[:3, :4].to_string(index=False))
+</textarea><p id="status" role="status"></p><h2>实际运行输出</h2><pre>raw shape: (777, 19)
+                  Unnamed: 0 Private  Apps  Accept
+Abilene Christian University     Yes  1660    1232
+          Adelphi University     Yes  2186    1924
+              Adrian College     Yes  1428    1097
+</pre><p><a href="../../notebooks/ch02/2.4-textbook-exercises.ipynb" download>下载已执行Notebook</a> · <a href="../../textbook-exercises.html">返回项目目录</a></p></main><script src="../../assets/copy.js" defer></script></html>

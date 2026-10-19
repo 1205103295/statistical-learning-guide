@@ -1,0 +1,25 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>2.4-24</title><link rel="stylesheet" href="../../assets/style.css"><header><div><a href="../../textbook-exercises.html">教材章末习题目录</a><a href="../../index.html">全书代码目录</a></div></header><main><h1>代码 2.4-24 · 第8(c)：全部数值变量的基本摘要</h1><p>按Notebook顺序运行。后续代码依赖前面定义的变量。真实数据来自教材官网。</p><button id="copy">复制整块代码</button><textarea id="code" readonly rows="6">college_summary = college.describe().T
+college_summary.to_csv(result_dir / &quot;college_describe.csv&quot;)
+basic_stats = [&quot;count&quot;, &quot;mean&quot;, &quot;std&quot;, &quot;min&quot;, &quot;max&quot;]
+print(college_summary[basic_stats].round(2).to_string())
+print(&quot;Private counts:&quot;, college[&quot;Private&quot;].value_counts().to_dict())
+</textarea><p id="status" role="status"></p><h2>实际运行输出</h2><pre>             count      mean      std     min      max
+Apps         777.0   3001.64  3870.20    81.0  48094.0
+Accept       777.0   2018.80  2451.11    72.0  26330.0
+Enroll       777.0    779.97   929.18    35.0   6392.0
+Top10perc    777.0     27.56    17.64     1.0     96.0
+Top25perc    777.0     55.80    19.80     9.0    100.0
+F.Undergrad  777.0   3699.91  4850.42   139.0  31643.0
+P.Undergrad  777.0    855.30  1522.43     1.0  21836.0
+Outstate     777.0  10440.67  4023.02  2340.0  21700.0
+Room.Board   777.0   4357.53  1096.70  1780.0   8124.0
+Books        777.0    549.38   165.11    96.0   2340.0
+Personal     777.0   1340.64   677.07   250.0   6800.0
+PhD          777.0     72.66    16.33     8.0    103.0
+Terminal     777.0     79.70    14.72    24.0    100.0
+S.F.Ratio    777.0     14.09     3.96     2.5     39.8
+perc.alumni  777.0     22.74    12.39     0.0     64.0
+Expend       777.0   9660.17  5221.77  3186.0  56233.0
+Grad.Rate    777.0     65.46    17.18    10.0    118.0
+Private counts: {&#x27;Yes&#x27;: 565, &#x27;No&#x27;: 212}
+</pre><p><a href="../../notebooks/ch02/2.4-textbook-exercises.ipynb" download>下载已执行Notebook</a> · <a href="../../textbook-exercises.html">返回项目目录</a></p></main><script src="../../assets/copy.js" defer></script></html>

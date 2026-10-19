@@ -1,0 +1,7 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>2.4-18</title><link rel="stylesheet" href="../../assets/style.css"><header><div><a href="../../textbook-exercises.html">教材章末习题目录</a><a href="../../index.html">全书代码目录</a></div></header><main><h1>代码 2.4-18 · 用明确公式构造五条示意曲线</h1><p>按Notebook顺序运行。后续代码依赖前面定义的变量。真实数据来自教材官网。</p><button id="copy">复制整块代码</button><textarea id="code" readonly rows="7">flexibility = np.linspace(0, 1, 201)
+bias_squared = 5 * (1 - flexibility) ** 2
+variance = 4 * flexibility ** 2
+irreducible = np.full_like(flexibility, 1.0)
+test_error = bias_squared + variance + irreducible
+training_error = 5 * (1 - flexibility) ** 2
+</textarea><p id="status" role="status"></p><p><a href="../../notebooks/ch02/2.4-textbook-exercises.ipynb" download>下载已执行Notebook</a> · <a href="../../textbook-exercises.html">返回项目目录</a></p></main><script src="../../assets/copy.js" defer></script></html>

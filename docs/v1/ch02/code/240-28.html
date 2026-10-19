@@ -1,0 +1,9 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>2.4-28</title><link rel="stylesheet" href="../../assets/style.css"><header><div><a href="../../textbook-exercises.html">教材章末习题目录</a><a href="../../index.html">全书代码目录</a></div></header><main><h1>代码 2.4-28 · 第8(f)：构造Elite并核对边界</h1><p>按Notebook顺序运行。后续代码依赖前面定义的变量。真实数据来自教材官网。</p><button id="copy">复制整块代码</button><textarea id="code" readonly rows="6">college[&quot;Elite&quot;] = pd.cut(college[&quot;Top10perc&quot;], bins=[0, 50, 100],
+                          labels=[&quot;No&quot;, &quot;Yes&quot;], include_lowest=True)
+assert college[&quot;Elite&quot;].notna().all()
+assert (college[&quot;Elite&quot;] == &quot;Yes&quot;).equals(college[&quot;Top10perc&quot;] &gt; 50)
+print(college[&quot;Elite&quot;].value_counts().to_string())
+</textarea><p id="status" role="status"></p><h2>实际运行输出</h2><pre>Elite
+No     699
+Yes     78
+</pre><p><a href="../../notebooks/ch02/2.4-textbook-exercises.ipynb" download>下载已执行Notebook</a> · <a href="../../textbook-exercises.html">返回项目目录</a></p></main><script src="../../assets/copy.js" defer></script></html>

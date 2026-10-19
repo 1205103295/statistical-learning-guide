@@ -1,0 +1,10 @@
+fig, ax = plt.subplots(figsize=(6, 4))
+college.boxplot(column="Outstate", by="Private", ax=ax)
+fig.suptitle("")
+ax.set(title="Out-of-state tuition by school type", ylabel="Outstate")
+fig.tight_layout()
+for suffix in ["pdf", "png"]:
+    fig.savefig(image_dir / f"241-college-private.{suffix}", dpi=180)
+print(college.groupby("Private")["Outstate"].agg(["count", "median"]))
+display(fig)
+plt.close(fig)

@@ -1,0 +1,12 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>2.4-32</title><link rel="stylesheet" href="../../assets/style.css"><header><div><a href="../../textbook-exercises.html">教材章末习题目录</a><a href="../../index.html">全书代码目录</a></div></header><main><h1>代码 2.4-32 · 第9(a)：读取并清理Auto全部字段</h1><p>按Notebook顺序运行。后续代码依赖前面定义的变量。真实数据来自教材官网。</p><button id="copy">复制整块代码</button><textarea id="code" readonly rows="10">auto_path = data_dir / &quot;Auto.data&quot;
+if not auto_path.exists():
+    auto_path.write_bytes(urlopen(&quot;https://www.statlearning.com/s/Auto.data&quot;,
+                                  timeout=30).read())
+auto_full = pd.read_csv(auto_path, sep=r&quot;\s+&quot;, na_values=&quot;?&quot;).dropna().copy()
+quantitative = [&quot;mpg&quot;, &quot;cylinders&quot;, &quot;displacement&quot;, &quot;horsepower&quot;,
+                &quot;weight&quot;, &quot;acceleration&quot;, &quot;year&quot;]
+print(&quot;complete rows:&quot;, len(auto_full))
+print(&quot;origin codes:&quot;, sorted(auto_full[&quot;origin&quot;].unique().tolist()))
+</textarea><p id="status" role="status"></p><h2>实际运行输出</h2><pre>complete rows: 392
+origin codes: [1, 2, 3]
+</pre><p><a href="../../notebooks/ch02/2.4-textbook-exercises.ipynb" download>下载已执行Notebook</a> · <a href="../../textbook-exercises.html">返回项目目录</a></p></main><script src="../../assets/copy.js" defer></script></html>

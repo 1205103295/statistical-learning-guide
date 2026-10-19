@@ -1,0 +1,11 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>2.4-30</title><link rel="stylesheet" href="../../assets/style.css"><header><div><a href="../../textbook-exercises.html">教材章末习题目录</a><a href="../../index.html">全书代码目录</a></div></header><main><h1>代码 2.4-30 · 第8(g)：比较不同变量和分箱数</h1><p>按Notebook顺序运行。后续代码依赖前面定义的变量。真实数据来自教材官网。</p><button id="copy">复制整块代码</button><textarea id="code" readonly rows="11">fig, axes = plt.subplots(2, 2, figsize=(7, 6))
+settings = [(&quot;Apps&quot;, 10), (&quot;Apps&quot;, 30), (&quot;Outstate&quot;, 15), (&quot;Expend&quot;, 30)]
+for ax, (column, bins) in zip(axes.flat, settings):
+    college[column].plot.hist(bins=bins, ax=ax, edgecolor=&quot;white&quot;)
+    ax.set(title=f&quot;{column}: {bins} bins&quot;, xlabel=column)
+fig.tight_layout()
+for suffix in [&quot;pdf&quot;, &quot;png&quot;]:
+    fig.savefig(image_dir / f&quot;241-college-hist.{suffix}&quot;, dpi=180)
+display(fig)
+plt.close(fig)
+</textarea><p id="status" role="status"></p><img src="../images/241-college-hist.png" alt="第8(g)：比较不同变量和分箱数"><p><a href="../../notebooks/ch02/2.4-textbook-exercises.ipynb" download>下载已执行Notebook</a> · <a href="../../textbook-exercises.html">返回项目目录</a></p></main><script src="../../assets/copy.js" defer></script></html>
