@@ -1,9 +1,9 @@
 <!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>2.4-38</title><link rel="stylesheet" href="../../assets/style.css"><header><div><a href="../../textbook-exercises.html">教材章末习题目录</a><a href="../../index.html">全书代码目录</a></div></header><main><h1>代码 2.4-38 · 第10(c)：查看部分变量的成对关系</h1><p>按Notebook顺序运行。后续代码依赖前面定义的变量。真实数据来自教材官网。</p><button id="copy">复制整块代码</button><textarea id="code" readonly rows="13">columns = [&quot;nox&quot;, &quot;dis&quot;, &quot;rm&quot;, &quot;lstat&quot;, &quot;medv&quot;]
 axes = pd.plotting.scatter_matrix(boston[columns], figsize=(8, 8),
                                   alpha=0.35, s=8, diagonal=&quot;hist&quot;)
-for ax in axes.flat:
-    ax.xaxis.set_major_formatter(&quot;{x:g}&quot;)
-    ax.yaxis.set_major_formatter(&quot;{x:g}&quot;)
+diagonal = axes[0, 0]
+labels = [f&quot;{float(t.get_text()):g}&quot; for t in diagonal.get_yticklabels()]
+diagonal.set_yticks(diagonal.get_yticks(), labels=labels)
 fig = axes[0, 0].figure
 fig.tight_layout()
 for suffix in [&quot;pdf&quot;, &quot;png&quot;]:

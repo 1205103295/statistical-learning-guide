@@ -1,9 +1,9 @@
 columns = ["nox", "dis", "rm", "lstat", "medv"]
 axes = pd.plotting.scatter_matrix(boston[columns], figsize=(8, 8),
                                   alpha=0.35, s=8, diagonal="hist")
-for ax in axes.flat:
-    ax.xaxis.set_major_formatter("{x:g}")
-    ax.yaxis.set_major_formatter("{x:g}")
+diagonal = axes[0, 0]
+labels = [f"{float(t.get_text()):g}" for t in diagonal.get_yticklabels()]
+diagonal.set_yticks(diagonal.get_yticks(), labels=labels)
 fig = axes[0, 0].figure
 fig.tight_layout()
 for suffix in ["pdf", "png"]:
