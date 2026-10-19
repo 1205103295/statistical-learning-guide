@@ -4,7 +4,7 @@ print(&quot;rm &gt; 7:&quot;, len(over7), &quot;rm &gt; 8:&quot;, len(over8))
 print(over8[[&quot;rm&quot;, &quot;medv&quot;, &quot;crim&quot;, &quot;ptratio&quot;, &quot;lstat&quot;]].round(3).to_string())
 summary8 = over8.agg([&quot;min&quot;, &quot;mean&quot;, &quot;max&quot;]).T
 summary8.to_csv(result_dir / &quot;boston_over8_summary.csv&quot;)
-</textarea><p id="status" role="status"></p><h2>实际运行输出</h2><pre>rm &gt; 7: 64 rm &gt; 8: 13
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li>两次<code>loc</code>分别筛选rm严格大于7和严格大于8的地区；<code>&gt;</code>不包括恰好等于边界的记录，<code>over8</code>是<code>over7</code>的子集。</li><li><code>len</code>报告两组记录数；双层方括号选出五列作详细展示，<code>to_string()</code>避免屏幕截断这些记录。</li><li><code>over8.agg([&quot;min&quot;,&quot;mean&quot;,&quot;max&quot;]).T</code>对这一组的所有列生成摘要，写入CSV供复习。代码里的rm是地区平均房间数，不等于每一栋房子的房间数。</li></ul></section><p id="status" role="status"></p><h2>实际运行输出</h2><pre>rm &gt; 7: 64 rm &gt; 8: 13
         rm  medv   crim  ptratio  lstat
 97   8.069  38.7  0.121     18.0   4.21
 163  8.375  50.0  1.519     14.7   3.32

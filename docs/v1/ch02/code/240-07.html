@@ -9,4 +9,4 @@ fig.savefig(image_dir / &quot;240-train-scatter.pdf&quot;)
 fig.savefig(image_dir / &quot;240-train-scatter.png&quot;, dpi=180)
 display(fig)
 plt.close(fig)
-</textarea><p id="status" role="status"></p><img src="../images/240-train-scatter.png" alt="观察训练数据的关系"><p><a href="../../notebooks/ch02/2.4-auto-project.ipynb" download>下载已执行Notebook</a> · <a href="../../auto-project.html">返回项目目录</a></p></main><script src="../../assets/copy.js" defer></script></html>
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li><code>subplots(1,2)</code>创建一行两张图，<code>axes</code>是一维绘图区数组。<code>zip(axes,feature_columns)</code>把第一个图区配马力、第二个配重量。</li><li>循环每轮将一对对象解包给<code>ax, feature</code>；<code>X_train[feature]</code>取当前输入列，<code>y_train</code>提供纵坐标。</li><li><code>s=17</code>控制点面积，<code>alpha=0.6</code>让重叠点更容易辨认；轴名随当前特征改变。循环之后才对整张图调整布局、保存、显示并关闭。</li></ul></section><p id="status" role="status"></p><img src="../images/240-train-scatter.png" alt="观察训练数据的关系"><p><a href="../../notebooks/ch02/2.4-auto-project.ipynb" download>下载已执行Notebook</a> · <a href="../../auto-project.html">返回项目目录</a></p></main><script src="../../assets/copy.js" defer></script></html>

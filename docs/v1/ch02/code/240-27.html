@@ -8,7 +8,7 @@ for suffix in [&quot;pdf&quot;, &quot;png&quot;]:
 print(college.groupby(&quot;Private&quot;)[&quot;Outstate&quot;].agg([&quot;count&quot;, &quot;median&quot;]))
 display(fig)
 plt.close(fig)
-</textarea><p id="status" role="status"></p><h2>实际运行输出</h2><pre>         count   median
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li><code>college.boxplot(column=&quot;Outstate&quot;,by=&quot;Private&quot;,ax=ax)</code>把Outstate按Private分组，在指定绘图区画箱线图。</li><li>pandas会自动加一个整图标题，<code>fig.suptitle(&quot;&quot;)</code>将其清空，避免与自行设置的图区标题重复；<code>ax.set</code>设置自己的标题与纵轴名。</li><li><code>groupby(&quot;Private&quot;)[&quot;Outstate&quot;]</code>先按类别分组，再选择学费；<code>.agg([&quot;count&quot;,&quot;median&quot;])</code>对每组计算非缺失数量和中位数，打印结果与图形相互核对。</li><li>保存循环生成两种格式，<code>display</code>显示整图，<code>close</code>释放对象。</li></ul></section><p id="status" role="status"></p><h2>实际运行输出</h2><pre>         count   median
 Private                
 No         212   6609.0
 Yes        565  11200.0

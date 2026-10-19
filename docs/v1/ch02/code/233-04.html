@@ -7,7 +7,7 @@ flat = column_auto.reshape(-1)
 print(column_auto.shape)
 print(flat.shape)
 print(v.shape)
-</textarea><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>[[10.]
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li><code>reshape(3,1)</code>和<code>reshape(1,3)</code>重新组织同样三个元素，分别返回列形状和行形状；元素总数必须保持一致。</li><li><code>reshape(-1,1)</code>只指定一列，行数自动计算；<code>reshape(-1)</code>把数组展为一维。代码把返回对象赋给新名字，所以最后的<code>v.shape</code>仍是<code>(3,)</code>。</li></ul></section><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>[[10.]
  [20.]
  [30.]]
 [[10. 20. 30.]]

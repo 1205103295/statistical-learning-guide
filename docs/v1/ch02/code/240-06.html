@@ -1,7 +1,7 @@
 <!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>2.4-06</title><link rel="stylesheet" href="../../assets/style.css"><header><div><a href="../../auto-project.html">Auto项目目录</a><a href="../../index.html">全书代码目录</a></div></header><main><h1>代码 2.4-06 · 查看训练集的数值范围</h1><p>按Notebook顺序运行。后续代码依赖前面定义的变量。真实数据来自教材官网。</p><button id="copy">复制整块代码</button><textarea id="code" readonly rows="4">train_table = X_train.copy()
 train_table[&quot;mpg&quot;] = y_train
 print(train_table.describe().round(2))
-</textarea><p id="status" role="status"></p><h2>实际运行输出</h2><pre>       horsepower   weight     mpg
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li><code>X_train.copy()</code>复制训练特征表；随后增加mpg列。把Series赋给DataFrame列时，pandas按索引标签对齐，因此这里使用配对划分得到的<code>y_train</code>。</li><li><code>describe()</code>汇总各列的计数、均值、标准差和分位数；<code>.round(2)</code>只为打印生成两位小数版本。原训练数据没有因此舍入。</li></ul></section><p id="status" role="status"></p><h2>实际运行输出</h2><pre>       horsepower   weight     mpg
 count      234.00   234.00  234.00
 mean       108.11  3058.40   22.92
 std         40.04   856.83    7.96

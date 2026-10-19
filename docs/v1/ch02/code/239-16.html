@@ -12,7 +12,7 @@ chosen_method = (
 print(&quot;baseline validation MSE:&quot;, baseline_val_mse)
 print(&quot;linear validation MSE:&quot;, linear_val_mse)
 print(&quot;chosen:&quot;, chosen_method)
-</textarea><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>baseline validation MSE: 24.027777777777768
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li>分别将同一份验证目标与两组预测比较，得到两个MSE；只有比较相同样本与指标才有意义。</li><li><code>&quot;linear&quot; if 条件 else &quot;baseline&quot;</code>是条件表达式：线性MSE严格更小时选线性，否则选基准，相等也走<code>else</code>。</li><li><code>chosen_method</code>保存方法名称字符串，不是已经重训的模型；下一块据此决定执行哪个分支。</li></ul></section><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>baseline validation MSE: 24.027777777777768
 linear validation MSE: 0.6131687242798307
 chosen: linear
 </pre></section><div class="toolbar"><a class="button secondary" href="../../notebooks/ch02/2.3-python-lab.ipynb" download>下载完整实验 Notebook</a><a href="239-16.py" download>下载本块 Python</a></div><nav class="nav"><a href="239-15.html">上一块</a><a href="239-17.html">下一块</a></nav></main><footer>虚构数据演示 · 按编号顺序运行 · 代码与输出对应本版讲义</footer><script src="../../assets/copy.js" defer></script></body></html>

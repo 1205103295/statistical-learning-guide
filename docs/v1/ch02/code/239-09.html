@@ -3,6 +3,6 @@ errors = y_test_array - baseline_pred
 baseline_test_mse = np.mean(errors ** 2)
 print(errors)
 print(baseline_test_mse)
-</textarea><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>[ 5.77777778  3.77777778 -9.22222222]
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li><code>y_test.to_numpy()</code>取得按测试行顺序排列的真实目标数组；与同顺序的基准预测逐项相减。</li><li><code>errors**2</code>先平方，<code>np.mean</code>再平均。打印残差用于观察方向，打印MSE用于衡量总体平方误差，二者用途不同。</li></ul></section><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>[ 5.77777778  3.77777778 -9.22222222]
 44.23456790123456
 </pre></section><div class="toolbar"><a class="button secondary" href="../../notebooks/ch02/2.3-python-lab.ipynb" download>下载完整实验 Notebook</a><a href="239-09.py" download>下载本块 Python</a></div><nav class="nav"><a href="239-08.html">上一块</a><a href="239-10.html">下一块</a></nav></main><footer>虚构数据演示 · 按编号顺序运行 · 代码与输出对应本版讲义</footer><script src="../../assets/copy.js" defer></script></body></html>

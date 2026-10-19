@@ -3,7 +3,7 @@ y = clean[target_column].to_numpy(dtype=float)
 print(X)
 print(y)
 print(X.shape, y.shape)
-</textarea><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>[[ 130. 3500.]
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li><code>clean[feature_columns]</code>按列表顺序选两列；<code>clean[target_column]</code>取一列目标。它们来自同一张表，保留相同样本顺序。</li><li><code>.to_numpy(dtype=float)</code>转成浮点NumPy数组，不再携带表格行标签和列名。分别得到<code>(3,2)</code>与<code>(3,)</code>，所以转换前应先确认对齐。</li></ul></section><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>[[ 130. 3500.]
  [  95. 3000.]
  [  85. 2400.]]
 [18. 22. 28.]

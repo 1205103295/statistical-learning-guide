@@ -9,7 +9,7 @@ for suffix in [&quot;pdf&quot;, &quot;png&quot;]:
 print(auto_full[quantitative].corr()[&quot;mpg&quot;].drop(&quot;mpg&quot;).round(4))
 display(fig)
 plt.close(fig)
-</textarea><p id="status" role="status"></p><h2>实际运行输出</h2><pre>cylinders      -0.7776
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li><code>axes.flat</code>把2×2图区逐个取出，<code>zip</code>将它们依次配给四个输入；每轮用当前输入作横轴、mpg作纵轴。</li><li><code>auto_full[quantitative].corr()</code>得到数值变量两两相关系数矩阵；取<code>[&quot;mpg&quot;]</code>获得各变量与mpg的相关列。</li><li><code>.drop(&quot;mpg&quot;)</code>从这个Series中删除mpg自身那项，避免展示恒为1的自身相关；<code>round(4)</code>只简化输出。</li><li>origin没有进入这里的定量变量相关表；它的散点竖带应按类别解释。绘图保存与关闭作用于包含四格的整图。</li></ul></section><p id="status" role="status"></p><h2>实际运行输出</h2><pre>cylinders      -0.7776
 displacement   -0.8051
 horsepower     -0.7784
 weight         -0.8322

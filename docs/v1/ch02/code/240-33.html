@@ -2,7 +2,7 @@
 auto_stats[&quot;span&quot;] = auto_stats[&quot;max&quot;] - auto_stats[&quot;min&quot;]
 print(auto_stats.round(3).to_string())
 auto_stats.to_csv(result_dir / &quot;auto_full_summary.csv&quot;)
-</textarea><p id="status" role="status"></p><h2>实际运行输出</h2><pre>                 min     max      mean      std    span
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li>先按<code>quantitative</code>选列，再用<code>.agg([...])</code>计算最小、最大、均值和标准差；<code>.T</code>把每个变量放到一行。</li><li><code>auto_stats[&quot;max&quot;]-auto_stats[&quot;min&quot;]</code>按行标签对齐相减，新增span列表示极差。</li><li><code>round(3).to_string()</code>用于完整打印三位小数表；<code>to_csv</code>保存未舍入的统计表。这里的std沿用pandas默认ddof=1。</li></ul></section><p id="status" role="status"></p><h2>实际运行输出</h2><pre>                 min     max      mean      std    span
 mpg              9.0    46.6    23.446    7.805    37.6
 cylinders        3.0     8.0     5.472    1.706     5.0
 displacement    68.0   455.0   194.412  104.644   387.0

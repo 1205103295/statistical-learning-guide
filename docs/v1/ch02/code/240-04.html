@@ -8,6 +8,6 @@ print(&quot;raw, complete, removed:&quot;, len(auto), len(X), len(auto)-len(X))
 print(X.shape, y.shape)
 assert X.index.equals(y.index)
 assert X.notna().all().all() and y.notna().all()
-</textarea><p id="status" role="status"></p><h2>实际运行输出</h2><pre>raw, complete, removed: 397 392 5
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li><code>feature_columns</code>是输入列名列表，<code>target_column</code>是目标列名字符串；<code>[target_column]</code>把字符串包为列表，<code>+</code>连接后得到要检查的三列。</li><li><code>auto.dropna(subset=required)</code>删除这三列中任一列缺失的行；<code>.copy()</code>保存副本，不改原始<code>auto</code>。先统一筛选整表，再拆出<code>X</code>和<code>y</code>，避免样本错位。</li><li>用列表选列得到二维DataFrame，用字符串选一列得到一维Series。<code>len(auto)</code>、<code>len(X)</code>和它们的差分别是原始、保留、删除的行数；形状输出应为<code>(392,2)</code>与<code>(392,)</code>。</li><li><code>assert 条件</code>称为断言：条件为真时安静通过；为假时抛出<code>AssertionError</code>并停止当前单元格。<code>X.index.equals(y.index)</code>比较两组行标签及其排列顺序，核对特征与目标是否对齐。</li><li><code>X.notna()</code>把非缺失位置变为真；第一次<code>.all()</code>检查每一列是否全部为真，得到按列排列的Series；第二次<code>.all()</code>再检查所有列，得到一个布尔值。</li><li><code>y</code>只有一维，所以<code>y.notna().all()</code>一次即可汇总。<code>and</code>要求输入和目标两边都通过；缺失检查不能证明数值单位正确或没有无穷值。断言用于开发核对，不能替代生产程序必需的输入校验。</li></ul></section><p id="status" role="status"></p><h2>实际运行输出</h2><pre>raw, complete, removed: 397 392 5
 (392, 2) (392,)
 </pre><p><a href="../../notebooks/ch02/2.4-auto-project.ipynb" download>下载已执行Notebook</a> · <a href="../../auto-project.html">返回项目目录</a></p></main><script src="../../assets/copy.js" defer></script></html>

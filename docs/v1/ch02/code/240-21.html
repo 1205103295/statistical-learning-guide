@@ -3,7 +3,7 @@
     counts = pd.Series(neighbor_labels).value_counts()
     print(&quot;K =&quot;, k, &quot;neighbors:&quot;, neighbor_labels.tolist())
     print(&quot;prediction:&quot;, counts.idxmax())
-</textarea><p id="status" role="status"></p><h2>实际运行输出</h2><pre>K = 1 neighbors: [&#x27;Green&#x27;]
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li>循环让<code>k</code>先取1再取3；<code>order[:k]</code>截取最近的k个行位置，<code>y_knn[...]</code>按这些位置提取标签。</li><li><code>pd.Series(neighbor_labels).value_counts()</code>统计各标签出现次数，结果的索引是类别、值是次数。</li><li><code>.idxmax()</code>返回计数最大的类别名，因此可作为多数投票预测。本题没有并列；一般遇到并列时应明确规则，而不是把偶然返回顺序当成业务依据。</li></ul></section><p id="status" role="status"></p><h2>实际运行输出</h2><pre>K = 1 neighbors: [&#x27;Green&#x27;]
 prediction: Green
 K = 3 neighbors: [&#x27;Green&#x27;, &#x27;Red&#x27;, &#x27;Red&#x27;]
 prediction: Red

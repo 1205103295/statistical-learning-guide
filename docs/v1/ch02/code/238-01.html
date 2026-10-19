@@ -2,7 +2,7 @@
 for column in numeric_columns:
     mean_value = clean[column].mean()
     print(column, mean_value)
-</textarea><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>horsepower 103.33333333333333
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li><code>numeric_columns</code>保存要处理的列名。<code>for column in numeric_columns:</code>每轮把一个列名赋给<code>column</code>，行末冒号开启循环体。</li><li>缩进四个空格的两行每轮都会执行：取出该列、求均值并打印。循环结束后<code>mean_value</code>只保留最后一轮的值，不是所有均值的列表。</li></ul></section><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>horsepower 103.33333333333333
 weight 2966.6666666666665
 mpg 22.666666666666668
 </pre></section><div class="toolbar"><a class="button secondary" href="../../notebooks/ch02/2.3-python-lab.ipynb" download>下载完整实验 Notebook</a><a href="238-01.py" download>下载本块 Python</a></div><nav class="nav"><a href="237-07.html">上一块</a><a href="238-02.html">下一块</a></nav></main><footer>虚构数据演示 · 按编号顺序运行 · 代码与输出对应本版讲义</footer><script src="../../assets/copy.js" defer></script></body></html>

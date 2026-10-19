@@ -12,5 +12,5 @@
 report_path = result_dir / &quot;auto_report.json&quot;
 report_path.write_text(json.dumps(report, indent=2), encoding=&quot;utf-8&quot;)
 print(&quot;Saved:&quot;, report_path.as_posix())
-</textarea><p id="status" role="status"></p><h2>实际运行输出</h2><pre>Saved: 结果/auto_report.json
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li><code>report</code>用字典把数据来源、特征、样本数、种子和指标组织成“字段名→值”。这些字段让别人知道分数怎样产生。</li><li><code>float(...)</code>把库返回的数值显式转成Python浮点数，便于JSON序列化；它不会进行新的训练或估计。</li><li><code>json.dumps(report,indent=2)</code>把字典转换为带两空格缩进的字符串；<code>write_text(...,encoding=&quot;utf-8&quot;)</code>才把它写入文件。两步分别负责格式转换与磁盘写入。</li><li><code>.as_posix()</code>把路径显示成使用正斜杠的文字；打印Saved只报告保存位置，不代表另外做了模型验证。</li></ul></section><p id="status" role="status"></p><h2>实际运行输出</h2><pre>Saved: 结果/auto_report.json
 </pre><p><a href="../../notebooks/ch02/2.4-auto-project.ipynb" download>下载已执行Notebook</a> · <a href="../../auto-project.html">返回项目目录</a></p></main><script src="../../assets/copy.js" defer></script></html>

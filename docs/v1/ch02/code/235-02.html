@@ -2,7 +2,7 @@
 print(X[:, 1].shape)
 print(X[:, 1:2])
 print(X[:, 1:2].shape)
-</textarea><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>[20. 10. 30. 40.]
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li>第一处冒号表示全部行，整数<code>1</code>指定第二列；<code>X[:,1]</code>去掉列轴，返回<code>(4,)</code>。</li><li><code>1:2</code>虽然也只选第二列，但它是切片，会保留列轴，因此<code>X[:,1:2]</code>返回<code>(4,1)</code>。两次打印形状用来确认接口需要哪一种表示。</li></ul></section><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>[20. 10. 30. 40.]
 (4,)
 [[20.]
  [10.]

@@ -2,6 +2,6 @@
 selected_means = X_selected.mean(axis=0)
 print(feature_means)
 print(selected_means)
-</textarea><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>[112.5  25.   25. ]
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li>两次<code>.mean(axis=0)</code>都逐列计算均值，但前者使用全部四行，后者只使用筛选后的三行。</li><li>分别保存到两个变量，避免覆盖原均值。打印结果的差异说明筛选改变了样本组成，不能把筛选后统计量当成全体统计量。</li></ul></section><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>[112.5  25.   25. ]
 [123.33333333  23.33333333  26.66666667]
 </pre></section><div class="toolbar"><a class="button secondary" href="../../notebooks/ch02/2.3-python-lab.ipynb" download>下载完整实验 Notebook</a><a href="236-02.py" download>下载本块 Python</a></div><nav class="nav"><a href="236-01.html">上一块</a><a href="237-01.html">下一块</a></nav></main><footer>虚构数据演示 · 按编号顺序运行 · 代码与输出对应本版讲义</footer><script src="../../assets/copy.js" defer></script></body></html>

@@ -4,6 +4,6 @@ final_model = clone(models[chosen_name])
 final_model.fit(X_dev, y_dev)
 print(&quot;fixed method:&quot;, chosen_name)
 print(&quot;development rows:&quot;, len(X_dev))
-</textarea><p id="status" role="status"></p><h2>实际运行输出</h2><pre>fixed method: linear
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li><code>models[chosen_name]</code>按已选方法名取出模型；<code>clone</code>复制其类型和超参数，但不复制已学习的训练状态。</li><li>对新对象调用<code>fit(X_dev,y_dev)</code>，在全部313行开发数据上重新学习。若模型包含预处理，预处理也随整个流水线重训。</li><li>两次打印确认方法名称和实际重训行数，不能据测试结果再改变<code>chosen_name</code>。</li></ul></section><p id="status" role="status"></p><h2>实际运行输出</h2><pre>fixed method: linear
 development rows: 313
 </pre><p><a href="../../notebooks/ch02/2.4-auto-project.ipynb" download>下载已执行Notebook</a> · <a href="../../auto-project.html">返回项目目录</a></p></main><script src="../../assets/copy.js" defer></script></html>

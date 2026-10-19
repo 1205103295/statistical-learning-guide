@@ -4,6 +4,6 @@ mse = np.mean(residual ** 2)
 print(residual)
 print(mse)
 assert y_true.shape == y_pred.shape
-</textarea><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>[-1.   0.   1.8]
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li><code>y_true-y_pred</code>逐个计算真实值减预测值；先用<code>**2</code>平方，再用<code>np.mean</code>取平均，才得到MSE。正负误差因此不会相互抵消。</li><li><code>assert 条件</code>是断言：条件为真时不输出，条件为假时抛出<code>AssertionError</code>，停止当前单元格后续执行。这里<code>==</code>比较两组形状是否相同，区别于赋值用的<code>=</code>。</li><li>这条检查在本例计算之后起核对作用；自己写程序时通常应在相减之前检查形状，以更早阻止错误广播。形状一致也不自动证明样本顺序正确。</li></ul></section><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>[-1.   0.   1.8]
 1.413333333333334
 </pre></section><div class="toolbar"><a class="button secondary" href="../../notebooks/ch02/2.3-python-lab.ipynb" download>下载完整实验 Notebook</a><a href="233-07.py" download>下载本块 Python</a></div><nav class="nav"><a href="233-06.html">上一块</a><a href="234-01.html">下一块</a></nav></main><footer>虚构数据演示 · 按编号顺序运行 · 代码与输出对应本版讲义</footer><script src="../../assets/copy.js" defer></script></body></html>

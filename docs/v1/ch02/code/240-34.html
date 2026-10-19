@@ -6,7 +6,7 @@ subset_stats[&quot;span&quot;] = subset_stats[&quot;max&quot;] - subset_stats[&q
 print(&quot;removed:&quot;, (~keep).sum(), &quot;remaining:&quot;, len(auto_subset))
 print(subset_stats.round(3).to_string())
 subset_stats.to_csv(result_dir / &quot;auto_subset_summary.csv&quot;)
-</textarea><p id="status" role="status"></p><h2>实际运行输出</h2><pre>removed: 76 remaining: 316
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li><code>np.ones(len(auto_full),dtype=bool)</code>生成与数据等长、初始全部为真的位置掩码；<code>keep[9:85]=False</code>把位置9到84改为假，恰对应从1计数的第10至85条。</li><li><code>iloc[keep]</code>接受这个NumPy布尔数组，按位置保留真所在行；这与带索引的pandas布尔Series不同，不需要按标签对齐。</li><li>对保留数据重新计算四项统计量及span；并非在旧摘要表上减去被删记录的统计量。</li><li><code>~keep</code>逐元素取反，真表示刚才被排除的位置；<code>.sum()</code>把真按1计数，得到删除76行，剩余316行。</li></ul></section><p id="status" role="status"></p><h2>实际运行输出</h2><pre>removed: 76 remaining: 316
                  min     max      mean      std    span
 mpg             11.0    46.6    24.404    7.867    35.6
 cylinders        3.0     8.0     5.373    1.654     5.0

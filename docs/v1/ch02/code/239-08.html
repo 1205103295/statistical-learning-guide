@@ -5,7 +5,7 @@ baseline_pred = np.full(
 print(baseline_value)
 print(baseline_pred)
 print(baseline_pred.shape)
-</textarea><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>24.22222222222222
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li><code>y_train.mean()</code>只用训练目标学习一个平均值，保存为<code>baseline_value</code>。</li><li><code>np.full(shape=...,fill_value=...)</code>创建指定形状、所有位置都相同的数组；<code>len(X_test)</code>等于测试车辆数，因此每辆车都得到同一个训练均值预测。</li></ul></section><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>24.22222222222222
 [24.22222222 24.22222222 24.22222222]
 (3,)
 </pre></section><div class="toolbar"><a class="button secondary" href="../../notebooks/ch02/2.3-python-lab.ipynb" download>下载完整实验 Notebook</a><a href="239-08.py" download>下载本块 Python</a></div><nav class="nav"><a href="239-07.html">上一块</a><a href="239-09.html">下一块</a></nav></main><footer>虚构数据演示 · 按编号顺序运行 · 代码与输出对应本版讲义</footer><script src="../../assets/copy.js" defer></script></body></html>

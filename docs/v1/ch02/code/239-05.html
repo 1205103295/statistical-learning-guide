@@ -11,6 +11,6 @@ print(q1, median, q3)
 print(q1 - 1.5 * iqr, q3 + 1.5 * iqr)
 display(fig)
 plt.close(fig)
-</textarea><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>19.75 22.5 26.5
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li><code>boxplot(mpg_demo)</code>用同一列数画箱线图；轴名、标题和保存操作与前面的散点图相同。</li><li><code>quantile([0.25,0.5,0.75])</code>按顺序返回三个分位数，再由<code>q1, median, q3 = ...</code>分别接收。</li><li><code>iqr=q3-q1</code>是四分位距；打印的两道界限是Q1减1.5倍IQR、Q3加1.5倍IQR。它们是判断箱外点的阈值，不一定是图上须线的实际端点。</li></ul></section><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>19.75 22.5 26.5
 9.625 36.625
 </pre></section><section class="panel"><h2>实际运行图形</h2><img src="../images/239-box.png" alt="箱线图：概括位置与分散程度"><a href="../images/239-box.pdf">下载矢量图</a></section><div class="toolbar"><a class="button secondary" href="../../notebooks/ch02/2.3-python-lab.ipynb" download>下载完整实验 Notebook</a><a href="239-05.py" download>下载本块 Python</a></div><nav class="nav"><a href="239-04.html">上一块</a><a href="239-06.html">下一块</a></nav></main><footer>虚构数据演示 · 按编号顺序运行 · 代码与输出对应本版讲义</footer><script src="../../assets/copy.js" defer></script></body></html>

@@ -2,6 +2,6 @@
 ratio_median = boston[&quot;ptratio&quot;].median()
 print(&quot;river-bordering areas:&quot;, river_count)
 print(&quot;median pupil-teacher ratio:&quot;, ratio_median)
-</textarea><p id="status" role="status"></p><h2>实际运行输出</h2><pre>river-bordering areas: 35
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li><code>boston[&quot;chas&quot;]==1</code>逐行判断是否临河，得到布尔Series；<code>.sum()</code>将真按1计数，<code>int(...)</code>转为普通整数。</li><li><code>ptratio.median()</code>按地区记录取中位数；它不是把各地区所有学生合在一起重算的加权师生比。</li><li>两个print分别标明计数和中位数，避免读者把两种统计量混淆。</li></ul></section><p id="status" role="status"></p><h2>实际运行输出</h2><pre>river-bordering areas: 35
 median pupil-teacher ratio: 19.05
 </pre><p><a href="../../notebooks/ch02/2.4-textbook-exercises.ipynb" download>下载已执行Notebook</a> · <a href="../../textbook-exercises.html">返回项目目录</a></p></main><script src="../../assets/copy.js" defer></script></html>

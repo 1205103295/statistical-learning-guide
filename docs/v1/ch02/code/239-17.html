@@ -8,6 +8,6 @@ else:
 
 print(chosen_method)
 print(final_pred)
-</textarea><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>linear
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li><code>if chosen_method == &quot;linear&quot;:</code>比较方法名称；条件成立时只运行第一组缩进行，否则只运行<code>else</code>分支。</li><li>线性分支创建新模型并在全部开发数据重训；基准分支重新计算开发目标均值。重训会重新学习参数，保留的是此前选定的方法。</li><li>两个分支都生成同名<code>final_pred</code>，使下一块可以用统一代码评估；测试目标仍没有用于拟合。</li></ul></section><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>linear
 [35.13899868 33.71343874 15.29907773]
 </pre></section><div class="toolbar"><a class="button secondary" href="../../notebooks/ch02/2.3-python-lab.ipynb" download>下载完整实验 Notebook</a><a href="239-17.py" download>下载本块 Python</a></div><nav class="nav"><a href="239-16.html">上一块</a><a href="239-18.html">下一块</a></nav></main><footer>虚构数据演示 · 按编号顺序运行 · 代码与输出对应本版讲义</footer><script src="../../assets/copy.js" defer></script></body></html>

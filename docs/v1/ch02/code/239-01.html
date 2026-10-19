@@ -1,6 +1,6 @@
 <!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 2.3.9-01 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../python-lab.html">2.3 Python 实验</a><a href="../../index.html">配套代码目录</a></div></header><main><div class="eyebrow">第二章 / 2.3 Python 实验 / 代码 2.3.9-01</div><h1>describe 汇总各列</h1><div class="note">这一块属于连续的 Notebook。请先运行前面的代码块；变量可能依赖前面的定义。全部数据均为教学用虚构数据。</div><section class="codepanel"><div class="codehead"><h2>代码 2.3.9-01</h2><button id="copy" type="button">复制整块代码</button></div><textarea id="code" readonly spellcheck="false" rows="6" aria-label="代码 2.3.9-01">summary = clean[numeric_columns].describe()
 print(summary.round(3))
-</textarea><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>       horsepower    weight     mpg
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li><code>describe()</code>对选定数值列返回计数、均值、标准差、四分位数和极值。它的结果仍是DataFrame，可存到<code>summary</code>继续使用。</li><li><code>summary.round(3)</code>返回显示为三位小数的结果，供打印阅读；没有重新赋值，所以<code>summary</code>仍保留原精度。</li></ul></section><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>       horsepower    weight     mpg
 count       3.000     3.000   3.000
 mean      103.333  2966.667  22.667
 std        23.629   550.757   5.033

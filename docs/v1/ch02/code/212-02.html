@@ -11,7 +11,7 @@ X_new = np.array([[25.0]])
 print(&quot;X_train shape:&quot;, X_train.shape)
 print(&quot;y_train shape:&quot;, y_train.shape)
 print(&quot;X_new shape:&quot;, X_new.shape)
-</textarea><p id="status" class="status" role="status" aria-live="polite"></p></section>
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li><code>np.array(...)</code>把列表变为数组。外层列表的每个元素是一行；<code>[[10.0], ...]</code>保留“样本、特征”两个轴，因此输入是五行一列。</li><li><code>y_train</code>只用一层列表，形状为<code>(5,)</code>；<code>X_new</code>即使只有一个数，也写成<code>[[25.0]]</code>，使预测接口收到<code>(1,1)</code>输入。</li><li><code>print(说明文字, 对象)</code>依次打印说明与值；<code>.shape</code>是属性，直接读取，不加调用括号。三项输出用于核对输入与目标是否匹配。</li></ul></section><p id="status" class="status" role="status" aria-live="polite"></p></section>
 <section class="panel"><h2>实际运行输出</h2><pre>X_train shape: (5, 1)
 y_train shape: (5,)
 X_new shape: (1, 1)</pre></section><div class="toolbar"><a class="button secondary" href="../../notebooks/ch02/2.1.2-estimating-f.ipynb" download>下载本节 Notebook</a><a href="212-02.py" download>下载本块 .py</a><a href="../../index.html">全部代码块</a></div>

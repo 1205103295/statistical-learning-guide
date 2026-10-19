@@ -6,7 +6,7 @@ for index, row in lowest.iterrows():
     comparison[f&quot;row_{index}&quot;] = row
 print(comparison.round(3).to_string())
 comparison.to_csv(result_dir / &quot;boston_min_medv_comparison.csv&quot;)
-</textarea><p id="status" role="status"></p><h2>实际运行输出</h2><pre>zero-based row labels: [398, 405]
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li>先求medv全列最小值，再用<code>==</code>逐行比较，<code>loc[条件]</code>保留所有达到最小值的行；这样不会漏掉并列最低记录。</li><li><code>.index.tolist()</code>显示原行标签；本数据恰使用从0起算的连续整数索引，<code>index+1</code>才对应从1起算的观测编号，不能对任意索引都这样解释。</li><li><code>comparison</code>先按变量列出总体最小、中位、最大值。<code>lowest.iterrows()</code>逐行返回“行标签、该行Series”，由<code>index,row</code>接收。</li><li><code>comparison[f&quot;row_{index}&quot;]=row</code>增加该记录的一列；pandas按变量名称对齐赋值，才能把同一变量的总体摘要与该记录值并排放置。</li><li>最后打印并保存完整比较表，<code>round(3)</code>不改变CSV中保存的原精度。</li></ul></section><p id="status" role="status"></p><h2>实际运行输出</h2><pre>zero-based row labels: [398, 405]
 one-based observation numbers: [399, 406]
              min   median      max  row_398  row_405
 crim       0.006    0.257   88.976   38.352   67.921

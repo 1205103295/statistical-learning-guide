@@ -11,7 +11,7 @@ from pathlib import Path
 X_grid = np.linspace(10.0, 50.0, 201).reshape(-1, 1)
 linear_curve = linear_model.predict(X_grid)
 knn_curve = knn_model.predict(X_grid)
-</textarea><p id="status" class="status" role="status" aria-live="polite"></p></section>
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li><code>matplotlib.pyplot</code>简称<code>plt</code>，负责绘图；<code>Path</code>用于组织文件路径。这里先导入后续绘图和保存需要的工具。</li><li><code>np.linspace(10.0,50.0,201)</code>生成包含两端的201个等间距数；<code>.reshape(-1,1)</code>把它变为一列，<code>-1</code>让NumPy自动推算行数，得到<code>(201,1)</code>。</li><li>分别对这201行调用两个模型的<code>predict</code>，得到两组长度201的预测。这里只计算曲线数据，还没有画图或修改模型。</li></ul></section><p id="status" class="status" role="status" aria-live="polite"></p></section>
 <div class="toolbar"><a class="button secondary" href="../../notebooks/ch02/2.1.2-estimating-f.ipynb" download>下载本节 Notebook</a><a href="212-08.py" download>下载本块 .py</a><a href="../../index.html">全部代码块</a></div>
 <nav class="nav" aria-label="代码块导航"><a href="212-07.html">← 上一块</a><a href="212-09.html">下一块 →</a></nav></main>
 <footer>配合 PDF 阅读 · Python / Jupyter · 按顺序运行各代码块<br>v1 保存本版讲义对应的代码与运行结果。</footer>

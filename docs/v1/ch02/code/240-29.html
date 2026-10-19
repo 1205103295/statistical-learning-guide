@@ -8,7 +8,7 @@ for suffix in [&quot;pdf&quot;, &quot;png&quot;]:
 print(college.groupby(&quot;Elite&quot;, observed=True)[&quot;Outstate&quot;].median())
 display(fig)
 plt.close(fig)
-</textarea><p id="status" role="status"></p><h2>实际运行输出</h2><pre>Elite
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li>箱线图按Elite分组比较学费，<code>suptitle(&quot;&quot;)</code>清除自动总标题，<code>ax.set</code>设置清楚的图名和轴名。</li><li><code>groupby(&quot;Elite&quot;,observed=True)</code>对实际出现的类别分组；这对分类类型尤其有用，避免把没有观测的预设类别也列为一组。</li><li>选择Outstate后调用<code>.median()</code>得到每组中位数；显示、保存两种格式并关闭图的流程与上一块相同。</li></ul></section><p id="status" role="status"></p><h2>实际运行输出</h2><pre>Elite
 No      9556.0
 Yes    16950.0
 Name: Outstate, dtype: float64

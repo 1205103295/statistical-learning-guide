@@ -10,7 +10,7 @@ print(X_val.index.to_list())
 print(X_test.index.to_list())
 assert set(X_train.index).isdisjoint(X_val.index)
 assert set(X_dev.index).isdisjoint(X_test.index)
-</textarea><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>6 3 3
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li>第一次从全部12行留3行测试，剩9行开发；第二次仅在开发数据中取三分之一作验证，得到6行训练、3行验证。</li><li><code>set(X_train.index)</code>把训练行标签转为集合；<code>.isdisjoint(X_val.index)</code>判断两组标签是否无交集，返回一个布尔值。</li><li><code>assert</code>要求这个结果为真，否则报错；第二条断言检查开发与测试无交集。由于训练与验证都来自开发集，两条检查共同支持三组分离。</li><li>这种检查依赖行标签能标识样本；它不检查不同记录是否属于同一个客户或车型家族。本例也已见过这批测试结果，所以仍仅用于教学流程。</li></ul></section><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>6 3 3
 [8, 6, 2, 11, 1, 7]
 [3, 5, 4]
 [10, 9, 0]

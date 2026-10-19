@@ -3,7 +3,7 @@ college_summary.to_csv(result_dir / &quot;college_describe.csv&quot;)
 basic_stats = [&quot;count&quot;, &quot;mean&quot;, &quot;std&quot;, &quot;min&quot;, &quot;max&quot;]
 print(college_summary[basic_stats].round(2).to_string())
 print(&quot;Private counts:&quot;, college[&quot;Private&quot;].value_counts().to_dict())
-</textarea><p id="status" role="status"></p><h2>实际运行输出</h2><pre>             count      mean      std     min      max
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li><code>describe()</code>汇总数值列，<code>.T</code>转置后让每行代表一个变量、每列代表一种统计量，便于横向阅读。</li><li><code>to_csv</code>先保存完整摘要；<code>basic_stats</code>列表只选择当前要打印的五类统计量，<code>round(2).to_string()</code>控制显示精度并避免表格省略。</li><li>Private为类别列，另外用<code>value_counts()</code>统计各类数量，再用<code>to_dict()</code>变成“类别→计数”的普通字典打印。</li></ul></section><p id="status" role="status"></p><h2>实际运行输出</h2><pre>             count      mean      std     min      max
 Apps         777.0   3001.64  3870.20    81.0  48094.0
 Accept       777.0   2018.80  2451.11    72.0  26330.0
 Enroll       777.0    779.97   929.18    35.0   6392.0

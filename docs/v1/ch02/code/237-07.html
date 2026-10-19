@@ -4,7 +4,7 @@ X_selected = selected[feature_columns]
 y_selected = selected[target_column]
 print(selected)
 print(X_selected.shape, y_selected.shape)
-</textarea><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>    name  horsepower  weight   mpg
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li><code>clean[&quot;weight&quot;]&lt;=3000</code>得到带行标签的布尔Series；<code>loc[mask]</code>按这些标签保留符合条件的记录，<code>.copy()</code>保存副本。</li><li>先筛选整表再选特征和目标，可以避免两边留下不同车辆。本例保留C、F，两个特征对应<code>(2,2)</code>，目标为<code>(2,)</code>。</li></ul></section><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>    name  horsepower  weight   mpg
 2  car_C        95.0  3000.0  22.0
 5  car_F        85.0  2400.0  28.0
 (2, 2) (2,)

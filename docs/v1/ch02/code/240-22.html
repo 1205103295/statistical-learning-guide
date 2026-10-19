@@ -5,7 +5,7 @@ if not college_path.exists():
 college_raw = pd.read_csv(college_path)
 print(&quot;raw shape:&quot;, college_raw.shape)
 print(college_raw.iloc[:3, :4].to_string(index=False))
-</textarea><p id="status" role="status"></p><h2>实际运行输出</h2><pre>raw shape: (777, 19)
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li>先用路径与网址定位College文件；<code>if not ...exists()</code>仅在本地不存在时下载。<code>urlopen(...).read()</code>读取字节，<code>write_bytes</code>保存，网络失败会抛出异常。</li><li><code>pd.read_csv(college_path)</code>按逗号读取整表。<code>iloc[:3,:4]</code>按位置取前三行前四列，便于检查学校名称在哪一列。</li><li><code>to_string(index=False)</code>把所选小表完整转换为文本，并隐藏额外的行索引；它不删除原表中的学校名称列。</li></ul></section><p id="status" role="status"></p><h2>实际运行输出</h2><pre>raw shape: (777, 19)
                   Unnamed: 0 Private  Apps  Accept
 Abilene Christian University     Yes  1660    1232
           Adelphi University     Yes  2186    1924

@@ -3,7 +3,7 @@ print(&quot;Apps-Enroll correlation:&quot;, round(college[&quot;Apps&quot;].corr
 unusual = college.loc[college[&quot;Grad.Rate&quot;] &gt; 100, [&quot;Grad.Rate&quot;]]
 print(&quot;Graduation rate above 100:&quot;)
 print(unusual.to_string())
-</textarea><p id="status" role="status"></p><h2>实际运行输出</h2><pre>           Apps   Expend
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li>双层方括号选Apps和Expend两列；<code>.agg([&quot;mean&quot;,&quot;median&quot;])</code>分别计算均值与中位数，帮助识别偏态。</li><li><code>college[&quot;Apps&quot;].corr(college[&quot;Enroll&quot;])</code>计算两列的Pearson相关系数，<code>round(...,4)</code>仅控制打印精度。</li><li><code>loc[条件,[列名]]</code>先按毕业率大于100筛行，再保留毕业率列；因为列名放在列表中，结果仍是DataFrame，学校索引也保留。</li><li><code>to_string()</code>完整打印这些待核查记录。筛选只是把问题展示出来，并未删行或自动改值。</li></ul></section><p id="status" role="status"></p><h2>实际运行输出</h2><pre>           Apps   Expend
 mean    3001.64  9660.17
 median  1558.00  8377.00
 Apps-Enroll correlation: 0.8468

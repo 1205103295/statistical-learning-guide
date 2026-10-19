@@ -7,7 +7,7 @@
 <section class="codepanel"><div class="codehead"><h2>代码 2.1.2-07</h2><button id="copy" type="button">复制整块代码</button></div>
 <label for="code" class="eyebrow">Python · 可选中复制</label><textarea id="code" readonly spellcheck="false" rows="6" aria-label="代码 2.1.2-07">knn_prediction = knn_model.predict(X_new)
 print(&quot;KNN prediction:&quot;, knn_prediction)
-</textarea><p id="status" class="status" role="status" aria-live="polite"></p></section>
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li><code>knn_model.predict(X_new)</code>先找距离25最近的两个训练输入，再平均对应销量。默认采用均匀权重，两位邻居贡献相同。</li><li>结果存入<code>knn_prediction</code>，打印为<code>[7.5]</code>；它与线性预测使用同一个新输入，可以直接比较，但一次预测差异不代表谁总体更好。</li></ul></section><p id="status" class="status" role="status" aria-live="polite"></p></section>
 <section class="panel"><h2>实际运行输出</h2><pre>KNN prediction: [7.5]</pre></section><div class="toolbar"><a class="button secondary" href="../../notebooks/ch02/2.1.2-estimating-f.ipynb" download>下载本节 Notebook</a><a href="212-07.py" download>下载本块 .py</a><a href="../../index.html">全部代码块</a></div>
 <nav class="nav" aria-label="代码块导航"><a href="212-06.html">← 上一块</a><a href="212-08.html">下一块 →</a></nav></main>
 <footer>配合 PDF 阅读 · Python / Jupyter · 按顺序运行各代码块<br>v1 保存本版讲义对应的代码与运行结果。</footer>

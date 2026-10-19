@@ -11,4 +11,4 @@ image_dir = Path(&quot;图片&quot;)
 result_dir = Path(&quot;结果/教材章末习题&quot;)
 for folder in [data_dir, image_dir, result_dir]:
     folder.mkdir(parents=True, exist_ok=True)
-</textarea><p id="status" role="status"></p><p><a href="../../notebooks/ch02/2.4-textbook-exercises.ipynb" download>下载已执行Notebook</a> · <a href="../../textbook-exercises.html">返回项目目录</a></p></main><script src="../../assets/copy.js" defer></script></html>
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li>这一份Notebook独立导入所需工具，避免依赖前一个Notebook的内核变量；<code>urlopen</code>用于本地数据缺失时下载，<code>Path</code>管理路径。</li><li><code>result_dir</code>包含两级目录。<code>mkdir(parents=True,exist_ok=True)</code>允许创建缺失的上级目录，同时允许最终目录已经存在。</li><li>循环依次准备数据、图片和本组习题结果目录；后续相对路径都以当前Notebook工作目录为起点。</li></ul></section><p id="status" role="status"></p><p><a href="../../notebooks/ch02/2.4-textbook-exercises.ipynb" download>下载已执行Notebook</a> · <a href="../../textbook-exercises.html">返回项目目录</a></p></main><script src="../../assets/copy.js" defer></script></html>

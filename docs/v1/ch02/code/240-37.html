@@ -6,7 +6,7 @@ print(&quot;ISLP version:&quot;, ISLP.__version__)
 print(&quot;shape:&quot;, boston.shape)
 print(&quot;columns:&quot;, boston.columns.tolist())
 boston.to_csv(result_dir / &quot;boston_loaded.csv&quot;, index=False)
-</textarea><p id="status" role="status"></p><h2>实际运行输出</h2><pre>ISLP version: 0.4.1
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li><code>from ISLP import load_data</code>导入数据加载函数；再导入模块本身，是为了读取<code>ISLP.__version__</code>。</li><li><code>load_data(&quot;Boston&quot;)</code>按数据集名称返回DataFrame，形状输出为506行13列；<code>.columns.tolist()</code>打印全部字段名供核对。</li><li><code>to_csv(...,index=False)</code>保存字段内容而不附加pandas行索引；它不改变内存中的<code>boston</code>或其索引。</li></ul></section><p id="status" role="status"></p><h2>实际运行输出</h2><pre>ISLP version: 0.4.1
 shape: (506, 13)
 columns: [&#x27;crim&#x27;, &#x27;zn&#x27;, &#x27;indus&#x27;, &#x27;chas&#x27;, &#x27;nox&#x27;, &#x27;rm&#x27;, &#x27;age&#x27;, &#x27;dis&#x27;, &#x27;rad&#x27;, &#x27;tax&#x27;, &#x27;ptratio&#x27;, &#x27;lstat&#x27;, &#x27;medv&#x27;]
 </pre><p><a href="../../notebooks/ch02/2.4-textbook-exercises.ipynb" download>下载已执行Notebook</a> · <a href="../../textbook-exercises.html">返回项目目录</a></p></main><script src="../../assets/copy.js" defer></script></html>

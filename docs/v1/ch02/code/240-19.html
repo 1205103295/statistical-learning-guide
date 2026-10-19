@@ -12,4 +12,4 @@ for suffix in [&quot;pdf&quot;, &quot;png&quot;]:
     fig.savefig(image_dir / f&quot;241-curves.{suffix}&quot;, dpi=180)
 display(fig)
 plt.close(fig)
-</textarea><p id="status" role="status"></p><img src="../images/241-curves.png" alt="五条曲线的教学示意图"><p><a href="../../notebooks/ch02/2.4-textbook-exercises.ipynb" download>下载已执行Notebook</a> · <a href="../../textbook-exercises.html">返回项目目录</a></p></main><script src="../../assets/copy.js" defer></script></html>
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li>第一行重新给<code>training_error</code>赋值，使它与偏差曲线区分；<code>test_error</code>仍是上一块的三项和。</li><li><code>curves</code>字典把英文图例名称对应到数组；<code>.items()</code>让循环同时拿到标签和纵坐标。每轮<code>plot</code>在同一个<code>ax</code>叠加一条线，<code>legend</code>汇总图例。</li><li>第二个循环遍历<code>pdf</code>和<code>png</code>；f字符串把<code>suffix</code>放进文件扩展名，生成两个输出文件。布局、显示和关闭都作用于整张图。</li></ul></section><p id="status" role="status"></p><img src="../images/241-curves.png" alt="五条曲线的教学示意图"><p><a href="../../notebooks/ch02/2.4-textbook-exercises.ipynb" download>下载已执行Notebook</a> · <a href="../../textbook-exercises.html">返回项目目录</a></p></main><script src="../../assets/copy.js" defer></script></html>

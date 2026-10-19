@@ -7,7 +7,7 @@
 <section class="codepanel"><div class="codehead"><h2>代码 2.1.2-06</h2><button id="copy" type="button">复制整块代码</button></div>
 <label for="code" class="eyebrow">Python · 可选中复制</label><textarea id="code" readonly spellcheck="false" rows="6" aria-label="代码 2.1.2-06">knn_model = KNeighborsRegressor(n_neighbors=2)
 knn_model.fit(X_train, y_train)
-</textarea><p id="status" class="status" role="status" aria-live="polite"></p></section>
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li><code>n_neighbors=2</code>是关键字参数，把邻居数设置为2；这个设置在创建对象时给出。</li><li>KNN的<code>fit</code>保存预测所需的训练样本及相关结构；它不会像线性回归一样得到一组斜率。后续预测还要在这些样本中找邻居。</li></ul></section><p id="status" class="status" role="status" aria-live="polite"></p></section>
 <section class="panel"><h2>实际运行输出</h2><pre>KNeighborsRegressor(n_neighbors=2)</pre></section><div class="toolbar"><a class="button secondary" href="../../notebooks/ch02/2.1.2-estimating-f.ipynb" download>下载本节 Notebook</a><a href="212-06.py" download>下载本块 .py</a><a href="../../index.html">全部代码块</a></div>
 <nav class="nav" aria-label="代码块导航"><a href="212-05.html">← 上一块</a><a href="212-07.html">下一块 →</a></nav></main>
 <footer>配合 PDF 阅读 · Python / Jupyter · 按顺序运行各代码块<br>v1 保存本版讲义对应的代码与运行结果。</footer>

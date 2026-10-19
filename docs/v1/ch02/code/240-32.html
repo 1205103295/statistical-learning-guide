@@ -7,6 +7,6 @@ quantitative = [&quot;mpg&quot;, &quot;cylinders&quot;, &quot;displacement&quot;
                 &quot;weight&quot;, &quot;acceleration&quot;, &quot;year&quot;]
 print(&quot;complete rows:&quot;, len(auto_full))
 print(&quot;origin codes:&quot;, sorted(auto_full[&quot;origin&quot;].unique().tolist()))
-</textarea><p id="status" role="status"></p><h2>实际运行输出</h2><pre>complete rows: 392
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li>先确认数据文件存在，缺少才下载。读取时用空白分隔、问号缺失，随后不带subset的<code>dropna()</code>检查所有字段，删除任一字段缺失的行。</li><li><code>quantitative</code>保存需要作数值描述的七个列名，包括本题要观察的mpg。</li><li><code>.unique()</code>取地区编码的不同值，<code>.tolist()</code>转为列表，<code>sorted(...)</code>排序显示；这一步只整理编码清单，不说明编码之间有距离或数量关系。</li></ul></section><p id="status" role="status"></p><h2>实际运行输出</h2><pre>complete rows: 392
 origin codes: [1, 2, 3]
 </pre><p><a href="../../notebooks/ch02/2.4-textbook-exercises.ipynb" download>下载已执行Notebook</a> · <a href="../../textbook-exercises.html">返回项目目录</a></p></main><script src="../../assets/copy.js" defer></script></html>

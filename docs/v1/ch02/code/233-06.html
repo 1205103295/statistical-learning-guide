@@ -3,7 +3,7 @@ print(X.mean(axis=0))
 print(X.mean(axis=0).shape)
 print(X.mean(axis=1))
 print(X.mean(axis=1).shape)
-</textarea><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>[6.  7.  6.2]
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li><code>contributions.sum(axis=1)</code>沿列轴汇总，即每行把所有特征贡献加起来，得到三个数。</li><li><code>X.mean(axis=0)</code>消去样本轴，为每列算一个均值，结果<code>(2,)</code>；<code>axis=1</code>消去特征轴，为每行算一个均值，结果<code>(3,)</code>。</li><li><code>.shape</code>核对汇总后的形状；不同单位的特征虽然能按行取均值，但这个平均值未必有业务意义。</li></ul></section><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>[6.  7.  6.2]
 [110.  20.]
 (2,)
 [60. 80. 55.]

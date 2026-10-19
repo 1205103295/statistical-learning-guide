@@ -5,6 +5,6 @@ baseline_val_pred = np.full(len(X_val), baseline_value)
 linear_val_pred = linear_model.predict(X_val)
 print(baseline_val_pred)
 print(linear_val_pred)
-</textarea><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>[25.83333333 25.83333333 25.83333333]
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li>基准均值和线性系数都只从当前六行训练数据学习；不能沿用前面九行训练时的参数。</li><li><code>np.full</code>按验证样本数复制均值；线性模型用<code>predict(X_val)</code>生成另一组预测。两组数组顺序都与<code>y_val</code>一致。</li></ul></section><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>[25.83333333 25.83333333 25.83333333]
 [20.57777778 22.71111111 22.        ]
 </pre></section><div class="toolbar"><a class="button secondary" href="../../notebooks/ch02/2.3-python-lab.ipynb" download>下载完整实验 Notebook</a><a href="239-15.py" download>下载本块 Python</a></div><nav class="nav"><a href="239-14.html">上一块</a><a href="239-16.html">下一块</a></nav></main><footer>虚构数据演示 · 按编号顺序运行 · 代码与输出对应本版讲义</footer><script src="../../assets/copy.js" defer></script></body></html>

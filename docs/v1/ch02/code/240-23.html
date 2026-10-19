@@ -6,7 +6,7 @@ college = college3.copy()
 print(&quot;shape:&quot;, college.shape)
 print(&quot;unique school names:&quot;, college.index.is_unique)
 print(&quot;first columns:&quot;, college.columns[:4].tolist())
-</textarea><p id="status" role="status"></p><h2>实际运行输出</h2><pre>shape: (777, 18)
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li><code>index_col=0</code>在读入时把第一列设为行索引。另一种写法先用<code>.columns[0]</code>取得第一列名，再以字典传给<code>rename(columns=...)</code>改名为College。</li><li><code>set_index(&quot;College&quot;)</code>把该列移到索引，默认从普通列中移除；两种路径最终应得到相同的表格内容。</li><li><code>college2.equals(college3)</code>返回内容、行列对应是否相等的布尔值；外层<code>assert</code>要求它为真，否则报错。它不要求本例两者的索引名称元信息相同。</li><li><code>.copy()</code>保存后续使用的副本；<code>.index.is_unique</code>检查学校索引是否重复，<code>.columns[:4].tolist()</code>把前四个列名列出来。打印唯一性只是报告，并未自动删除重名行。</li></ul></section><p id="status" role="status"></p><h2>实际运行输出</h2><pre>shape: (777, 18)
 unique school names: True
 first columns: [&#x27;Private&#x27;, &#x27;Apps&#x27;, &#x27;Accept&#x27;, &#x27;Enroll&#x27;]
 </pre><p><a href="../../notebooks/ch02/2.4-textbook-exercises.ipynb" download>下载已执行Notebook</a> · <a href="../../textbook-exercises.html">返回项目目录</a></p></main><script src="../../assets/copy.js" defer></script></html>

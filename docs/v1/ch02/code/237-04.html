@@ -3,7 +3,7 @@ target_column = &quot;mpg&quot;
 required_columns = feature_columns + [target_column]
 clean = df.dropna(subset=required_columns).copy()
 print(clean)
-</textarea><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>    name  horsepower  weight   mpg
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li><code>feature_columns</code>是两个列名组成的列表，<code>target_column</code>是一个字符串；<code>[target_column]</code>把字符串包成单元素列表，才能与特征列表用<code>+</code>连接。</li><li><code>dropna(subset=required_columns)</code>只检查指定三列，只要其中一列缺失便删除该行；其他未指定列不参与判断。</li><li><code>.copy()</code>取得独立副本用于后续操作；原始<code>df</code>仍保留。打印<code>clean</code>核对留下的车辆和原始行标签。</li></ul></section><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>    name  horsepower  weight   mpg
 0  car_A       130.0  3500.0  18.0
 2  car_C        95.0  3000.0  22.0
 5  car_F        85.0  2400.0  28.0

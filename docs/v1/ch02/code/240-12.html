@@ -9,7 +9,7 @@ print(&quot;selected test MSE:&quot;, round(test_mse, 4))
 print(&quot;selected test RMSE:&quot;, round(test_rmse, 4))
 print(&quot;selected test MAE:&quot;, round(test_mae, 4))
 print(&quot;fixed baseline test MSE:&quot;, round(baseline_test_mse, 4))
-</textarea><p id="status" role="status"></p><h2>实际运行输出</h2><pre>selected test MSE: 17.7918
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li><code>final_model.predict(X_test)</code>生成最终预测；<code>mean_squared_error</code>得到MSE，<code>np.sqrt</code>开平方得到RMSE。</li><li><code>np.abs(y_test.to_numpy()-final_pred)</code>逐项取绝对误差，再求均值得MAE。使用相同顺序的一维数组，避免索引或广播造成误算。</li><li><code>DummyRegressor(...).fit(...)</code>把创建和拟合连写；fit返回拟合后的对象，于是<code>baseline_final</code>可以直接predict。基准也只使用开发目标学习。</li><li><code>round(数值,4)</code>用于打印四位小数，不改原指标。这一块只报告固定方案及事先约定的基准，不在测试结果中重新挑选候选。</li></ul></section><p id="status" role="status"></p><h2>实际运行输出</h2><pre>selected test MSE: 17.7918
 selected test RMSE: 4.218
 selected test MAE: 3.5057
 fixed baseline test MSE: 51.6203

@@ -4,4 +4,4 @@ variance = 4 * flexibility ** 2
 irreducible = np.full_like(flexibility, 1.0)
 test_error = bias_squared + variance + irreducible
 training_error = 5 * (1 - flexibility) ** 2
-</textarea><p id="status" role="status"></p><p><a href="../../notebooks/ch02/2.4-textbook-exercises.ipynb" download>下载已执行Notebook</a> · <a href="../../textbook-exercises.html">返回项目目录</a></p></main><script src="../../assets/copy.js" defer></script></html>
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li><code>np.linspace(0,1,201)</code>生成201个灵活性取值，返回一维数组；后面的减法、乘法和平方都逐元素进行。</li><li><code>np.full_like(flexibility,1.0)</code>创建与横轴形状及类型相同的常数数组，画水平不可约误差线。</li><li><code>test_error</code>逐项相加三部分，得到示意测试误差；<code>training_error</code>另行构造。这些值来自指定公式，没有从真实数据训练或估计。</li></ul></section><p id="status" role="status"></p><p><a href="../../notebooks/ch02/2.4-textbook-exercises.ipynb" download>下载已执行Notebook</a> · <a href="../../textbook-exercises.html">返回项目目录</a></p></main><script src="../../assets/copy.js" defer></script></html>

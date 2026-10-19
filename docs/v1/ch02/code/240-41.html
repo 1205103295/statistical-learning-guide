@@ -1,7 +1,7 @@
 <!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>2.4-41</title><link rel="stylesheet" href="../../assets/style.css"><header><div><a href="../../textbook-exercises.html">教材章末习题目录</a><a href="../../index.html">全书代码目录</a></div></header><main><h1>代码 2.4-41 · 第10(e)：每个变量的范围与中位数</h1><p>按Notebook顺序运行。后续代码依赖前面定义的变量。真实数据来自教材官网。</p><button id="copy">复制整块代码</button><textarea id="code" readonly rows="4">boston_ranges = boston.agg([&quot;min&quot;, &quot;median&quot;, &quot;max&quot;]).T
 print(boston_ranges.round(4).to_string())
 boston_ranges.to_csv(result_dir / &quot;boston_ranges.csv&quot;)
-</textarea><p id="status" role="status"></p><h2>实际运行输出</h2><pre>              min    median       max
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li><code>boston.agg([&quot;min&quot;,&quot;median&quot;,&quot;max&quot;])</code>逐列计算三个摘要；<code>.T</code>转置后每行一个变量，便于把极值与中位数放在一起比较。</li><li><code>round(4)</code>只为打印生成四位小数版本，<code>to_csv</code>保存完整结果。chas这样的数值编码可以算摘要，但其业务含义仍需按类别说明。</li></ul></section><p id="status" role="status"></p><h2>实际运行输出</h2><pre>              min    median       max
 crim       0.0063    0.2565   88.9762
 zn         0.0000    0.0000  100.0000
 indus      0.4600    9.6900   27.7400

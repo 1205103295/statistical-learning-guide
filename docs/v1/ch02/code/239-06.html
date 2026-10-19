@@ -11,5 +11,5 @@ target_column = &quot;mpg&quot;
 X = cars_demo[feature_columns]
 y = cars_demo[target_column]
 print(X.shape, y.shape)
-</textarea><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>(12, 2) (12,)
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li>花括号创建字典，键是列名，值是每列的列表；<code>pd.DataFrame</code>把各列按相同位置组成12行表格，各列表长度必须一致。</li><li>特征列表选出马力、重量两列，目标字符串只选mpg列，分别得到<code>(12,2)</code>和<code>(12,)</code>。</li><li>这些车辆数据是专门构造的教学样本，后续分数用于演示流程，不能当成实际业务效果。</li></ul></section><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>(12, 2) (12,)
 </pre></section><div class="toolbar"><a class="button secondary" href="../../notebooks/ch02/2.3-python-lab.ipynb" download>下载完整实验 Notebook</a><a href="239-06.py" download>下载本块 Python</a></div><nav class="nav"><a href="239-05.html">上一块</a><a href="239-07.html">下一块</a></nav></main><footer>虚构数据演示 · 按编号顺序运行 · 代码与输出对应本版讲义</footer><script src="../../assets/copy.js" defer></script></body></html>

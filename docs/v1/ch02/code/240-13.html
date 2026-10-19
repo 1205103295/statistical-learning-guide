@@ -9,7 +9,7 @@ test_results[&quot;residual&quot;] = (
 print(test_results[[&quot;actual&quot;, &quot;predicted&quot;, &quot;residual&quot;]].head().round(3))
 test_results.to_csv(result_dir / &quot;auto_test_predictions.csv&quot;,
                     index_label=&quot;row_id&quot;)
-</textarea><p id="status" role="status"></p><h2>实际运行输出</h2><pre>     actual  predicted  residual
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li>字典中的<code>name</code>按测试行标签从完整表取车型名，<code>actual</code>保存真实目标，<code>predicted</code>保存预测数组；<code>index=X_test.index</code>规定结果表的行身份和顺序。</li><li>带索引的Series按标签对齐；没有索引的预测数组按位置填入。因此预测必须来自这份同顺序的<code>X_test</code>，不能随意打乱。</li><li>新增<code>residual</code>列是实际值减预测值。双层方括号按指定顺序选三列，<code>head()</code>只看前五行，<code>round(3)</code>只简化显示。</li><li><code>to_csv(...,index_label=&quot;row_id&quot;)</code>保存完整结果及原行标签，便于追踪每辆车，而不仅保存屏幕上的五行。</li></ul></section><p id="status" role="status"></p><h2>实际运行输出</h2><pre>     actual  predicted  residual
 79     26.0     30.136    -4.136
 276    21.6     24.179    -2.579
 248    36.1     32.889     3.211

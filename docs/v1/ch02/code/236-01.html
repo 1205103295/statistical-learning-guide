@@ -6,7 +6,7 @@ print(mask)
 print(X_selected)
 print(y_selected)
 print(X_selected.shape, y_selected.shape)
-</textarea><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>[ True  True False  True]
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li><code>X[:,0]&gt;=100</code>对每个样本的第一列作比较，生成长度4的布尔掩码，真表示保留，假表示排除。</li><li><code>X[mask,:]</code>按掩码选行并保留所有列；<code>y[mask]</code>使用同一个掩码选目标，确保两者仍一一对应。</li><li>本例保留第1、2、4行，得到<code>(3,3)</code>的输入和<code>(3,)</code>的目标；<code>print</code>依次检查掩码、数据及形状。</li></ul></section><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>[ True  True False  True]
 [[100.  20.  10.]
  [150.  10.  30.]
  [120.  40.  40.]]

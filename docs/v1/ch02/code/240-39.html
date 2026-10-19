@@ -1,7 +1,7 @@
 <!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>2.4-39</title><link rel="stylesheet" href="../../assets/style.css"><header><div><a href="../../textbook-exercises.html">教材章末习题目录</a><a href="../../index.html">全书代码目录</a></div></header><main><h1>代码 2.4-39 · 第10(d)：犯罪率关联的数值摘要</h1><p>按Notebook顺序运行。后续代码依赖前面定义的变量。真实数据来自教材官网。</p><button id="copy">复制整块代码</button><textarea id="code" readonly rows="4">crime_corr = boston.corr(numeric_only=True)[&quot;crim&quot;].drop(&quot;crim&quot;)
 print(crime_corr.sort_values().round(4).to_string())
 crime_corr.to_csv(result_dir / &quot;boston_crime_correlations.csv&quot;)
-</textarea><p id="status" role="status"></p><h2>实际运行输出</h2><pre>medv      -0.3883
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li><code>corr(numeric_only=True)</code>仅对数值列计算相关矩阵；<code>[&quot;crim&quot;]</code>取犯罪率对应的一列，<code>.drop(&quot;crim&quot;)</code>删除自身相关。</li><li><code>sort_values()</code>按相关系数数值从小到大排序，因此负关联先出现；它不是按相关系数绝对值排序。</li><li>打印时四位小数并转完整文本，CSV保存原始Series供后续核对。相关系数的计算没有进行因果控制。</li></ul></section><p id="status" role="status"></p><h2>实际运行输出</h2><pre>medv      -0.3883
 dis       -0.3797
 rm        -0.2192
 zn        -0.2005

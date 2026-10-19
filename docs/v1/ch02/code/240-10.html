@@ -6,7 +6,7 @@ print(&quot;scaler mean:&quot;, scaler.mean_)
 print(&quot;scaler scale:&quot;, scaler.scale_)
 assert np.allclose(scaler.mean_, X_train.mean().to_numpy())
 assert np.allclose(scaler.scale_, X_train.std(ddof=0).to_numpy())
-</textarea><p id="status" role="status"></p><h2>实际运行输出</h2><pre>chosen: linear
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li><code>scores[&quot;validation_mse&quot;]</code>取验证误差列；<code>.idxmin()</code>返回最小值所在的行标签，也就是方法名，不是最小误差值。并列时取当前顺序中的第一个。</li><li><code>models[&quot;knn5&quot;]</code>从字典取KNN流水线；<code>.named_steps[&quot;standardscaler&quot;]</code>再从步骤映射中取标准化器。这个步骤名由<code>make_pipeline</code>生成。</li><li><code>.mean_</code>与<code>.scale_</code>是已经fit得到的训练均值和缩放尺度；末尾下划线提示这是拟合后属性。</li><li><code>np.allclose(a,b)</code>允许浮点误差，在默认容差内逐项比较两组数并汇总成真假；外层<code>assert</code>要求比较通过。这里用<code>ddof=0</code>与StandardScaler的标准差定义保持一致。</li><li>检查KNN的预处理是否正确，与最终是否选中KNN是两回事；本次验证选择的是线性回归。</li></ul></section><p id="status" role="status"></p><h2>实际运行输出</h2><pre>chosen: linear
 training target mean: 22.922649572649576
 scaler mean: [ 108.10683761 3058.4017094 ]
 scaler scale: [ 39.95373013 854.99762643]

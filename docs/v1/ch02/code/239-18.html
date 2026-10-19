@@ -7,7 +7,7 @@ results = pd.DataFrame({
 }, index=y_test.index)
 print(results.round(3))
 print(&quot;final test MSE:&quot;, final_mse)
-</textarea><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>    actual  predicted  residual
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li>先计算最终残差与MSE，再用字典构造结果表；三列分别存真实值、预测、残差。</li><li><code>index=y_test.index</code>让每行保留车辆身份，便于回查。打印用<code>round(3)</code>简化显示，但<code>final_mse</code>用的是未舍入数值。</li><li>这张表可以查找个别预测，MSE概括总体；两者都不能把已经用于教学的测试样本重新变成未见数据。</li></ul></section><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>    actual  predicted  residual
 10      30     35.139    -5.139
 9       28     33.713    -5.713
 0       15     15.299    -0.299

@@ -11,4 +11,4 @@ models = {
         StandardScaler(), KNeighborsRegressor(n_neighbors=5)
     ),
 }
-</textarea><p id="status" role="status"></p><p><a href="../../notebooks/ch02/2.4-auto-project.ipynb" download>下载已执行Notebook</a> · <a href="../../auto-project.html">返回项目目录</a></p></main><script src="../../assets/copy.js" defer></script></html>
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li><code>models</code>是“方法名称→模型对象”的字典；冒号左边的字符串用于识别方法，右边创建相应对象。</li><li><code>DummyRegressor(strategy=&quot;mean&quot;)</code>在fit时学习目标均值；<code>LinearRegression()</code>学习线性系数；KNN的<code>n_neighbors=5</code>固定取五位邻居。</li><li><code>make_pipeline(StandardScaler(), KNeighborsRegressor(...))</code>按顺序连接预处理与模型。对整体调用fit会先学习训练均值、标准差并转换输入，再拟合KNN；predict会自动使用同一套转换。</li><li>此时只是定义三种候选，没有读取验证或测试目标来决定参数。</li></ul></section><p id="status" role="status"></p><p><a href="../../notebooks/ch02/2.4-auto-project.ipynb" download>下载已执行Notebook</a> · <a href="../../auto-project.html">返回项目目录</a></p></main><script src="../../assets/copy.js" defer></script></html>

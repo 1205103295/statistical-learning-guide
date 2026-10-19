@@ -13,7 +13,7 @@ print(&quot;NumPy:&quot;, np.__version__)
 print(&quot;pandas:&quot;, pd.__version__)
 print(&quot;Matplotlib:&quot;, matplotlib.__version__)
 print(&quot;scikit-learn:&quot;, sklearn.__version__)
-</textarea><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>Python: 3.10.20
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li>每条<code>import</code>把一个工具模块载入当前内核；<code>np</code>、<code>pd</code>、<code>plt</code>是常用别名，<code>sklearn</code>是scikit-learn的导入名。</li><li><code>Path(&quot;图片&quot;)</code>创建路径对象，不会立刻创建文件夹；接着的<code>mkdir(exist_ok=True)</code>才创建目录，并允许它已存在。</li><li><code>sys.version</code>是一段版本说明字符串，<code>.split()</code>按空白拆开，<code>[0]</code>取第一段。各库的<code>__version__</code>是版本字符串；打印它们便于复现环境。</li></ul></section><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>Python: 3.10.20
 NumPy: 2.2.6
 pandas: 2.3.3
 Matplotlib: 3.10.8

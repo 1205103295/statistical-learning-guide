@@ -3,6 +3,6 @@ y_train_array = y_train.to_numpy()
 residual_train = y_train_array - y_train_pred
 print(np.round(residual_train, 3))
 print(np.mean(residual_train ** 2))
-</textarea><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>[ 0.722 -0.427  0.137  0.563  0.    -0.714  0.148 -0.289 -0.14 ]
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li>这里把训练输入送回已经拟合的模型，因此得到的是训练预测。真实训练目标转为数组后与预测按位置相减。</li><li><code>np.round(residual_train,3)</code>仅生成便于显示的三位小数；下一行MSE仍使用未舍入的<code>residual_train</code>，避免显示舍入影响计算。</li></ul></section><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>[ 0.722 -0.427  0.137  0.563  0.    -0.714  0.148 -0.289 -0.14 ]
 0.18591714243888172
 </pre></section><div class="toolbar"><a class="button secondary" href="../../notebooks/ch02/2.3-python-lab.ipynb" download>下载完整实验 Notebook</a><a href="239-12.py" download>下载本块 Python</a></div><nav class="nav"><a href="239-11.html">上一块</a><a href="239-13.html">下一块</a></nav></main><footer>虚构数据演示 · 按编号顺序运行 · 代码与输出对应本版讲义</footer><script src="../../assets/copy.js" defer></script></body></html>

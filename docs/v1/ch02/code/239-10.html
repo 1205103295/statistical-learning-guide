@@ -4,6 +4,6 @@ model = LinearRegression()
 model.fit(X_train, y_train)
 print(model.intercept_)
 print(model.coef_)
-</textarea><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>99.8893280632411
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li>导入并调用<code>LinearRegression()</code>创建模型，再用训练输入和训练目标调用<code>fit</code>。</li><li><code>.intercept_</code>是一个截距，<code>.coef_</code>中的两个数依次对应马力与重量；顺序由<code>feature_columns</code>决定，不能交换解释。</li></ul></section><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>99.8893280632411
 [ 1.40197628 -0.07722661]
 </pre></section><div class="toolbar"><a class="button secondary" href="../../notebooks/ch02/2.3-python-lab.ipynb" download>下载完整实验 Notebook</a><a href="239-10.py" download>下载本块 Python</a></div><nav class="nav"><a href="239-09.html">上一块</a><a href="239-11.html">下一块</a></nav></main><footer>虚构数据演示 · 按编号顺序运行 · 代码与输出对应本版讲义</footer><script src="../../assets/copy.js" defer></script></body></html>

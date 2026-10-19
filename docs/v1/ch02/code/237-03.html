@@ -2,7 +2,7 @@
 print(df.isna())
 missing_counts = df.isna().sum(axis=0)
 print(missing_counts)
-</textarea><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>&lt;class &#x27;pandas.core.frame.DataFrame&#x27;&gt;
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li><code>info()</code>直接打印每列的非缺失数量与类型，不必再套<code>print</code>。</li><li><code>isna()</code>生成同形状布尔表，缺失位置为真；<code>.sum(axis=0)</code>按列汇总，真按1、假按0计数，得到每列缺失数量。</li><li><code>missing_counts</code>是一维Series，它的索引是列名，值是各列缺失数。</li></ul></section><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>&lt;class &#x27;pandas.core.frame.DataFrame&#x27;&gt;
 RangeIndex: 6 entries, 0 to 5
 Data columns (total 4 columns):
  #   Column      Non-Null Count  Dtype  

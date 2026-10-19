@@ -6,7 +6,7 @@ for column in numeric_columns:
     min_value = clean[column].min()
     max_value = clean[column].max()
     print(column, min_value, max_value)
-</textarea><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>horsepower: 103.33
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li><code>f&quot;{column}: {mean_value:.2f}&quot;</code>是格式化字符串：花括号放变量，<code>:.2f</code>要求显示两位小数，不修改原始数据。</li><li>第二个循环重新遍历列名，<code>.min()</code>和<code>.max()</code>分别取该列最小、最大值；输出顺序是列名、最小值、最大值。</li></ul></section><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>horsepower: 103.33
 weight: 2966.67
 mpg: 22.67
 horsepower 85.0 130.0

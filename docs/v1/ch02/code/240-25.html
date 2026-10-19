@@ -1,6 +1,6 @@
 <!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>2.4-25</title><link rel="stylesheet" href="../../assets/style.css"><header><div><a href="../../textbook-exercises.html">教材章末习题目录</a><a href="../../index.html">全书代码目录</a></div></header><main><h1>代码 2.4-25 · 第8(c)：补齐四分位数摘要</h1><p>按Notebook顺序运行。后续代码依赖前面定义的变量。真实数据来自教材官网。</p><button id="copy">复制整块代码</button><textarea id="code" readonly rows="3">quantiles = [&quot;25%&quot;, &quot;50%&quot;, &quot;75%&quot;]
 print(college_summary[quantiles].round(2).to_string())
-</textarea><p id="status" role="status"></p><h2>实际运行输出</h2><pre>                25%     50%      75%
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li>列表中的<code>&quot;25%&quot;</code>等是摘要表的列名字符串，不是在这里重新计算百分比。</li><li>按这三个列名取出分位数，再四舍五入到两位小数并转为完整文本。原始<code>college_summary</code>及已保存CSV仍保留完整摘要和精度。</li></ul></section><p id="status" role="status"></p><h2>实际运行输出</h2><pre>                25%     50%      75%
 Apps          776.0  1558.0   3624.0
 Accept        604.0  1110.0   2424.0
 Enroll        242.0   434.0    902.0

@@ -2,7 +2,7 @@
 print(auto.shape)
 print(auto.dtypes)
 print(auto.isna().sum())
-</textarea><p id="status" role="status"></p><h2>实际运行输出</h2><pre>(397, 9)
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li><code>pd.read_csv</code>也能读其他分隔符的文本；<code>sep=r&quot;\s+&quot;</code>用正则表达式表示一个或多个空白字符，前缀<code>r</code>让反斜杠按原样交给解析器。</li><li><code>na_values=[&quot;?&quot;]</code>把问号识别为缺失。<code>auto.shape</code>报告整表行列数，<code>auto.dtypes</code>逐列报告类型。</li><li><code>auto.isna()</code>产生缺失位置布尔表；<code>.sum()</code>默认沿样本轴按列计数，因此输出的是每列缺失数，不是每辆车缺几项。</li></ul></section><p id="status" role="status"></p><h2>实际运行输出</h2><pre>(397, 9)
 mpg             float64
 cylinders         int64
 displacement    float64

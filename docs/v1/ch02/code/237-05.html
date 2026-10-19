@@ -4,7 +4,7 @@ horsepower_series = clean[&quot;horsepower&quot;]
 horsepower_table = clean[[&quot;horsepower&quot;]]
 print(horsepower_series.shape)
 print(horsepower_table.shape)
-</textarea><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>95.0
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li><code>loc[2,&quot;horsepower&quot;]</code>按行标签2查找，再选马力列；<code>iloc[2,1]</code>按当前位置取第三行、第二列，两者的2含义不同。</li><li><code>clean[&quot;horsepower&quot;]</code>用字符串选一列，得到Series；<code>clean[[&quot;horsepower&quot;]]</code>用列表选列，得到单列DataFrame。</li><li>二者分别为<code>(3,)</code>与<code>(3,1)</code>，打印形状帮助区分一维目标与二维输入。</li></ul></section><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>95.0
 85.0
 (3,)
 (3, 1)

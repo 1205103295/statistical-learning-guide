@@ -2,7 +2,7 @@
     largest = boston.nlargest(3, column)[[column]]
     print(&quot;Top 3 by&quot;, column)
     print(largest.to_string())
-</textarea><p id="status" role="status"></p><h2>实际运行输出</h2><pre>Top 3 by crim
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li>循环变量<code>column</code>依次为crim、tax、ptratio；<code>nlargest(3,column)</code>按当前列取值最大的三行，默认并列按原顺序取前面的记录。</li><li>后面的<code>[[column]]</code>只保留当前这一列，同时保持二维表格。它没有删除原数据的其他列。</li><li>每轮先打印当前排序依据，再打印对应行标签与值；同一个地区可能在多个变量的前三名中出现。</li></ul></section><p id="status" role="status"></p><h2>实际运行输出</h2><pre>Top 3 by crim
         crim
 380  88.9762
 418  73.5341

@@ -7,5 +7,5 @@ if not data_path.exists():
         data_path.write_bytes(response.read())
 data_sha256 = hashlib.sha256(data_path.read_bytes()).hexdigest()
 print(data_sha256)
-</textarea><p id="status" role="status"></p><h2>实际运行输出</h2><pre>5fffe32212d7f8f82749e0a9c95a747215921c120257fcf3ab5bcb16757e0ba6
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li><code>source_url</code>保存网址字符串；<code>data_dir / &quot;Auto.data&quot;</code>把目录与文件名拼成路径，<code>/</code>在这里不是数值除法。</li><li><code>.exists()</code>判断路径是否存在；<code>not</code>把真假取反。只有本地文件不存在时才进入<code>if</code>下载，避免重复覆盖已有数据。</li><li><code>with urlopen(...,timeout=30) as response:</code>打开网络响应并命名为<code>response</code>；<code>with</code>结束时会关闭资源。<code>timeout</code>限制网络操作等待，失败会报错，不会凭空生成数据。</li><li><code>response.read()</code>取得字节内容，<code>write_bytes</code>写到磁盘。随后<code>read_bytes()</code>读取本地文件，<code>sha256(...).hexdigest()</code>生成十六进制校验字符串，用于核对文件是否相同，不是验证数据一定正确。</li></ul></section><p id="status" role="status"></p><h2>实际运行输出</h2><pre>5fffe32212d7f8f82749e0a9c95a747215921c120257fcf3ab5bcb16757e0ba6
 </pre><p><a href="../../notebooks/ch02/2.4-auto-project.ipynb" download>下载已执行Notebook</a> · <a href="../../auto-project.html">返回项目目录</a></p></main><script src="../../assets/copy.js" defer></script></html>

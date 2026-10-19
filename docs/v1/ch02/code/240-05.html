@@ -11,5 +11,5 @@ split = pd.Series(&quot;train&quot;, index=clean_auto.index, name=&quot;split&qu
 split.loc[X_val.index] = &quot;validation&quot;
 split.loc[X_test.index] = &quot;test&quot;
 split.to_csv(result_dir / &quot;auto_split.csv&quot;, index_label=&quot;row_id&quot;)
-</textarea><p id="status" role="status"></p><h2>实际运行输出</h2><pre>train, validation, test: 234 79 79
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li>第一次划分留下20%作测试，其余作开发；第二次在开发集中留25%作验证。小数比例由工具转换为整数行，结果是234、79、79。</li><li><code>random_state</code>固定各次随机过程；两个不同种子42和24分别对应两次划分，不是模型参数。</li><li><code>set(...).isdisjoint(...)</code>检查行标签集合是否无交集，<code>assert</code>在有交集时使单元格报错。这里原始行索引唯一，适合用来追踪记录。</li><li><code>pd.Series(&quot;train&quot;,index=...,name=&quot;split&quot;)</code>先给全部完整记录贴上train标签；<code>split.loc[...] = ...</code>再按验证、测试行标签修改对应值。</li><li><code>to_csv</code>保存划分表，<code>index_label=&quot;row_id&quot;</code>给写出的索引列命名，便于别人复现同一组样本，而不是只复现大致比例。</li></ul></section><p id="status" role="status"></p><h2>实际运行输出</h2><pre>train, validation, test: 234 79 79
 </pre><p><a href="../../notebooks/ch02/2.4-auto-project.ipynb" download>下载已执行Notebook</a> · <a href="../../auto-project.html">返回项目目录</a></p></main><script src="../../assets/copy.js" defer></script></html>

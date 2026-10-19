@@ -12,4 +12,4 @@ image_dir = Path(&quot;图片&quot;)
 result_dir = Path(&quot;结果&quot;)
 for folder in [data_dir, image_dir, result_dir]:
     folder.mkdir(exist_ok=True)
-</textarea><p id="status" role="status"></p><p><a href="../../notebooks/ch02/2.4-auto-project.ipynb" download>下载已执行Notebook</a> · <a href="../../auto-project.html">返回项目目录</a></p></main><script src="../../assets/copy.js" defer></script></html>
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li><code>Path</code>管理路径，<code>hashlib</code>计算文件校验值，<code>json</code>负责结构化报告；<code>np</code>、<code>pd</code>、<code>plt</code>分别是数组、表格与绘图工具。</li><li><code>train_test_split</code>负责成对划分输入目标，<code>mean_squared_error</code>计算预测误差；这里只导入，还没有训练或评估。</li><li>三个<code>Path</code>分别指向数据、图片和结果目录。<code>for folder in [...]</code>让同一个变量依次指向三个路径，缩进的<code>mkdir(exist_ok=True)</code>为它们创建目录，目录已存在也可继续。</li></ul></section><p id="status" role="status"></p><p><a href="../../notebooks/ch02/2.4-auto-project.ipynb" download>下载已执行Notebook</a> · <a href="../../auto-project.html">返回项目目录</a></p></main><script src="../../assets/copy.js" defer></script></html>

@@ -3,7 +3,7 @@ print(df.head())
 print(df.shape)
 print(df.columns.tolist())
 print(df.dtypes)
-</textarea><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>    name  horsepower  weight   mpg
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li><code>StringIO(csv_text)</code>把文本包装成可读取对象，<code>pd.read_csv</code>解析逗号分隔字段；<code>na_values=[&quot;?&quot;]</code>把问号转换为缺失值。</li><li><code>head()</code>默认查看前五行，不会删掉第六行；<code>.shape</code>仍报告完整表的行列数。</li><li><code>.columns</code>保存列标签，<code>.tolist()</code>把它转成普通列表；<code>.dtypes</code>按列显示类型，用来发现本应为数值的列是否被读成了文字。</li></ul></section><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>    name  horsepower  weight   mpg
 0  car_A       130.0  3500.0  18.0
 1  car_B         NaN  2800.0  24.0
 2  car_C        95.0  3000.0  22.0

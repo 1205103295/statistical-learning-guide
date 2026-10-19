@@ -7,7 +7,7 @@
 <section class="codepanel"><div class="codehead"><h2>代码 2.1.2-04</h2><button id="copy" type="button">复制整块代码</button></div>
 <label for="code" class="eyebrow">Python · 可选中复制</label><textarea id="code" readonly spellcheck="false" rows="6" aria-label="代码 2.1.2-04">print(&quot;Intercept:&quot;, linear_model.intercept_)
 print(&quot;Coefficients:&quot;, linear_model.coef_)
-</textarea><p id="status" class="status" role="status" aria-live="polite"></p></section>
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li><code>.intercept_</code>读取拟合后的截距，<code>.coef_</code>读取各特征系数；名称末尾的下划线表示这些属性来自拟合。</li><li>一个特征对应一个系数，因此这里系数仍存为长度1的数组。必须先运行<code>fit</code>，才能读取这些已学习的属性。</li></ul></section><p id="status" class="status" role="status" aria-live="polite"></p></section>
 <section class="panel"><h2>实际运行输出</h2><pre>Intercept: 2.3999999999999995
 Coefficients: [0.2]</pre></section><div class="toolbar"><a class="button secondary" href="../../notebooks/ch02/2.1.2-estimating-f.ipynb" download>下载本节 Notebook</a><a href="212-04.py" download>下载本块 .py</a><a href="../../index.html">全部代码块</a></div>
 <nav class="nav" aria-label="代码块导航"><a href="212-03.html">← 上一块</a><a href="212-05.html">下一块 →</a></nav></main>

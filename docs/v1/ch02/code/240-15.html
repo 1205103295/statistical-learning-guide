@@ -1,5 +1,5 @@
 <!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>2.4-15</title><link rel="stylesheet" href="../../assets/style.css"><header><div><a href="../../auto-project.html">Auto项目目录</a><a href="../../index.html">全书代码目录</a></div></header><main><h1>代码 2.4-15 · 给一辆待查询汽车生成预测</h1><p>按Notebook顺序运行。后续代码依赖前面定义的变量。真实数据来自教材官网。</p><button id="copy">复制整块代码</button><textarea id="code" readonly rows="4">new_car = pd.DataFrame({&quot;horsepower&quot;: [100.0], &quot;weight&quot;: [3000.0]})
 new_prediction = final_model.predict(new_car)
 print(&quot;predicted mpg:&quot;, np.round(new_prediction, 3))
-</textarea><p id="status" role="status"></p><h2>实际运行输出</h2><pre>predicted mpg: [23.757]
+</textarea><section id="code-walkthrough"><h2>逐步读代码</h2><ul><li>每个字典值用单元素列表包住，让DataFrame建立一行两列；列名、顺序和单位与训练时一致。</li><li><code>predict</code>返回长度1的数组，<code>np.round(...,3)</code>只用于显示。这里没有新车真实mpg，因而只能生成预测，不能计算这辆车的实际误差。</li></ul></section><p id="status" role="status"></p><h2>实际运行输出</h2><pre>predicted mpg: [23.757]
 </pre><p><a href="../../notebooks/ch02/2.4-auto-project.ipynb" download>下载已执行Notebook</a> · <a href="../../auto-project.html">返回项目目录</a></p></main><script src="../../assets/copy.js" defer></script></html>
