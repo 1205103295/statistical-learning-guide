@@ -1,0 +1,15 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 2.3.9-18 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../python-lab.html">2.3 Python 实验</a><a href="../../index.html">配套代码目录</a></div></header><main><div class="eyebrow">第二章 / 2.3 Python 实验 / 代码 2.3.9-18</div><h1>最终评估与逐车核对</h1><div class="note">这一块属于连续的 Notebook。请先运行前面的代码块；变量可能依赖前面的定义。全部数据均为教学用虚构数据。</div><section class="codepanel"><div class="codehead"><h2>代码 2.3.9-18</h2><button id="copy" type="button">复制整块代码</button></div><textarea id="code" readonly spellcheck="false" rows="10" aria-label="代码 2.3.9-18">final_errors = y_test.to_numpy() - final_pred
+final_mse = np.mean(final_errors ** 2)
+results = pd.DataFrame({
+    &quot;actual&quot;: y_test.to_numpy(),
+    &quot;predicted&quot;: final_pred,
+    &quot;residual&quot;: final_errors,
+}, index=y_test.index)
+print(results.round(3))
+print(&quot;final test MSE:&quot;, final_mse)
+</textarea><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>    actual  predicted  residual
+10      30     35.139    -5.139
+9       28     33.713    -5.713
+0       15     15.299    -0.299
+final test MSE: 19.714045710007213
+</pre></section><div class="toolbar"><a class="button secondary" href="../../notebooks/ch02/2.3-python-lab.ipynb" download>下载完整实验 Notebook</a><a href="239-18.py" download>下载本块 Python</a></div><nav class="nav"><a href="239-17.html">上一块</a><a href="../../python-lab.html">返回实验目录</a></nav></main><footer>虚构数据演示 · 按编号顺序运行 · 代码与输出对应本版讲义</footer><script src="../../assets/copy.js" defer></script></body></html>

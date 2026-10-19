@@ -1,0 +1,11 @@
+fig, ax = plt.subplots(figsize=(6, 4))
+ax.scatter(X_train["weight"], residual_train,
+           color="#314887")
+ax.axhline(y=0, color="black", linestyle="--")
+ax.set_xlabel("Weight (pounds)")
+ax.set_ylabel("Residual (actual - predicted)")
+fig.tight_layout()
+fig.savefig(image_dir / "239-residual.pdf")
+fig.savefig(image_dir / "239-residual.png", dpi=180)
+display(fig)
+plt.close(fig)

@@ -1,0 +1,19 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 2.3.7-02 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../python-lab.html">2.3 Python 实验</a><a href="../../index.html">配套代码目录</a></div></header><main><div class="eyebrow">第二章 / 2.3 Python 实验 / 代码 2.3.7-02</div><h1>读取并查看结构</h1><div class="note">这一块属于连续的 Notebook。请先运行前面的代码块；变量可能依赖前面的定义。全部数据均为教学用虚构数据。</div><section class="codepanel"><div class="codehead"><h2>代码 2.3.7-02</h2><button id="copy" type="button">复制整块代码</button></div><textarea id="code" readonly spellcheck="false" rows="6" aria-label="代码 2.3.7-02">df = pd.read_csv(StringIO(csv_text), na_values=[&quot;?&quot;])
+print(df.head())
+print(df.shape)
+print(df.columns.tolist())
+print(df.dtypes)
+</textarea><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>    name  horsepower  weight   mpg
+0  car_A       130.0  3500.0  18.0
+1  car_B         NaN  2800.0  24.0
+2  car_C        95.0  3000.0  22.0
+3  car_D       110.0     NaN  20.0
+4  car_E        70.0  2000.0   NaN
+(6, 4)
+[&#x27;name&#x27;, &#x27;horsepower&#x27;, &#x27;weight&#x27;, &#x27;mpg&#x27;]
+name           object
+horsepower    float64
+weight        float64
+mpg           float64
+dtype: object
+</pre></section><div class="toolbar"><a class="button secondary" href="../../notebooks/ch02/2.3-python-lab.ipynb" download>下载完整实验 Notebook</a><a href="237-02.py" download>下载本块 Python</a></div><nav class="nav"><a href="237-01.html">上一块</a><a href="237-03.html">下一块</a></nav></main><footer>虚构数据演示 · 按编号顺序运行 · 代码与输出对应本版讲义</footer><script src="../../assets/copy.js" defer></script></body></html>

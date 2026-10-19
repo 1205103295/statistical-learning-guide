@@ -1,0 +1,5 @@
+X = clean[feature_columns].to_numpy(dtype=float)
+y = clean[target_column].to_numpy(dtype=float)
+print(X)
+print(y)
+print(X.shape, y.shape)

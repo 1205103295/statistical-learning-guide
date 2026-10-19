@@ -1,0 +1,12 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 2.3.9-01 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../python-lab.html">2.3 Python 实验</a><a href="../../index.html">配套代码目录</a></div></header><main><div class="eyebrow">第二章 / 2.3 Python 实验 / 代码 2.3.9-01</div><h1>describe 汇总各列</h1><div class="note">这一块属于连续的 Notebook。请先运行前面的代码块；变量可能依赖前面的定义。全部数据均为教学用虚构数据。</div><section class="codepanel"><div class="codehead"><h2>代码 2.3.9-01</h2><button id="copy" type="button">复制整块代码</button></div><textarea id="code" readonly spellcheck="false" rows="6" aria-label="代码 2.3.9-01">summary = clean[numeric_columns].describe()
+print(summary.round(3))
+</textarea><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>       horsepower    weight     mpg
+count       3.000     3.000   3.000
+mean      103.333  2966.667  22.667
+std        23.629   550.757   5.033
+min        85.000  2400.000  18.000
+25%        90.000  2700.000  20.000
+50%        95.000  3000.000  22.000
+75%       112.500  3250.000  25.000
+max       130.000  3500.000  28.000
+</pre></section><div class="toolbar"><a class="button secondary" href="../../notebooks/ch02/2.3-python-lab.ipynb" download>下载完整实验 Notebook</a><a href="239-01.py" download>下载本块 Python</a></div><nav class="nav"><a href="238-02.html">上一块</a><a href="239-02.html">下一块</a></nav></main><footer>虚构数据演示 · 按编号顺序运行 · 代码与输出对应本版讲义</footer><script src="../../assets/copy.js" defer></script></body></html>

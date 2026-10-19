@@ -1,0 +1,13 @@
+fig, ax = plt.subplots(figsize=(4, 4))
+ax.boxplot(mpg_demo)
+ax.set_ylabel("Miles per gallon (mpg)")
+ax.set_title("Distribution of mpg")
+fig.tight_layout()
+fig.savefig(image_dir / "239-box.pdf")
+fig.savefig(image_dir / "239-box.png", dpi=180)
+q1, median, q3 = mpg_demo.quantile([0.25, 0.5, 0.75])
+iqr = q3 - q1
+print(q1, median, q3)
+print(q1 - 1.5 * iqr, q3 + 1.5 * iqr)
+display(fig)
+plt.close(fig)

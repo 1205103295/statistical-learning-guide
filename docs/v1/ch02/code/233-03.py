@@ -1,0 +1,5 @@
+v = np.array([10.0, 20.0, 30.0])
+column = np.array([[10.0], [20.0], [30.0]])
+row = np.array([[10.0, 20.0, 30.0]])
+print(v.shape, column.shape, row.shape)
+print(v.T.shape, column.T.shape)

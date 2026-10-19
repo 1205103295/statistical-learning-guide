@@ -1,0 +1,12 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 2.3.9-13 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../python-lab.html">2.3 Python 实验</a><a href="../../index.html">配套代码目录</a></div></header><main><div class="eyebrow">第二章 / 2.3 Python 实验 / 代码 2.3.9-13</div><h1>残差随汽车重量如何变化？</h1><div class="note">这一块属于连续的 Notebook。请先运行前面的代码块；变量可能依赖前面的定义。全部数据均为教学用虚构数据。</div><section class="codepanel"><div class="codehead"><h2>代码 2.3.9-13</h2><button id="copy" type="button">复制整块代码</button></div><textarea id="code" readonly spellcheck="false" rows="12" aria-label="代码 2.3.9-13">fig, ax = plt.subplots(figsize=(6, 4))
+ax.scatter(X_train[&quot;weight&quot;], residual_train,
+           color=&quot;#314887&quot;)
+ax.axhline(y=0, color=&quot;black&quot;, linestyle=&quot;--&quot;)
+ax.set_xlabel(&quot;Weight (pounds)&quot;)
+ax.set_ylabel(&quot;Residual (actual - predicted)&quot;)
+fig.tight_layout()
+fig.savefig(image_dir / &quot;239-residual.pdf&quot;)
+fig.savefig(image_dir / &quot;239-residual.png&quot;, dpi=180)
+display(fig)
+plt.close(fig)
+</textarea><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行图形</h2><img src="../images/239-residual.png" alt="残差随汽车重量如何变化？"><a href="../images/239-residual.pdf">下载矢量图</a></section><div class="toolbar"><a class="button secondary" href="../../notebooks/ch02/2.3-python-lab.ipynb" download>下载完整实验 Notebook</a><a href="239-13.py" download>下载本块 Python</a></div><nav class="nav"><a href="239-12.html">上一块</a><a href="239-14.html">下一块</a></nav></main><footer>虚构数据演示 · 按编号顺序运行 · 代码与输出对应本版讲义</footer><script src="../../assets/copy.js" defer></script></body></html>

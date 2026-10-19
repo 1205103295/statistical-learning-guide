@@ -1,0 +1,5 @@
+print(contributions.sum(axis=1))
+print(X.mean(axis=0))
+print(X.mean(axis=0).shape)
+print(X.mean(axis=1))
+print(X.mean(axis=1).shape)

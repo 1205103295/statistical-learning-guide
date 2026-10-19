@@ -1,0 +1,7 @@
+baseline_value = y_train.mean()
+linear_model = LinearRegression()
+linear_model.fit(X_train, y_train)
+baseline_val_pred = np.full(len(X_val), baseline_value)
+linear_val_pred = linear_model.predict(X_val)
+print(baseline_val_pred)
+print(linear_val_pred)

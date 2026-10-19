@@ -1,0 +1,5 @@
+a = np.array([1, 2, 3], dtype=float)
+b = np.array([10, 20, 30], dtype=float)
+print(a + b)
+print(a * 2)
+print(a ** 2)

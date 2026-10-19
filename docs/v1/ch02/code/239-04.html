@@ -1,0 +1,15 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 2.3.9-04 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../python-lab.html">2.3 Python 实验</a><a href="../../index.html">配套代码目录</a></div></header><main><div class="eyebrow">第二章 / 2.3 Python 实验 / 代码 2.3.9-04</div><h1>直方图：按区间计数</h1><div class="note">这一块属于连续的 Notebook。请先运行前面的代码块；变量可能依赖前面的定义。全部数据均为教学用虚构数据。</div><section class="codepanel"><div class="codehead"><h2>代码 2.3.9-04</h2><button id="copy" type="button">复制整块代码</button></div><textarea id="code" readonly spellcheck="false" rows="14" aria-label="代码 2.3.9-04">bins = [10, 20, 30, 40, 50]
+fig, ax = plt.subplots(figsize=(6, 4))
+counts, edges, patches = ax.hist(
+    mpg_demo, bins=bins, edgecolor=&quot;black&quot;, color=&quot;#8CA3CC&quot;
+)
+ax.set_xlabel(&quot;Miles per gallon (mpg)&quot;)
+ax.set_ylabel(&quot;Number of cars&quot;)
+fig.tight_layout()
+fig.savefig(image_dir / &quot;239-hist.pdf&quot;)
+fig.savefig(image_dir / &quot;239-hist.png&quot;, dpi=180)
+print(counts.astype(int))
+display(fig)
+plt.close(fig)
+</textarea><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>[3 7 1 1]
+</pre></section><section class="panel"><h2>实际运行图形</h2><img src="../images/239-hist.png" alt="直方图：按区间计数"><a href="../images/239-hist.pdf">下载矢量图</a></section><div class="toolbar"><a class="button secondary" href="../../notebooks/ch02/2.3-python-lab.ipynb" download>下载完整实验 Notebook</a><a href="239-04.py" download>下载本块 Python</a></div><nav class="nav"><a href="239-03.html">上一块</a><a href="239-05.html">下一块</a></nav></main><footer>虚构数据演示 · 按编号顺序运行 · 代码与输出对应本版讲义</footer><script src="../../assets/copy.js" defer></script></body></html>

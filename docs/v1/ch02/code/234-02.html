@@ -1,0 +1,13 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 2.3.4-02 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../python-lab.html">2.3 Python 实验</a><a href="../../index.html">配套代码目录</a></div></header><main><div class="eyebrow">第二章 / 2.3 Python 实验 / 代码 2.3.4-02</div><h1>画散点、设置坐标并保存</h1><div class="note">这一块属于连续的 Notebook。请先运行前面的代码块；变量可能依赖前面的定义。全部数据均为教学用虚构数据。</div><section class="codepanel"><div class="codehead"><h2>代码 2.3.4-02</h2><button id="copy" type="button">复制整块代码</button></div><textarea id="code" readonly spellcheck="false" rows="13" aria-label="代码 2.3.4-02">fig, ax = plt.subplots(figsize=(6, 4))
+ax.scatter(horsepower_demo, mpg_three,
+           color=&quot;#314887&quot;, s=50)
+ax.set_xlabel(&quot;Horsepower&quot;)
+ax.set_ylabel(&quot;Miles per gallon (mpg)&quot;)
+ax.set_title(&quot;Horsepower and fuel economy&quot;)
+ax.grid(alpha=0.3)
+fig.tight_layout()
+fig.savefig(image_dir / &quot;234-horsepower.pdf&quot;)
+fig.savefig(image_dir / &quot;234-horsepower.png&quot;, dpi=180)
+display(fig)
+plt.close(fig)
+</textarea><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行图形</h2><img src="../images/234-horsepower.png" alt="画散点、设置坐标并保存"><a href="../images/234-horsepower.pdf">下载矢量图</a></section><div class="toolbar"><a class="button secondary" href="../../notebooks/ch02/2.3-python-lab.ipynb" download>下载完整实验 Notebook</a><a href="234-02.py" download>下载本块 Python</a></div><nav class="nav"><a href="234-01.html">上一块</a><a href="235-01.html">下一块</a></nav></main><footer>虚构数据演示 · 按编号顺序运行 · 代码与输出对应本版讲义</footer><script src="../../assets/copy.js" defer></script></body></html>

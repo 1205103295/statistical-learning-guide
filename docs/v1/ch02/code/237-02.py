@@ -1,0 +1,5 @@
+df = pd.read_csv(StringIO(csv_text), na_values=["?"])
+print(df.head())
+print(df.shape)
+print(df.columns.tolist())
+print(df.dtypes)

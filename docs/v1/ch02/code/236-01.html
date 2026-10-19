@@ -1,0 +1,15 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 2.3.6-01 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../python-lab.html">2.3 Python 实验</a><a href="../../index.html">配套代码目录</a></div></header><main><div class="eyebrow">第二章 / 2.3 Python 实验 / 代码 2.3.6-01</div><h1>用同一个 mask 筛选 X 与 y</h1><div class="note">这一块属于连续的 Notebook。请先运行前面的代码块；变量可能依赖前面的定义。全部数据均为教学用虚构数据。</div><section class="codepanel"><div class="codehead"><h2>代码 2.3.6-01</h2><button id="copy" type="button">复制整块代码</button></div><textarea id="code" readonly spellcheck="false" rows="9" aria-label="代码 2.3.6-01">y = np.array([11.0, 12.0, 11.2, 13.8])
+mask = X[:, 0] &gt;= 100
+X_selected = X[mask, :]
+y_selected = y[mask]
+print(mask)
+print(X_selected)
+print(y_selected)
+print(X_selected.shape, y_selected.shape)
+</textarea><p id="status" class="status" role="status" aria-live="polite"></p></section><section class="panel"><h2>实际运行输出</h2><pre>[ True  True False  True]
+[[100.  20.  10.]
+ [150.  10.  30.]
+ [120.  40.  40.]]
+[11.  12.  13.8]
+(3, 3) (3,)
+</pre></section><div class="toolbar"><a class="button secondary" href="../../notebooks/ch02/2.3-python-lab.ipynb" download>下载完整实验 Notebook</a><a href="236-01.py" download>下载本块 Python</a></div><nav class="nav"><a href="235-02.html">上一块</a><a href="236-02.html">下一块</a></nav></main><footer>虚构数据演示 · 按编号顺序运行 · 代码与输出对应本版讲义</footer><script src="../../assets/copy.js" defer></script></body></html>

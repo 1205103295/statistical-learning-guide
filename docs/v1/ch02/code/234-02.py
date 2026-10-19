@@ -1,0 +1,12 @@
+fig, ax = plt.subplots(figsize=(6, 4))
+ax.scatter(horsepower_demo, mpg_three,
+           color="#314887", s=50)
+ax.set_xlabel("Horsepower")
+ax.set_ylabel("Miles per gallon (mpg)")
+ax.set_title("Horsepower and fuel economy")
+ax.grid(alpha=0.3)
+fig.tight_layout()
+fig.savefig(image_dir / "234-horsepower.pdf")
+fig.savefig(image_dir / "234-horsepower.png", dpi=180)
+display(fig)
+plt.close(fig)
