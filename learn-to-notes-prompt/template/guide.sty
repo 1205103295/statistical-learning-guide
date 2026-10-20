@@ -1,0 +1,53 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{guide}[2026/10/16 Statistical Learning Guide]
+\usepackage[a4paper,left=24mm,right=23mm,top=24mm,bottom=25mm,headheight=16pt]{geometry}
+\usepackage{amsmath,amssymb,booktabs,tabularx,graphicx,xcolor,tikz}
+\usepackage[most]{tcolorbox}
+\usepackage{listings,fancyhdr,enumitem,xstring}
+\usepackage[unicode,colorlinks=true,linkcolor=GuideBlue,urlcolor=GuideBlue,bookmarksnumbered=true]{hyperref}
+\definecolor{GuideBlue}{HTML}{314887}
+\definecolor{GuideRed}{HTML}{B8444D}
+\definecolor{GuideGreen}{HTML}{24735A}
+\definecolor{Ink}{HTML}{24262C}
+\definecolor{SoftBlue}{HTML}{F1F4FA}
+\definecolor{SoftGreen}{HTML}{F0F7F3}
+\definecolor{SoftRed}{HTML}{FCF2F1}
+\definecolor{AnswerInk}{HTML}{80602C}
+\definecolor{AnswerPaper}{HTML}{FFFBF4}
+\definecolor{AnswerHeader}{HTML}{F4EAD7}
+\setmainfont{TeX Gyre Pagella}
+\setsansfont{TeX Gyre Heros}
+\setmonofont{Latin Modern Mono}
+\color{Ink}
+\linespread{1.28}
+\setlength{\parskip}{4pt}
+\setlist{nosep,leftmargin=2em,topsep=5pt}
+\ctexset{chapter={format=\Huge\bfseries\sffamily\color{GuideBlue},beforeskip=5pt,afterskip=12pt},section={format=\Large\bfseries\sffamily\color{GuideBlue},beforeskip=15pt,afterskip=9pt},subsection={format=\large\bfseries\color{GuideBlue},beforeskip=12pt,afterskip=7pt}}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small\sffamily\color{GuideBlue}\GuideTitle}
+\fancyhead[R]{\small\color{gray}\GuideEdition}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.35pt}
+\fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\small\thepage}\renewcommand{\headrulewidth}{0pt}}
+\tcbset{guidebox/.style={enhanced,breakable,boxrule=0pt,arc=1.2mm,left=3mm,right=3mm,top=2mm,bottom=2mm,before skip=6pt,after skip=6pt,fonttitle=\bfseries}}
+\newtcolorbox{notice}[1]{guidebox,colback=SoftRed,colframe=GuideRed,borderline west={1.2pt}{0pt}{GuideRed},coltitle=GuideRed,colbacktitle=SoftRed,title={注意\quad #1}}
+\newtcolorbox{examplebox}[1]{guidebox,colback=SoftGreen,colframe=GuideGreen,borderline west={1.2pt}{0pt}{GuideGreen},coltitle=GuideGreen,colbacktitle=SoftGreen,title={例子与思考\quad #1}}
+\newtcolorbox{answerbox}{guidebox,colback=AnswerPaper,colframe=AnswerInk!35,coltitle=AnswerInk,colbacktitle=AnswerHeader,title={参考答案}}
+\lstdefinestyle{guidepython}{language=Python,aboveskip=0pt,belowskip=0pt,basicstyle=\linespread{1}\ttfamily\fontsize{9.5}{12}\selectfont,keywordstyle=\color{GuideBlue},stringstyle=\color{GuideGreen},commentstyle=\color{gray},showstringspaces=false,columns=fullflexible,keepspaces=true,breaklines=true,tabsize=4,upquote=true}
+\providecommand{\CodeLinkTarget}[1]{run:copy/#1.html}
+\newcommand{\CodeWalkthrough}[1]{\par\begingroup\emergencystretch=2em \noindent{\color{GuideBlue}\bfseries 逐步读代码}\nopagebreak\input{explanations/#1}\endgroup}
+\newcommand{\CodeBlock}[2]{\tcbinputlisting{enhanced,breakable,before skip=5pt,after skip=5pt,colback=SoftBlue,colframe=GuideBlue!25,boxrule=.4pt,arc=1.2mm,left=2mm,right=2mm,top=2mm,bottom=2mm,title={\small\bfseries\color{GuideBlue}代码 \thesubsection-\StrBehind{#1}{-}\quad #2\hfill\href{\CodeLinkTarget{#1}}{\fcolorbox{GuideBlue!30}{white}{\scriptsize\color{GuideBlue}打开并复制}}},colbacktitle=SoftBlue,coltitle=GuideBlue,listing only,listing file={code/#1.py},listing options={style=guidepython}}\CodeWalkthrough{#1}}
+\newcommand{\RunOutput}[1]{\tcbinputlisting{before skip=5pt,after skip=5pt,colback=white,colframe=GuideGreen!35,boxrule=.4pt,arc=1mm,title={\small\color{GuideGreen}实际运行输出},colbacktitle=SoftGreen,coltitle=GuideGreen,listing only,listing file={outputs/#1.txt},listing options={aboveskip=0pt,belowskip=0pt,basicstyle=\linespread{1}\ttfamily\fontsize{9.5}{12}\selectfont,breaklines=true,columns=fullflexible,keepspaces=true}}}
+\hypersetup{pdftitle={\GuideTitle},pdfauthor={\GuideAuthor},pdfsubject={中文学习笔记}}
+
+\usepackage{needspace}
+\newtcolorbox{redbox}[1]{guidebox,boxrule=.65pt,colback=SoftRed,colframe=GuideRed,coltitle=GuideRed,colbacktitle=SoftRed,title={#1}}
+\newcounter{thought}[chapter]
+\newcommand{\Thought}[1]{\par\Needspace{6\baselineskip}\refstepcounter{thought}\begin{tcolorbox}[enhanced,colback=SoftGreen,colframe=GuideGreen,boxrule=0pt,borderline west={1.2pt}{0pt}{GuideGreen},arc=1mm,left=3mm,right=3mm,top=2mm,bottom=2mm,before skip=7pt,after skip=7pt]\color{GuideGreen}\bfseries 思考\arabic{thought}\quad #1\end{tcolorbox}\nopagebreak}
+\setcounter{secnumdepth}{2}
+
+\AtBeginDocument{\setlength{\abovedisplayskip}{8pt}\setlength{\belowdisplayskip}{8pt}}
+
+\setcounter{tocdepth}{2}
+
+\usepackage{float}

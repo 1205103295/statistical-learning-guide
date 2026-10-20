@@ -1,0 +1,8 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>代码 1.1.1-01</title>
+<style>body{max-width:850px;margin:40px auto;padding:0 20px;font:18px/1.7 sans-serif;color:#24262c}h1{color:#314887}textarea{box-sizing:border-box;width:100%;min-height:160px;padding:18px;background:#f1f4fa;font:16px/1.6 monospace}button{padding:10px 18px}</style>
+<h1>代码 1.1.1-01：常数预测</h1><textarea id="code" readonly>y_train = [18.0, 22.0, 26.0]
+baseline_value = sum(y_train) / len(y_train)
+print(baseline_value)
+</textarea><button id="copy">复制代码</button><p id="status" role="status"></p>
+<p>sum求和，len求元素个数，二者相除得到训练目标均值。数据为虚构示例。</p>
+<script>document.getElementById('copy').onclick=async()=>{const el=document.getElementById('code');try{await navigator.clipboard.writeText(el.value);document.getElementById('status').textContent='已复制';}catch(e){el.focus();el.select();document.getElementById('status').textContent='代码已选中，请按 Ctrl+C（Mac：Command+C）复制。';}};</script></html>

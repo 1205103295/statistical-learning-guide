@@ -1,0 +1,45 @@
+\begin{titlepage}
+\thispagestyle{empty}
+\begin{tikzpicture}[remember picture,overlay]
+\fill[white] (current page.south west) rectangle (current page.north east);
+\begin{scope}[shift={(current page.south west)},x=1mm,y=1mm]
+\fill[SoftBlue] (0,185) rectangle (210,297);
+\fill[GuideBlue] (0,0) rectangle (4,297);
+\fill[GuideGreen] (4,0) rectangle (6,72);
+\node[anchor=west,text=GuideBlue,font=\sffamily\fontsize{9}{12}\selectfont] at (25,272)
+  {STATISTICAL LEARNING\quad /\quad FROM FIRST PRINCIPLES};
+\draw[GuideGreen,line width=1.6pt] (25,258)--(39,258);
+\node[anchor=north west,inner sep=0,text=GuideBlue,font=\sffamily\bfseries\fontsize{29}{38}\selectfont] at (25,244) {\GuideCoverTop};
+\node[anchor=north west,inner sep=0,text=GuideBlue,font=\sffamily\bfseries\fontsize{38}{48}\selectfont] at (25,227) {\GuideTitle};
+\node[anchor=west,inner sep=0,text=Ink,font=\fontsize{13}{18}\selectfont] at (25,195) {\GuideSubtitle};
+
+% A vector illustration of observations, a fitted trend and uncertainty.
+\begin{scope}[shift={(26,75)}]
+\foreach \xx in {0,20,...,160} \draw[GuideBlue!7,line width=.3pt] (\xx,0)--(\xx,90);
+\foreach \yy in {0,15,...,90} \draw[GuideBlue!7,line width=.3pt] (0,\yy)--(160,\yy);
+\path[fill=GuideGreen!10]
+ (0,10) .. controls (22,8) and (42,21) .. (62,38)
+ .. controls (84,56) and (112,58) .. (160,89)
+ -- (160,63) .. controls (116,40) and (90,39) .. (62,23)
+ .. controls (42,9) and (22,-1) .. (0,0) --cycle;
+\foreach \xx/\yy in {4/8,10/17,17/4,22/19,28/11,33/24,40/15,44/31,50/22,55/38,61/23,66/42,72/34,77/49,84/38,91/53,97/44,103/61,111/49,118/66,125/59,132/75,140/64,147/84,154/74}
+ \fill[GuideBlue!62] (\xx,\yy) circle (1.15);
+\draw[GuideGreen,line width=1.5pt]
+ (0,5) .. controls (22,4) and (42,15) .. (62,30)
+ .. controls (90,49) and (116,49) .. (160,76);
+\draw[GuideGreen!55,densely dashed,line width=.6pt] (103,61)--(103,50);
+\fill[GuideGreen] (103,50) circle (1.4);
+\draw[GuideBlue!30,line width=.5pt] (0,0)--(163,0);
+\node[anchor=south east,text=GuideGreen,font=\itshape\fontsize{14}{18}\selectfont] at (159,89) {$Y=f(X)+\varepsilon$};
+\end{scope}
+
+\node[anchor=west,inner sep=0,text=GuideGreen,font=\fontsize{11}{15}\selectfont] at (25,61)
+ {理解问题\quad →\quad 推导原理\quad →\quad 动手验证};
+\draw[GuideBlue!18,line width=.5pt] (25,47)--(185,47);
+\node[anchor=west,inner sep=0,text=GuideBlue,font=\fontsize{16}{21}\selectfont] at (25,33) {\GuideAuthor\quad 著};
+\node[anchor=west,inner sep=0,text=GuideBlue!65,font=\sffamily\fontsize{8}{11}\selectfont] at (25,20)
+ {THEORY\quad /\quad MODELS\quad /\quad PYTHON};
+\end{scope}
+\end{tikzpicture}
+\null
+\end{titlepage}

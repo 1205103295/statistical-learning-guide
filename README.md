@@ -2,6 +2,12 @@
 
 配套 Python 代码、Notebook 与学习练习。
 
+## 公开学习提示词与 LaTeX 模板
+
+[使用说明与完整工程](learn-to-notes-prompt/) · [复制主提示词](learn-to-notes-prompt/PROMPT.md) · [下载 ZIP](learn-to-notes-prompt/downloads/learn-to-notes-prompt-v1.0.zip)
+
+复用“业务问题—数学推导—逐块代码—练习反馈—手稿成书”的学习流程。支持填写个人基础、教材和目标，附带可配置封面、红色提示框、浅绿题目、米色答案和蓝色代码框；模板已实际编译。详见工程中的验证记录与行为检查用例。
+
 - [在线代码网站](https://1205103295.github.io/statistical-learning-guide/)
 - [v1 第二章代码目录](https://1205103295.github.io/statistical-learning-guide/v1/)
 - [2.1.2 配套 Notebook](docs/v1/notebooks/ch02/2.1.2-estimating-f.ipynb)

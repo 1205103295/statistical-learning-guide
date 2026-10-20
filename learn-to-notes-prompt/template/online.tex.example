@@ -1,0 +1,4 @@
+% Copy to online.tex and replace the URL with your own deployed code-page base.
+% !TeX program = xelatex
+\newcommand{\CodeLinkTarget}[1]{https://YOUR-NAME.github.io/YOUR-REPO/code/#1.html}
+\input{main.tex}
