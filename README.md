@@ -50,3 +50,9 @@ PDF 指向 `v1/ch02/code/212-01.html` 等固定版本地址。内部文件名与
 [项目代码目录](https://1205103295.github.io/statistical-learning-guide/v1/textbook-exercises.html) · [已执行Notebook](docs/v1/notebooks/ch02/2.4-textbook-exercises.ipynb)
 
 29个代码块，对应教材第1—10题，包含示意曲线、KNN手算、College、Auto与Boston数据探索。Notebook首次运行时如无本地数据，将从[教材官网](https://www.statlearning.com/s/Auto.data)下载数据。结果仅用于教学，详见Notebook的适用范围说明。
+
+## 第三章 · 简单线性回归
+
+[在线代码与逐步讲解](https://1205103295.github.io/statistical-learning-guide/v1/ch03.html) · [已执行 Notebook](docs/v1/notebooks/ch03/3.1-simple-linear-regression.ipynb)
+
+14 个代码块：从 NumPy 手算最小二乘系数到残差、RSE、斜率标准误和 t 置信区间。使用三个市场的虚构教学数据，保留实际执行输出和拟合图。按顺序运行，无须联网下载数据。尚未加入假设检验。

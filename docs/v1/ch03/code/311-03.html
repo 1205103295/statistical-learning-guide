@@ -1,0 +1,7 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.1.1-03 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.1.1-03 · 把两个求和式翻译为 NumPy</h1><p>按编号顺序运行，后面的代码依赖前面定义的变量。本章使用虚构教学数据，范围截止斜率置信区间。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="5">Sxx = np.sum(x_centered ** 2)
+Sxy = np.sum(x_centered * y_centered)
+print(&quot;Sxx:&quot;, Sxx)
+print(&quot;Sxy:&quot;, Sxy)
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><ul><li><code>** 2</code> 先对每个元素平方，<code>np.sum</code> 再把平方值加起来。因此第一行计算的是离差平方和，不是先求和再平方。</li><li><code>x_centered * y_centered</code> 对应位置逐元素相乘，结果仍是 <code>(3,)</code>；外层 <code>np.sum</code> 将三个乘积相加，得到一个数。两个数组都中心化了，但乘积之和不必为零。</li><li><code>Sxx</code> 与 <code>Sxy</code> 是变量名，大小写必须前后一致。本例得到 2 和 3，分别对应数学公式中的输入离差平方和与交叉离差和。</li></ul></section><h2>实际运行输出</h2><pre>Sxx: 2.0
+Sxy: 3.0
+</pre><p><a href="../../notebooks/ch03/3.1-simple-linear-regression.ipynb" download>下载已执行 Notebook</a> · <a href="311-03.py" download>下载本块代码</a> · <a href="../../ch03.html">第三章目录</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

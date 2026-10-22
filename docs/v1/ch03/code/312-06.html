@@ -1,0 +1,11 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.1.2-06 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.1.2-06 · 比较不同置信水平的区间宽度</h1><p>按编号顺序运行，后面的代码依赖前面定义的变量。本章使用虚构教学数据，范围截止斜率置信区间。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="8">for confidence in [0.90, 0.95, 0.99]:
+    alpha_level = 1 - confidence
+    critical = t.ppf(1 - alpha_level / 2, df=residual_df)
+    half_width = critical * slope_se
+    lower = beta1_hat - half_width
+    upper = beta1_hat + half_width
+    print(f&quot;confidence={confidence:.0%}: [{lower:.3f}, {upper:.3f}]&quot;)
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><ul><li><code>for</code> 循环依次取三个置信水平；每一次都用同一份数据、同一个斜率估计和同一个标准误，只改变区间的覆盖目标。</li><li><code>alpha_level</code> 是一减置信水平；依次计算对应分位数、半宽和端点，与上一块代码的步骤一致。</li><li><code>f&quot;...&quot;</code> 是格式化字符串：花括号中写变量，<code>:.0%</code> 把小数显示成不带小数位的百分数，<code>:.3f</code> 保留三位小数。这只改变显示方式，没有把计算中的数值提前截断。</li><li>置信水平升高，临界值和区间宽度增大。覆盖目标更高不等于估计更精确；输出格式可以查阅复用，理解区间计算才是核心。</li></ul></section><h2>实际运行输出</h2><pre>confidence=90%: [-0.323, 3.323]
+confidence=95%: [-2.168, 5.168]
+confidence=99%: [-16.876, 19.876]
+</pre><p><a href="../../notebooks/ch03/3.1-simple-linear-regression.ipynb" download>下载已执行 Notebook</a> · <a href="312-06.py" download>下载本块代码</a> · <a href="../../ch03.html">第三章目录</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

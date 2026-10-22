@@ -1,0 +1,18 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.1.1-08 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.1.1-08 · 画出观测点与拟合直线</h1><p>按编号顺序运行，后面的代码依赖前面定义的变量。本章使用虚构教学数据，范围截止斜率置信区间。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="18">from pathlib import Path
+import matplotlib.pyplot as plt
+from IPython.display import display
+
+image_dir = Path(&quot;图片&quot;)
+image_dir.mkdir(exist_ok=True)
+fig, ax = plt.subplots(figsize=(6.4, 4.0))
+ax.scatter(x, y, label=&quot;Observed&quot;)
+ax.plot(x, y_fit, label=&quot;Fitted line&quot;)
+ax.set_xlabel(&quot;Advertising budget (thousand yuan)&quot;)
+ax.set_ylabel(&quot;Sales (thousand units)&quot;)
+ax.legend()
+fig.tight_layout()
+fig.savefig(image_dir / &quot;311-fit.png&quot;, dpi=180)
+fig.savefig(image_dir / &quot;311-fit.pdf&quot;)
+display(fig)
+plt.close(fig)
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><ul><li><code>Path</code> 管理文件路径；<code>Path(&quot;图片&quot;)</code> 表示工作目录下的图片文件夹。<code>mkdir(exist_ok=True)</code> 是路径对象的方法，创建目录，目录已存在时允许继续。请在第三章 Notebook 所在目录运行。</li><li><code>plt.subplots</code> 创建整张画布 <code>fig</code> 和绘图区域 <code>ax</code>；<code>figsize</code> 以英寸指定宽和高。尺寸是可复用的显示设置，不需要背诵。</li><li><code>scatter(x, y)</code> 画实际观测点；<code>plot(x, y_fit)</code> 依输入顺序连接拟合值。本例 <code>x</code> 已从小到大排列，且拟合值位于同一直线上；实际销量连起来并不等于拟合直线。</li><li><code>label</code> 为图例提供名称；<code>set_xlabel</code>、<code>set_ylabel</code> 设置坐标轴标题和单位；<code>legend()</code> 显示图例。这里使用默认颜色，不需要记忆颜色编码。</li><li><code>tight_layout()</code> 调整边距；路径对象之间的 <code>/</code> 拼接文件路径。<code>savefig</code> 保存 PNG 和矢量 PDF，<code>dpi=180</code> 设置 PNG 分辨率。</li><li><code>display(fig)</code> 在 Notebook 中显示图片，<code>plt.close(fig)</code> 关闭后台画布以避免重复显示，已保存的图片和已经显示的输出仍保留。</li></ul></section><h2>实际运行图形</h2><img src="../images/311-fit.png" alt="三个教学观测点与最小二乘直线"><p><a href="../../notebooks/ch03/3.1-simple-linear-regression.ipynb" download>下载已执行 Notebook</a> · <a href="311-08.py" download>下载本块代码</a> · <a href="../../ch03.html">第三章目录</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

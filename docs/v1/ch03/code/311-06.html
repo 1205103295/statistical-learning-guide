@@ -1,0 +1,12 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.1.1-06 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.1.1-06 · 计算残差平方和与训练 MSE</h1><p>按编号顺序运行，后面的代码依赖前面定义的变量。本章使用虚构教学数据，范围截止斜率置信区间。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="8">squared_residual = residual ** 2
+rss = np.sum(squared_residual)
+train_mse = np.mean(squared_residual)
+print(&quot;squared residuals:&quot;, squared_residual)
+print(&quot;RSS:&quot;, rss)
+print(&quot;training MSE:&quot;, train_mse)
+print(&quot;square of residual sum:&quot;, residual.sum() ** 2)
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><ul><li><code>squared_residual</code> 保存逐个残差的平方；<code>np.sum</code> 给出 RSS，<code>np.mean</code> 给出训练 MSE，后者等于前者除以三个样本。</li><li>最后一行故意先求残差和再平方，用来对比两种运算。它不是 RSS：正负残差会相互抵消。</li><li>本例 RSS 为 1/6，训练 MSE 为 1/18。最后一行接近零，只能说明残差和接近零，不能说明每个预测都准确。</li></ul></section><h2>实际运行输出</h2><pre>squared residuals: [0.02777778 0.11111111 0.02777778]
+RSS: 0.16666666666666652
+training MSE: 0.055555555555555504
+square of residual sum: 7.888609052210118e-31
+</pre><p><a href="../../notebooks/ch03/3.1-simple-linear-regression.ipynb" download>下载已执行 Notebook</a> · <a href="311-06.py" download>下载本块代码</a> · <a href="../../ch03.html">第三章目录</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

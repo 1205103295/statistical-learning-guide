@@ -1,0 +1,10 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.1.2-02 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.1.2-02 · 准备噪声方差估计的分子和自由度</h1><p>按编号顺序运行，后面的代码依赖前面定义的变量。本章使用虚构教学数据，范围截止斜率置信区间。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="7">n = len(y)
+residual_df = n - 2
+rss = np.sum(residual ** 2)
+print(&quot;n:&quot;, n)
+print(&quot;residual degrees of freedom:&quot;, residual_df)
+print(&quot;RSS:&quot;, rss)
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><ul><li><code>len(y)</code> 返回观测销量的数量，本例为 3。<code>residual_df = n - 2</code> 是带截距、单一斜率且输入有变化的模型对应的残差自由度，本例为 1。</li><li><code>rss</code> 重新由最初三个市场的残差计算；不是前一个示意例子的 <code>rss_case</code>。</li><li>使用这个方差估计式之前，需要样本量大于 2、输入离差平方和大于零，以及正文给出的零均值、同方差、不相关误差条件。</li></ul></section><h2>实际运行输出</h2><pre>n: 3
+residual degrees of freedom: 1
+RSS: 0.16666666666666652
+</pre><p><a href="../../notebooks/ch03/3.1-simple-linear-regression.ipynb" download>下载已执行 Notebook</a> · <a href="312-02.py" download>下载本块代码</a> · <a href="../../ch03.html">第三章目录</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

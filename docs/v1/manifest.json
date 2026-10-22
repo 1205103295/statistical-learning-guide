@@ -478,5 +478,75 @@
     "id": "2.4-45",
     "page": "ch02/code/240-45.html",
     "sha256": "1b502b392860f6384a2fbb1314a5f55e89bbc5d6b046f66279671247db600105"
+  },
+  {
+    "id": "3.1.1-01",
+    "page": "ch03/code/311-01.html",
+    "sha256": "642804ddc418839cf9e217d7091a3f3376f3b71f253ff61d98a4eff4d7dd26d2"
+  },
+  {
+    "id": "3.1.1-02",
+    "page": "ch03/code/311-02.html",
+    "sha256": "3db48cd0b20add92f0fb4709d5c47d8fc531f19b784d8c10590823441c0f3725"
+  },
+  {
+    "id": "3.1.1-03",
+    "page": "ch03/code/311-03.html",
+    "sha256": "7cee06c9c8fb6c10dee99f798cb3d2ce851acb0288db84868e9936e7c897fbed"
+  },
+  {
+    "id": "3.1.1-04",
+    "page": "ch03/code/311-04.html",
+    "sha256": "d84b4d3afb30fca41b961b43b544395251bb39736c00d7ab27c8d231eda7af37"
+  },
+  {
+    "id": "3.1.1-05",
+    "page": "ch03/code/311-05.html",
+    "sha256": "502625e6a398093d9c637a004c62224ee6e9d64362d805cf99ea4c7e4965050d"
+  },
+  {
+    "id": "3.1.1-06",
+    "page": "ch03/code/311-06.html",
+    "sha256": "51f8eb0ff9220fa5da317ca3eba125ef8af67fcadfe453c82aafb36ca42e0af8"
+  },
+  {
+    "id": "3.1.1-07",
+    "page": "ch03/code/311-07.html",
+    "sha256": "7480e01db0b1b88af2e294021942ae0e9f202aae9a5106f7612e9a39909684cb"
+  },
+  {
+    "id": "3.1.1-08",
+    "page": "ch03/code/311-08.html",
+    "sha256": "2a2e86320f263177b382bff3bb803f17071862f74210dac664e3a9afed985abf"
+  },
+  {
+    "id": "3.1.2-01",
+    "page": "ch03/code/312-01.html",
+    "sha256": "21f1b9cc1483bf9b771587ae0b10f7f468693f36cd490d86442f92dec13b8d74"
+  },
+  {
+    "id": "3.1.2-02",
+    "page": "ch03/code/312-02.html",
+    "sha256": "7f4c46013513aaa993cfb9a1012c40ca77d02eab48ed44d21d72be298a21d8b6"
+  },
+  {
+    "id": "3.1.2-03",
+    "page": "ch03/code/312-03.html",
+    "sha256": "f31fb0a1950454b1ba6f09f4856739ed3cba8803950cbc8023225a84026ca32e"
+  },
+  {
+    "id": "3.1.2-04",
+    "page": "ch03/code/312-04.html",
+    "sha256": "76fbc087bd5e2849c546243d40d16e537392526ef769b77e52ede70613300a00"
+  },
+  {
+    "id": "3.1.2-05",
+    "page": "ch03/code/312-05.html",
+    "sha256": "7734d1f773662464c7341c3ea4f77d4fe5ff7406fe8f149d9338f66fefe60f51"
+  },
+  {
+    "id": "3.1.2-06",
+    "page": "ch03/code/312-06.html",
+    "sha256": "f6365a09c25135698adf871f50d53ec0efd31b6a994b3538a1e43f5f62ff4cc7"
   }
 ]

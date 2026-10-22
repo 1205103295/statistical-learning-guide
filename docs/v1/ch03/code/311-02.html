@@ -1,0 +1,13 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.1.1-02 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.1.1-02 · 计算均值并中心化</h1><p>按编号顺序运行，后面的代码依赖前面定义的变量。本章使用虚构教学数据，范围截止斜率置信区间。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="9">x_mean = x.mean()
+y_mean = y.mean()
+x_centered = x - x_mean
+y_centered = y - y_mean
+print(&quot;means:&quot;, x_mean, y_mean)
+print(&quot;x_centered:&quot;, x_centered)
+print(&quot;y_centered:&quot;, y_centered)
+print(&quot;centered sums:&quot;, x_centered.sum(), y_centered.sum())
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><ul><li><code>.mean()</code> 对数组元素求算术平均，得到一个数。<code>x_mean</code> 是 2，<code>y_mean</code> 是 10/3 的浮点近似。</li><li>数组减去一个数时，NumPy 将这个数作用到每个元素，这叫广播。中心化后仍是形状 <code>(3,)</code> 的数组，记录每个观测值偏离均值多少。</li><li><code>.sum()</code> 求元素总和。理论上中心化后的和为零；浮点运算可能显示约 10 的负 16 次方量级的小数，它是数值舍入误差，不是公式失效。</li></ul></section><h2>实际运行输出</h2><pre>means: 2.0 3.3333333333333335
+x_centered: [-1.  0.  1.]
+y_centered: [-1.33333333 -0.33333333  1.66666667]
+centered sums: 0.0 -4.440892098500626e-16
+</pre><p><a href="../../notebooks/ch03/3.1-simple-linear-regression.ipynb" download>下载已执行 Notebook</a> · <a href="311-02.py" download>下载本块代码</a> · <a href="../../ch03.html">第三章目录</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

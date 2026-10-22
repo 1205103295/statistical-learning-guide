@@ -1,0 +1,16 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.1.2-01 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.1.2-01 · 同一个真实模型可以产生不同的拟合直线</h1><p>按编号顺序运行，后面的代码依赖前面定义的变量。本章使用虚构教学数据，范围截止斜率置信区间。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="12">true_mean = 2.0 + 3.0 * x
+error_a = np.array([-1.0, 0.0, 1.0])
+error_b = np.array([1.0, 0.0, -1.0])
+
+for name, errors in [(&quot;A&quot;, error_a), (&quot;B&quot;, error_b)]:
+    y_case = true_mean + errors
+    slope_case = np.sum(x_centered * (y_case - y_case.mean())) / Sxx
+    intercept_case = y_case.mean() - slope_case * x_mean
+    rss_case = np.sum((y_case - (intercept_case + slope_case * x)) ** 2)
+    print(name, &quot;sales:&quot;, y_case)
+    print(&quot;slope, intercept, RSS:&quot;, slope_case, intercept_case, rss_case)
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><ul><li><code>true_mean</code> 设置这个新例子的真实平均销量为 2 加 3 倍预算。两组误差是人为指定的示意取值，没有执行随机抽样，也不是声称三点足以验证分布假设。</li><li>方括号里有两个二元组，分别包含组名和误差数组。<code>for name, errors in ...</code> 每次取一组，并把两个内容分别赋给 <code>name</code> 与 <code>errors</code>；缩进部分每组执行一次。</li><li><code>y_case</code> 是真实均值加上这组误差。随后使用已经推导的相同公式计算本组斜率、截距和 RSS。</li><li>后缀 <code>_case</code> 避免覆盖最初数据的 <code>beta1_hat</code>、<code>beta0_hat</code>、<code>y</code> 和 <code>residual</code>，后面的置信区间仍针对最初三个市场。</li><li>两组 RSS 都为零，斜率却分别为 4 和 2，都不同于真实斜率 3。训练集拟合完美不能保证参数估计准确。</li></ul></section><h2>实际运行输出</h2><pre>A sales: [ 4.  8. 12.]
+slope, intercept, RSS: 4.0 0.0 0.0
+B sales: [ 6.  8. 10.]
+slope, intercept, RSS: 2.0 4.0 0.0
+</pre><p><a href="../../notebooks/ch03/3.1-simple-linear-regression.ipynb" download>下载已执行 Notebook</a> · <a href="312-01.py" download>下载本块代码</a> · <a href="../../ch03.html">第三章目录</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

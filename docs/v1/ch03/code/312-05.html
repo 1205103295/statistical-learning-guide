@@ -1,0 +1,10 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.1.2-05 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.1.2-05 · 构造并解释斜率的 95% 置信区间</h1><p>按编号顺序运行，后面的代码依赖前面定义的变量。本章使用虚构教学数据，范围截止斜率置信区间。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="7">margin = critical_value * slope_se
+ci_lower = beta1_hat - margin
+ci_upper = beta1_hat + margin
+print(&quot;estimated slope:&quot;, beta1_hat)
+print(&quot;margin:&quot;, margin)
+print(&quot;95% interval:&quot;, ci_lower, ci_upper)
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><ul><li><code>margin</code> 是临界值乘以估计标准误，表示区间的半宽。它不是预测残差，也不是一次估计误差的已知大小。</li><li><code>ci_lower</code> 与 <code>ci_upper</code> 分别将半宽从斜率估计值中减去、加上，得到下端点和上端点。</li><li>区间约为 [-2.168, 5.168]。点估计虽然为正，但这份数据给出的区间很宽；不能仅凭正的点估计就断言斜率稳定地为正。</li><li>95% 指相同设计与模型条件下，重复抽样、重复构造区间的长期覆盖比例；观测数据给定后，本次区间端点已经固定。</li></ul></section><h2>实际运行输出</h2><pre>estimated slope: 1.5
+margin: 3.6679653624787822
+95% interval: -2.1679653624787822 5.167965362478782
+</pre><p><a href="../../notebooks/ch03/3.1-simple-linear-regression.ipynb" download>下载已执行 Notebook</a> · <a href="312-05.py" download>下载本块代码</a> · <a href="../../ch03.html">第三章目录</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

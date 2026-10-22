@@ -1,0 +1,10 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.1.2-03 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.1.2-03 · 计算噪声方差、RSE 和斜率标准误</h1><p>按编号顺序运行，后面的代码依赖前面定义的变量。本章使用虚构教学数据，范围截止斜率置信区间。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="7">sigma2_hat = rss / residual_df
+rse = np.sqrt(sigma2_hat)
+slope_se = rse / np.sqrt(Sxx)
+print(&quot;estimated noise variance:&quot;, sigma2_hat)
+print(&quot;RSE:&quot;, rse)
+print(&quot;estimated slope SE:&quot;, slope_se)
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><ul><li><code>sigma2_hat</code> 是 RSS 除以残差自由度，估计真实噪声方差；不要把分母改成 <code>n</code>，那样得到的是训练 MSE。</li><li><code>np.sqrt</code> 求平方根；<code>rse</code> 是残差标准误，用来估计销量噪声的标准差，单位为千件。方差估计无偏并不意味着开方后的 RSE 也无偏。</li><li><code>slope_se</code> 再除以输入离差平方和的平方根，估计斜率估计量的标准差，单位为千件/千元。它不是下一次销量预测误差，也不是斜率估计误差的绝对上界。</li></ul></section><h2>实际运行输出</h2><pre>estimated noise variance: 0.16666666666666652
+RSE: 0.40824829046386285
+estimated slope SE: 0.28867513459481275
+</pre><p><a href="../../notebooks/ch03/3.1-simple-linear-regression.ipynb" download>下载已执行 Notebook</a> · <a href="312-03.py" download>下载本块代码</a> · <a href="../../ch03.html">第三章目录</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

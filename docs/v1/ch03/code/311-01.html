@@ -1,0 +1,11 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.1.1-01 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.1.1-01 · 创建三个市场的教学数据</h1><p>按编号顺序运行，后面的代码依赖前面定义的变量。本章使用虚构教学数据，范围截止斜率置信区间。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="8">import numpy as np
+
+x = np.array([1.0, 2.0, 3.0])
+y = np.array([2.0, 3.0, 5.0])
+print(&quot;x:&quot;, x)
+print(&quot;y:&quot;, y)
+print(&quot;shapes:&quot;, x.shape, y.shape)
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><ul><li><code>import numpy as np</code> 导入 NumPy，用简短名称 <code>np</code> 调用。<code>np.array</code> 把列表转换为可逐元素计算的数组；小数写法使本例使用浮点数。</li><li><code>x</code> 是三个市场的广告预算，单位为千元；<code>y</code> 是对应销量，单位为千件。同一位置的两个数构成一个样本。这里是虚构教学数据，不是教材 Advertising 数据集。</li><li>两个数组的 <code>shape</code> 都是 <code>(3,)</code>，表示有三个元素的一维数组。这里手算单特征公式，用一维数组即可；不要与某些模型接口要求的二维特征矩阵混淆。<code>print</code> 显示括号中的内容。</li></ul></section><h2>实际运行输出</h2><pre>x: [1. 2. 3.]
+y: [2. 3. 5.]
+shapes: (3,) (3,)
+</pre><p><a href="../../notebooks/ch03/3.1-simple-linear-regression.ipynb" download>下载已执行 Notebook</a> · <a href="311-01.py" download>下载本块代码</a> · <a href="../../ch03.html">第三章目录</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

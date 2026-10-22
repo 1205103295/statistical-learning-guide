@@ -1,0 +1,7 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.1.1-07 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.1.1-07 · 对一个新预算作预测</h1><p>按编号顺序运行，后面的代码依赖前面定义的变量。本章使用虚构教学数据，范围截止斜率置信区间。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="5">x_new = 4.0
+y_new_pred = beta0_hat + beta1_hat * x_new
+print(&quot;new budget:&quot;, x_new)
+print(&quot;predicted sales:&quot;, y_new_pred)
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><ul><li><code>x_new</code> 是一个数，表示新预算为 4 千元；代入已拟合的直线，得到一个预测数值，约为 6.3333 千件。</li><li>使用新变量 <code>y_new_pred</code>，保留前面的训练拟合数组 <code>y_fit</code>，方便后续继续计算残差和标准误。</li><li>4 超出了训练预算范围 1 到 3，这属于外推。公式可以输出数值，但外推是否可靠需要额外判断。没有新市场实际销量，就不能计算它的残差。</li></ul></section><h2>实际运行输出</h2><pre>new budget: 4.0
+predicted sales: 6.333333333333334
+</pre><p><a href="../../notebooks/ch03/3.1-simple-linear-regression.ipynb" download>下载已执行 Notebook</a> · <a href="311-07.py" download>下载本块代码</a> · <a href="../../ch03.html">第三章目录</a></p></main><script src="../../assets/copy.js" defer></script></body></html>
