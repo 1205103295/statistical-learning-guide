@@ -55,4 +55,6 @@ PDF 指向 `v1/ch02/code/212-01.html` 等固定版本地址。内部文件名与
 
 [在线代码与逐步讲解](https://1205103295.github.io/statistical-learning-guide/v1/ch03.html) · [已执行 Notebook](docs/v1/notebooks/ch03/3.1-simple-linear-regression.ipynb)
 
-14 个代码块：从 NumPy 手算最小二乘系数到残差、RSE、斜率标准误和 t 置信区间。使用三个市场的虚构教学数据，保留实际执行输出和拟合图。按顺序运行，无须联网下载数据。尚未加入假设检验。
+18 个代码块：从 NumPy 手算最小二乘系数到残差、RSE、斜率标准误、t 置信区间与双侧假设检验。系数估计实验使用三个市场的虚构数据；检验实验使用虚构拟合汇总量，二者各自独立运行。保留实际执行输出与逐步解释，无须联网下载数据。
+
+[斜率检验 Notebook](docs/v1/notebooks/ch03/3.1.2-slope-testing.ipynb)：四个代码块，依次计算 t 统计量、双侧 p 值、检验结论及对应置信区间。

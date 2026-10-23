@@ -1,0 +1,9 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.1.2-07 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.1.2-07 · 导入 t 分布并明确检验输入</h1><p>独立实验：按 3.1.2-07 至 3.1.2-10 的顺序运行。本实验给定虚构拟合汇总量 n=10、斜率估计1.2、标准误0.4，没有重新训练模型；与手稿斜率估计为1的算例不同。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="9">from scipy.stats import t
+
+n = 10
+beta1_hat = 1.2
+slope_se = 0.4
+beta1_null = 0.0
+alpha = 0.05
+df = n - 2
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><ul><li><code>from scipy.stats import t</code> 从 SciPy 的统计模块导入 t 分布对象。<code>t</code> 用来调用分布函数，不是本次统计量的数值；后者将存入 <code>t_obs</code>。</li><li><code>n</code> 是样本量；<code>beta1_hat</code> 是拟合得到的斜率估计；<code>slope_se</code> 是斜率的估计标准误。本例直接给定这些汇总量，所以没有读取数据或训练模型。</li><li><code>beta1_null = 0.0</code> 保存原假设规定的斜率值；<code>alpha = 0.05</code> 保存事先选定的显著性水平。赋值符号 <code>=</code> 把右边的值交给左边的变量。</li><li><code>df = n - 2</code> 计算简单线性回归的残差自由度，结果为整数 8；模型估计了截距和斜率两个参数。其余带小数点的输入是浮点标量，不是数组。</li></ul></section><p>本块仅定义变量，无打印输出。</p><p><a href="../../notebooks/ch03/3.1.2-slope-testing.ipynb" download>下载已执行检验 Notebook</a> · <a href="312-07.py" download>下载本块代码</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

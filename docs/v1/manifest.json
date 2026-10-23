@@ -548,5 +548,25 @@
     "id": "3.1.2-06",
     "page": "ch03/code/312-06.html",
     "sha256": "f6365a09c25135698adf871f50d53ec0efd31b6a994b3538a1e43f5f62ff4cc7"
+  },
+  {
+    "id": "3.1.2-07",
+    "page": "ch03/code/312-07.html",
+    "sha256": "bef9ce47b37f0c19e5e9daa6be1b072bd76dd8064c9b245f9834d709ea359426"
+  },
+  {
+    "id": "3.1.2-08",
+    "page": "ch03/code/312-08.html",
+    "sha256": "f9ee61e5e39526fefc155dc15abeac289040e67008c3b5a9970a6762581bc6d7"
+  },
+  {
+    "id": "3.1.2-09",
+    "page": "ch03/code/312-09.html",
+    "sha256": "25e111b017de9fd55f9764d985575330a40846e044d863e7afa53744521bb9ae"
+  },
+  {
+    "id": "3.1.2-10",
+    "page": "ch03/code/312-10.html",
+    "sha256": "7a00f28f4a800a02431af35c8d93b9997d7db840a78752fffe968b558f6e5043"
   }
 ]

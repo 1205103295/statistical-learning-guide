@@ -1,0 +1,10 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.1.2-10 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.1.2-10 · 作出判断并用置信区间核对</h1><p>独立实验：按 3.1.2-07 至 3.1.2-10 的顺序运行。本实验给定虚构拟合汇总量 n=10、斜率估计1.2、标准误0.4，没有重新训练模型；与手稿斜率估计为1的算例不同。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="8">reject_null = p_value &lt; alpha
+critical_value = t.ppf(1 - alpha / 2, df=df)
+margin = critical_value * slope_se
+ci_lower = beta1_hat - margin
+ci_upper = beta1_hat + margin
+print(&quot;Reject H0:&quot;, reject_null)
+print(f&quot;CI = [{ci_lower:.6f}, {ci_upper:.6f}]&quot;)
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><ul><li><code>p_value &lt; alpha</code> 是大小比较，结果为布尔值 <code>True</code> 或 <code>False</code>，保存为 <code>reject_null</code>。<code>True</code> 表示按当前规则拒绝原假设，<code>False</code> 表示不拒绝；后者并不证明原假设正确。</li><li><code>t.ppf(1 - alpha / 2, df=df)</code> 输入左侧累计概率并返回对应分位数。当前输入 0.975 和自由度 8，得到右端临界值约 2.306004。<code>ppf</code> 是“概率找坐标”，上一块的 <code>sf</code> 是“坐标找右尾概率”。</li><li><code>margin = critical_value * slope_se</code> 用乘法 <code>*</code> 求区间半宽。<code>ci_lower</code> 从斜率估计中减去半宽，<code>ci_upper</code> 加上半宽；得到的是与当前显著性水平对应的双侧置信区间。</li><li>第一个 <code>print</code> 依次显示提示文字和布尔结果；第二个把两个端点插入方括号中。这只是显示区间的字符串，不是在这里创建 Python 列表。</li><li>如果事先把显著性水平定为 0.01，这份数据的 p 值仍约为 0.017072，判断会变为不拒绝；对应的区间改成 99% 区间。alpha 决定判断门槛及对应区间，不参与上述 p 值公式。</li></ul></section><h2>实际运行输出</h2><pre>Reject H0: True
+CI = [0.277598, 2.122402]
+</pre><p><a href="../../notebooks/ch03/3.1.2-slope-testing.ipynb" download>下载已执行检验 Notebook</a> · <a href="312-10.py" download>下载本块代码</a></p></main><script src="../../assets/copy.js" defer></script></body></html>
