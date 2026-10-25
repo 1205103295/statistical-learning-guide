@@ -1,0 +1,11 @@
+fig, axes = plt.subplots(1, 2, figsize=(8, 3.2))
+for ax, errors, title in zip(axes, [e_line, e_quad], ["Linear residuals", "Quadratic residuals"]):
+    ax.scatter(x_curve, errors, color="#314887", s=30)
+    ax.axhline(0, color="#B8444D", linestyle="--")
+    ax.set(xlabel="Distance", ylabel="Residual", title=title)
+fig.tight_layout()
+fig.savefig(image_dir / "333-residuals.pdf")
+fig.savefig(image_dir / "333-residuals.png", dpi=180)
+print("linear residual sum:", round(np.sum(e_line), 6))
+display(fig)
+plt.close(fig)

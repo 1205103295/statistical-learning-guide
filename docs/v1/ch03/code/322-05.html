@@ -1,0 +1,19 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.2.2-05 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.2.2-05 · 分别拟合并计算部分 F 检验</h1><p>使用虚构教学数据。请在完整 Notebook 中按章节顺序运行；本块可能依赖前面定义的变量、导入或拟合结果。数学推导和带编号的引用见完整学习笔记。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="15">full_model = LinearRegression().fit(X_ads, y_ads)
+reduced_model = LinearRegression().fit(X_reduced, y_ads)
+rss_full = np.sum((y_ads - full_model.predict(X_ads)) ** 2)
+rss_reduced = np.sum((y_ads - reduced_model.predict(X_reduced)) ** 2)
+n_ads, p_full = X_ads.shape
+p_reduced = X_reduced.shape[1]
+k = p_full - p_reduced
+nu_ads = n_ads - p_full - 1
+f_partial = ((rss_reduced - rss_full) / k) / (rss_full / nu_ads)
+p_partial = f.sf(f_partial, dfn=k, dfd=nu_ads)
+print(&quot;RSS reduced, full:&quot;, np.round([rss_reduced, rss_full], 6))
+print(&quot;df:&quot;, k, nu_ads)
+print(&quot;F, p:&quot;, np.round([f_partial, p_partial], 6))
+print(&quot;reject at 0.05:&quot;, bool(p_partial &lt; 0.05))
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><ul><li>两次创建独立模型并各自拟合，确保简化模型的截距和电视系数重新估计。链式写法把创建与 fit 放在一行，fit 返回已拟合模型。</li><li><code>predict</code> 作用在各自训练输入上，再用真实值减预测值、平方、求和得到 RSS。此处不使用测试 RSS。</li><li><code>shape[1]</code> 读取列数；k 是新增参数数量，nu 是完整模型残差自由度。列数计算自由度依赖含截距、嵌套和列满秩。</li><li><code>p_partial &lt; 0.05</code> 返回布尔结果；只在事先选择该水平、模型假设成立时解释为检验决定。显示的小数经过舍入，判断使用原始数值。</li></ul></section><h2>实际运行输出</h2><pre>RSS reduced, full: [17.006061  0.287279]
+df: 2 6
+F, p: [174.591326   0.000005]
+reject at 0.05: True
+</pre><p><a href="../../notebooks/ch03/chapter03-through-3.3.3.ipynb" download>下载完整学习笔记与已执行 Notebook</a> · <a href="322-05.py" download>下载本块代码</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

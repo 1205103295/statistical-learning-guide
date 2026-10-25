@@ -1,0 +1,10 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.2.2-02 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.2.2-02 · 用投影核对 RSS 与残差自由度</h1><p>使用虚构教学数据。请在完整 Notebook 中按章节顺序运行；本块可能依赖前面定义的变量、导入或拟合结果。数学推导和带编号的引用见完整学习笔记。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="8">H = X @ C @ X.T
+M = np.eye(n) - H
+assert np.allclose(H @ H, H)
+assert np.allclose(M @ X, 0.0)
+assert np.allclose(M @ y_multi, res_multi)
+print(&quot;trace H, trace M:&quot;, np.round([np.trace(H), np.trace(M)], 6))
+print(&quot;RSS from projection:&quot;, round(y_multi @ M @ y_multi, 6))
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><ul><li><code>H</code> 将观测投影到设计矩阵列空间，<code>M</code> 留下正交补部分。两者形状均为 (n, n)。</li><li>三个断言分别检查幂等性、残差投影消去模型列、以及投影残差与直接计算相同。</li><li><code>np.trace</code> 求对角线之和；<code>y_multi @ M @ y_multi</code> 是标量二次型，数值等于 RSS。</li></ul></section><h2>实际运行输出</h2><pre>trace H, trace M: [3. 1.]
+RSS from projection: 0.3
+</pre><p><a href="../../notebooks/ch03/chapter03-through-3.3.3.ipynb" download>下载完整学习笔记与已执行 Notebook</a> · <a href="322-02.py" download>下载本块代码</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

@@ -1,0 +1,13 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.3.3-01 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.3.3-01 · 绘制直线失配与二次修正的残差图</h1><p>使用虚构教学数据。请在完整 Notebook 中按章节顺序运行；本块可能依赖前面定义的变量、导入或拟合结果。数学推导和带编号的引用见完整学习笔记。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="12">fig, axes = plt.subplots(1, 2, figsize=(8, 3.2))
+for ax, errors, title in zip(axes, [e_line, e_quad], [&quot;Linear residuals&quot;, &quot;Quadratic residuals&quot;]):
+    ax.scatter(x_curve, errors, color=&quot;#314887&quot;, s=30)
+    ax.axhline(0, color=&quot;#B8444D&quot;, linestyle=&quot;--&quot;)
+    ax.set(xlabel=&quot;Distance&quot;, ylabel=&quot;Residual&quot;, title=title)
+fig.tight_layout()
+fig.savefig(image_dir / &quot;333-residuals.pdf&quot;)
+fig.savefig(image_dir / &quot;333-residuals.png&quot;, dpi=180)
+print(&quot;linear residual sum:&quot;, round(np.sum(e_line), 6))
+display(fig)
+plt.close(fig)
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><ul><li>沿用代码 3.3.2-02 的配送数据。<code>subplots(1, 2)</code> 创建一行两个坐标轴。</li><li><code>zip</code> 将坐标轴、残差数组、标题按位置配对；循环变量 ax 每次指向一个子图。<code>axhline(0)</code> 画残差零线，虚线用于参考。</li><li>残差和近似零不能排除 U 形；两幅图分别展示遗漏曲线与正确表达曲线后的残差。保存和显示步骤与代码 3.2.2-08 相同。</li></ul></section><h2>实际运行输出</h2><pre>linear residual sum: 0.0
+</pre><img alt="实际运行图" style="max-width:100%" src="../../notebooks/ch03/图片/333-residuals.png"><p><a href="../../notebooks/ch03/chapter03-through-3.3.3.ipynb" download>下载完整学习笔记与已执行 Notebook</a> · <a href="333-01.py" download>下载本块代码</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

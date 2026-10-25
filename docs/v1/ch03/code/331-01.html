@@ -1,0 +1,18 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.3.1-01 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.3.1-01 · 用布尔比较构造类别指示列</h1><p>使用虚构教学数据。请在完整 Notebook 中按章节顺序运行；本块可能依赖前面定义的变量、导入或拟合结果。数学推导和带编号的引用见完整学习笔记。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="8">groups = np.array([&quot;community&quot;] * 3 + [&quot;mall&quot;] * 3 + [&quot;street&quot;] * 3)
+y_group = np.array([8.,10.,12.,12.,14.,16.,10.,12.,14.])
+d_mall = (groups == &quot;mall&quot;).astype(float)
+d_street = (groups == &quot;street&quot;).astype(float)
+X_group = np.column_stack((d_mall, d_street))
+print(&quot;encoded shape:&quot;, X_group.shape)
+print(X_group)
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><ul><li>列表乘 3 表示重复三次，两个列表用加号连接；groups 和 y_group 的行顺序必须一致。</li><li><code>groups == &quot;mall&quot;</code> 对每个元素比较并返回布尔数组，<code>astype(float)</code> 把 True、False 转成 1.0、0.0。</li><li>只建立商场和街边两列，社区两列都为零，是基准；模型下一块会自动拟合截距。</li></ul></section><h2>实际运行输出</h2><pre>encoded shape: (9, 2)
+[[0. 0.]
+ [0. 0.]
+ [0. 0.]
+ [1. 0.]
+ [1. 0.]
+ [1. 0.]
+ [0. 1.]
+ [0. 1.]
+ [0. 1.]]
+</pre><p><a href="../../notebooks/ch03/chapter03-through-3.3.3.ipynb" download>下载完整学习笔记与已执行 Notebook</a> · <a href="331-01.py" download>下载本块代码</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

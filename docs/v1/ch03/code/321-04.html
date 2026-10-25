@@ -1,0 +1,20 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.2.1-04 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.2.1-04 · 扰动实验与奇异值</h1><p>使用虚构教学数据。请在完整 Notebook 中按章节顺序运行；本块可能依赖前面定义的变量、导入或拟合结果。数学推导和带编号的引用见完整学习笔记。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="15">X_near = np.array([[1., 0., 0.], [1., 1., 1.],
+                   [1., 2., 2.], [1., 3., 3.01]])
+y_near = np.array([5., 6., 7., 8.])
+y_changed = y_near.copy()
+y_changed[-1] += 0.01
+b_before = np.linalg.lstsq(X_near, y_near, rcond=None)[0]
+b_after = np.linalg.lstsq(X_near, y_changed, rcond=None)[0]
+sv = np.linalg.svd(X_near, compute_uv=False)
+condition = sv[0] / sv[-1]
+print(&quot;before:&quot;, np.round(b_before, 6))
+print(&quot;after:&quot;, np.round(b_after, 6))
+print(&quot;singular values:&quot;, np.round(sv, 6))
+print(&quot;condition X:&quot;, round(condition, 3))
+print(&quot;condition X.T X:&quot;, round(condition ** 2, 3))
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><ul><li><code>copy()</code> 创建独立数组，避免改动原响应。索引 <code>[-1]</code> 取最后一个元素，<code>+= 0.01</code> 表示在原值上加 0.01。</li><li><code>lstsq(...)[0]</code> 只取返回元组中的系数。<code>svd(..., compute_uv=False)</code> 只求奇异值，不返回左右奇异向量；奇异值从大到小排列。</li><li><code>sv[0] / sv[-1]</code> 计算最大与最小奇异值之比。最后显示的平方利用满列秩矩阵的理论恒等式，没有为了求系数直接计算病态正规方程的逆。</li></ul></section><h2>实际运行输出</h2><pre>before: [ 5.  1. -0.]
+after: [ 5. -0.  1.]
+singular values: [5.545773 1.142142 0.003867]
+condition X: 1434.064
+condition X.T X: 2056540.656
+</pre><p><a href="../../notebooks/ch03/chapter03-through-3.3.3.ipynb" download>下载完整学习笔记与已执行 Notebook</a> · <a href="321-04.py" download>下载本块代码</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

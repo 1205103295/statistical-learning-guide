@@ -3,7 +3,7 @@ residual = y - y_fit
 print(&quot;fitted values:&quot;, y_fit)
 print(&quot;residuals:&quot;, residual)
 print(&quot;residual shape:&quot;, residual.shape)
-</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><ul><li><code>beta1_hat * x</code> 把斜率分别乘以三个预算，随后广播加上截距，所以 <code>y_fit</code> 是三个训练样本的拟合值，形状为 <code>(3,)</code>。</li><li><code>y - y_fit</code> 按同一位置相减，使用的约定始终是实际值减预测值。正残差表示低估，负残差表示高估。</li><li>这里的残差可以计算，因为这三个样本的真实观测销量已经知道；模型误差项涉及未知的真实回归函数，不能直接与残差画等号。</li></ul></section><h2>实际运行输出</h2><pre>fitted values: [1.83333333 3.33333333 4.83333333]
-residuals: [ 0.16666667 -0.33333333  0.16666667]
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><ul><li><code>beta1_hat * x</code> 把斜率分别乘以三个预算，随后广播加上截距，所以 <code>y_fit</code> 是三个训练样本的拟合值，形状为 <code>(3,)</code>。</li><li><code>y - y_fit</code> 按同一位置相减，使用的约定始终是实际值减预测值。正残差表示低估，负残差表示高估。</li><li>这里的残差可以计算，因为这三个样本的真实观测销量已经知道；模型误差项涉及未知的真实回归函数，不能直接与残差画等号。</li></ul></section><h2>实际运行输出</h2><pre>fitted values: [1.833333 3.333333 4.833333]
+residuals: [ 0.166667 -0.333333  0.166667]
 residual shape: (3,)
 </pre><p><a href="../../notebooks/ch03/3.1-simple-linear-regression.ipynb" download>下载已执行 Notebook</a> · <a href="311-05.py" download>下载本块代码</a> · <a href="../../ch03.html">第三章目录</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

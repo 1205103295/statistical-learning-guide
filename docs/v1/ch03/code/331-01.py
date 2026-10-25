@@ -1,0 +1,7 @@
+groups = np.array(["community"] * 3 + ["mall"] * 3 + ["street"] * 3)
+y_group = np.array([8.,10.,12.,12.,14.,16.,10.,12.,14.])
+d_mall = (groups == "mall").astype(float)
+d_street = (groups == "street").astype(float)
+X_group = np.column_stack((d_mall, d_street))
+print("encoded shape:", X_group.shape)
+print(X_group)

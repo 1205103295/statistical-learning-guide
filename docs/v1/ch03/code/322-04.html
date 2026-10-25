@@ -1,0 +1,9 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.2.2-04 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.2.2-04 · 准备完整与简化模型的同一批广告样本</h1><p>使用虚构教学数据。请在完整 Notebook 中按章节顺序运行；本块可能依赖前面定义的变量、导入或拟合结果。数学推导和带编号的引用见完整学习笔记。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="8">X_ads = np.array([[10.,4.,2.], [20.,7.,4.], [30.,5.,8.],
+                  [40.,12.,3.], [50.,9.,7.], [60.,15.,5.],
+                  [70.,11.,9.], [80.,18.,6.], [90.,14.,10.],
+                  [100.,20.,8.]])
+y_ads = np.array([7.,9.,9.,13.,12.,16.,14.,19.,17.,21.])
+X_reduced = X_ads[:, [0]]
+print(&quot;full, reduced, y:&quot;, X_ads.shape, X_reduced.shape, y_ads.shape)
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><ul><li>每行一个虚构市场，三列依次为电视、广播、报纸预算；y 按相同行顺序保存销量。</li><li><code>[:, [0]]</code> 选择全部行和第一列，列索引使用列表以保留二维形状 (10, 1)。若用 <code>[:, 0]</code> 会变成一维数组。</li><li>两模型必须使用同一批响应和观测。这里没有缺失值，因而不用清洗；真实数据应先在两模型需要的变量上统一选择样本。</li></ul></section><h2>实际运行输出</h2><pre>full, reduced, y: (10, 3) (10, 1) (10,)
+</pre><p><a href="../../notebooks/ch03/chapter03-through-3.3.3.ipynb" download>下载完整学习笔记与已执行 Notebook</a> · <a href="322-04.py" download>下载本块代码</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

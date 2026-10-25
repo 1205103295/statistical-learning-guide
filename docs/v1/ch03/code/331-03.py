@@ -1,0 +1,6 @@
+X_group_new = np.column_stack((d_community, d_street))
+group_model_new = LinearRegression().fit(X_group_new, y_group)
+assert np.allclose(group_model.predict(X_group), group_model_new.predict(X_group_new))
+print("new baseline: mall")
+print("intercept:", round(group_model_new.intercept_, 6))
+print("community, street coefficients:", np.round(group_model_new.coef_, 6))

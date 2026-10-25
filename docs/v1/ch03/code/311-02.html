@@ -8,6 +8,6 @@ print(&quot;y_centered:&quot;, y_centered)
 print(&quot;centered sums:&quot;, x_centered.sum(), y_centered.sum())
 </textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><ul><li><code>.mean()</code> 对数组元素求算术平均，得到一个数。<code>x_mean</code> 是 2，<code>y_mean</code> 是 10/3 的浮点近似。</li><li>数组减去一个数时，NumPy 将这个数作用到每个元素，这叫广播。中心化后仍是形状 <code>(3,)</code> 的数组，记录每个观测值偏离均值多少。</li><li><code>.sum()</code> 求元素总和。理论上中心化后的和为零；浮点运算可能显示约 10 的负 16 次方量级的小数，它是数值舍入误差，不是公式失效。</li></ul></section><h2>实际运行输出</h2><pre>means: 2.0 3.3333333333333335
 x_centered: [-1.  0.  1.]
-y_centered: [-1.33333333 -0.33333333  1.66666667]
+y_centered: [-1.333333 -0.333333  1.666667]
 centered sums: 0.0 -4.440892098500626e-16
 </pre><p><a href="../../notebooks/ch03/3.1-simple-linear-regression.ipynb" download>下载已执行 Notebook</a> · <a href="311-02.py" download>下载本块代码</a> · <a href="../../ch03.html">第三章目录</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

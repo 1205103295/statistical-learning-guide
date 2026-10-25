@@ -1,0 +1,18 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.2.2-07 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.2.2-07 · 从已拟合模型计算两种预测区间</h1><p>使用虚构教学数据。请在完整 Notebook 中按章节顺序运行；本块可能依赖前面定义的变量、导入或拟合结果。数学推导和带编号的引用见完整学习笔记。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="15">X_ads_design = np.column_stack((np.ones(n_ads), X_ads))
+C_ads = np.linalg.solve(X_ads_design.T @ X_ads_design, np.eye(4))
+z0 = np.array([1., 50., 9., 7.])
+mu_hat = full_model.predict(z0[1:].reshape(1, -1))[0]
+h0 = z0 @ C_ads @ z0
+s_ads = np.sqrt(rss_full / nu_ads)
+crit_ads = t.ppf(0.975, df=nu_ads)
+se_mean = s_ads * np.sqrt(h0)
+se_prediction = s_ads * np.sqrt(1 + h0)
+ci_mean = mu_hat + np.array([-1., 1.]) * crit_ads * se_mean
+pi_individual = mu_hat + np.array([-1., 1.]) * crit_ads * se_prediction
+print(&quot;prediction, h0:&quot;, np.round([mu_hat, h0], 6))
+print(&quot;mean interval:&quot;, np.round(ci_mean, 6))
+print(&quot;individual interval:&quot;, np.round(pi_individual, 6))
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><ul><li>为公式计算单独添加截距列，但调用 sklearn 的 predict 时仍只传原始三列。<code>z0[1:]</code> 去掉第一个截距元素，<code>reshape(1, -1)</code> 变成一行并自动确定列数。</li><li>predict 返回长度为 1 的数组，末尾 <code>[0]</code> 取标量。<code>z0 @ C_ads @ z0</code> 是新位置的二次型 h0。</li><li>均值标准误使用 sqrt(h0)，个体预测使用 sqrt(1+h0)。数组 <code>[-1., 1.]</code> 同时构造下界与上界；不把两种标准误相加。</li><li>这是假设同方差独立正态线性模型正确时的区间计算，不是用数字验证了这些假设。</li></ul></section><h2>实际运行输出</h2><pre>prediction, h0: [12.001103  0.160556]
+mean interval: [11.786563 12.215643]
+individual interval: [11.4243   12.577906]
+</pre><p><a href="../../notebooks/ch03/chapter03-through-3.3.3.ipynb" download>下载完整学习笔记与已执行 Notebook</a> · <a href="322-07.py" download>下载本块代码</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

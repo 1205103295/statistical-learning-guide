@@ -1,0 +1,15 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.1.3-01 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.1.3-01 · 准备三个市场并计算最小二乘系数</h1><p>使用虚构教学数据。请在完整 Notebook 中按章节顺序运行；本块可能依赖前面定义的变量、导入或拟合结果。数学推导和带编号的引用见完整学习笔记。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="13">import numpy as np
+x = np.array([1.0, 2.0, 3.0])
+y = np.array([2.0, 3.0, 5.0])
+dx = x - x.mean()
+dy = y - y.mean()
+sxx = np.sum(dx ** 2)
+sxy = np.sum(dx * dy)
+slope = sxy / sxx
+intercept = y.mean() - slope * x.mean()
+y_pred = intercept + slope * x
+print(&quot;intercept, slope:&quot;, np.round([intercept, slope], 6))
+print(&quot;predictions:&quot;, np.round(y_pred, 6))
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><ul><li><code>import numpy as np</code> 导入数组工具并取短名；<code>np.array</code> 把列表转为浮点数组。这里每个数组形状为 (3,)，三个位置对应三个市场。</li><li><code>mean()</code> 计算样本均值；数组减去标量会对每个元素执行相减，因此 <code>dx</code> 和 <code>dy</code> 是中心化后的观测。</li><li><code>** 2</code> 是逐元素平方；<code>dx * dy</code> 是对应位置相乘，<code>np.sum</code> 再求和。斜率和截距逐项实现前文最小二乘公式。</li><li><code>y_pred</code> 用同一条直线计算三个拟合值；<code>np.round(..., 6)</code> 只生成保留六位小数的显示值，没有改写原来的精度。</li></ul></section><h2>实际运行输出</h2><pre>intercept, slope: [0.333333 1.5     ]
+predictions: [1.833333 3.333333 4.833333]
+</pre><p><a href="../../notebooks/ch03/chapter03-through-3.3.3.ipynb" download>下载完整学习笔记与已执行 Notebook</a> · <a href="313-01.py" download>下载本块代码</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

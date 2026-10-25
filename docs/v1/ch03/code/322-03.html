@@ -1,0 +1,15 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.2.2-03 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.2.2-03 · 从虚构汇总量计算整体 F</h1><p>使用虚构教学数据。请在完整 Notebook 中按章节顺序运行；本块可能依赖前面定义的变量、导入或拟合结果。数学推导和带编号的引用见完整学习笔记。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="13">n_demo, p_demo = 20, 3
+rss_null, rss_full_demo = 100.0, 40.0
+df_num = p_demo
+df_den = n_demo - p_demo - 1
+f_demo = ((rss_null - rss_full_demo) / df_num) / (rss_full_demo / df_den)
+p_demo_value = f.sf(f_demo, dfn=df_num, dfd=df_den)
+f_critical = f.ppf(0.95, dfn=df_num, dfd=df_den)
+r2_demo = 1 - rss_full_demo / rss_null
+f_from_r2 = (r2_demo / p_demo) / ((1 - r2_demo) / df_den)
+assert np.isclose(f_demo, f_from_r2)
+print(&quot;F, p, critical:&quot;, np.round([f_demo, p_demo_value, f_critical], 6))
+print(&quot;R2, F from R2:&quot;, np.round([r2_demo, f_from_r2], 6))
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><ul><li>此块输入虚构的拟合汇总量，未训练新的模型。<code>p_demo</code> 是预测变量个数，<code>p_demo_value</code> 才是 p 值。</li><li>分子自由度为 p，分母为 n-p-1。先按自由度分别求平均平方和，再求比值，不能重复除以 p。</li><li><code>f.sf</code> 给右尾概率，不乘 2；<code>f.ppf(0.95, ...)</code> 是 5% 右尾检验临界值。<code>dfn</code>、<code>dfd</code> 分别对应分子、分母。</li><li>最后从 R2 重新计算 F，用断言核对。这里的等价变形要求同一数据、含截距、TSS 正且完整模型 RSS 正。</li></ul></section><h2>实际运行输出</h2><pre>F, p, critical: [8.       0.001756 3.238872]
+R2, F from R2: [0.6 8. ]
+</pre><p><a href="../../notebooks/ch03/chapter03-through-3.3.3.ipynb" download>下载完整学习笔记与已执行 Notebook</a> · <a href="322-03.py" download>下载本块代码</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

@@ -1,0 +1,30 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.2.2-08 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.2.2-08 · 绘制均值区间与预测区间</h1><p>使用虚构教学数据。请在完整 Notebook 中按章节顺序运行；本块可能依赖前面定义的变量、导入或拟合结果。数学推导和带编号的引用见完整学习笔记。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="30">from pathlib import Path
+import matplotlib.pyplot as plt
+from IPython.display import display
+image_dir = Path(&quot;图片&quot;)
+image_dir.mkdir(exist_ok=True)
+rng = np.random.default_rng(42)
+x_plot = np.linspace(0., 10., 25)
+y_plot = 3 + 0.8 * x_plot + rng.normal(0, 1.5, size=25)
+Xp = np.column_stack((np.ones(25), x_plot))
+bp = np.linalg.lstsq(Xp, y_plot, rcond=None)[0]
+sp = np.sqrt(np.sum((y_plot - Xp @ bp) ** 2) / 23)
+grid = np.linspace(-2., 12., 100)
+Zp = np.column_stack((np.ones(100), grid))
+Cp = np.linalg.solve(Xp.T @ Xp, np.eye(2))
+hp = np.sum((Zp @ Cp) * Zp, axis=1)
+center = Zp @ bp
+cp = t.ppf(0.975, df=23)
+fig, ax = plt.subplots(figsize=(7, 4))
+ax.fill_between(grid, center-cp*sp*np.sqrt(1+hp), center+cp*sp*np.sqrt(1+hp), color=&quot;#DFE8F4&quot;, label=&quot;Prediction interval&quot;)
+ax.fill_between(grid, center-cp*sp*np.sqrt(hp), center+cp*sp*np.sqrt(hp), color=&quot;#A9C9BE&quot;, label=&quot;Mean confidence interval&quot;)
+ax.plot(grid, center, color=&quot;#314887&quot;, label=&quot;Fitted mean&quot;)
+ax.scatter(x_plot, y_plot, s=18, color=&quot;#314887&quot;)
+ax.set(xlabel=&quot;Advertising budget&quot;, ylabel=&quot;Sales&quot;)
+ax.legend(fontsize=8)
+fig.tight_layout()
+fig.savefig(image_dir / &quot;322-intervals.pdf&quot;)
+fig.savefig(image_dir / &quot;322-intervals.png&quot;, dpi=180)
+display(fig)
+plt.close(fig)
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><ul><li><code>Path</code> 表示目录，<code>mkdir(exist_ok=True)</code> 是路径对象的方法，目录存在时不报错。图片相对于 Notebook 的运行目录保存。</li><li><code>default_rng(42)</code> 创建固定种子的随机数生成器；<code>normal(0, 1.5, size=25)</code> 生成 25 个均值 0、标准差 1.5 的噪声；这些是模拟数据。<code>linspace</code> 在端点间均匀取点。</li><li>训练矩阵 Xp 有 25 行、2 列，残差自由度为 23；网格矩阵 Zp 有 100 行。<code>(Zp @ Cp) * Zp</code> 是对应元素相乘，<code>sum(axis=1)</code> 沿每行求和，等于每个新位置各自的二次型。</li><li><code>subplots</code> 返回画布 fig 和坐标轴 ax；<code>fill_between</code> 在上下界之间填色。先画更宽的预测区间，再画均值区间。颜色是可替换的十六进制样式值，不需背诵。</li><li><code>plot</code> 画均值曲线，<code>scatter</code> 画观测点；<code>set</code> 设置轴名，<code>legend</code> 显示图例，<code>tight_layout</code> 调整边距。</li><li>路径中的 <code>/</code> 用于拼接文件名；<code>savefig</code> 保存 PDF 矢量图与 PNG 预览，<code>dpi</code> 控制 PNG 分辨率。<code>display(fig)</code> 在 Notebook 输出图像，随后 <code>close</code> 释放画布，避免重复显示。</li></ul></section><p>本块没有文字打印输出；生成图如下。</p><img alt="实际运行图" style="max-width:100%" src="../../notebooks/ch03/图片/322-intervals.png"><p><a href="../../notebooks/ch03/chapter03-through-3.3.3.ipynb" download>下载完整学习笔记与已执行 Notebook</a> · <a href="322-08.py" download>下载本块代码</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

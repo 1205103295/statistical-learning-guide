@@ -1,0 +1,21 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.3.3-02 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.3.3-02 · 模拟相关误差与异方差的图形线索</h1><p>使用虚构教学数据。请在完整 Notebook 中按章节顺序运行；本块可能依赖前面定义的变量、导入或拟合结果。数学推导和带编号的引用见完整学习笔记。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="20">rng_noise = np.random.default_rng(17)
+innovations = rng_noise.normal(size=100)
+correlated = np.zeros(100)
+correlated[0] = innovations[0]
+for i in range(1, 100):
+    correlated[i] = 0.8 * correlated[i-1] + 0.6 * innovations[i]
+x_noise = np.linspace(0., 10., 100)
+hetero = (0.2 + 0.3 * x_noise) * rng_noise.normal(size=100)
+fig, axes = plt.subplots(1, 2, figsize=(8, 3.2))
+axes[0].plot(correlated, color=&quot;#314887&quot;)
+axes[0].set(xlabel=&quot;Time&quot;, ylabel=&quot;Simulated error&quot;, title=&quot;Correlated errors&quot;)
+axes[1].scatter(x_noise, hetero, s=13, color=&quot;#24735A&quot;, alpha=0.7)
+axes[1].set(xlabel=&quot;Input&quot;, ylabel=&quot;Simulated error&quot;, title=&quot;Changing error scale&quot;)
+fig.tight_layout()
+fig.savefig(image_dir / &quot;333-noise.pdf&quot;)
+fig.savefig(image_dir / &quot;333-noise.png&quot;, dpi=180)
+print(&quot;simulated observations:&quot;, len(correlated), len(hetero))
+display(fig)
+plt.close(fig)
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><ul><li><code>zeros(100)</code> 创建待填的数组，先给第一个值，再在 <code>range(1, 100)</code> 中依次计算索引 1 到 99。每个新误差包含前一个的 0.8 倍，故产生时间联系。</li><li>第二种噪声将独立标准正态数乘以随输入增大的尺度；均值仍为零，但条件方差变化。</li><li>这两幅图画的是我们构造的真实噪声，不是对某个模型拟合后的残差；不能把模拟机制当作从真实图形完成了统计检验。<code>alpha=0.7</code> 仅控制散点透明度。</li></ul></section><h2>实际运行输出</h2><pre>simulated observations: 100 100
+</pre><img alt="实际运行图" style="max-width:100%" src="../../notebooks/ch03/图片/333-noise.png"><p><a href="../../notebooks/ch03/chapter03-through-3.3.3.ipynb" download>下载完整学习笔记与已执行 Notebook</a> · <a href="333-02.py" download>下载本块代码</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

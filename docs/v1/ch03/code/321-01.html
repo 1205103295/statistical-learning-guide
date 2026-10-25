@@ -1,0 +1,13 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.2.1-01 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.2.1-01 · 构建设计矩阵并检查形状</h1><p>使用虚构教学数据。请在完整 Notebook 中按章节顺序运行；本块可能依赖前面定义的变量、导入或拟合结果。数学推导和带编号的引用见完整学习笔记。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="8">features = np.array([[10., 5.], [20., 10.],
+                     [30., 5.], [40., 15.]])
+y_multi = np.array([6., 8., 7., 9.])
+n = len(y_multi)
+X = np.column_stack((np.ones(n), features))
+print(&quot;features, X, y:&quot;, features.shape, X.shape, y_multi.shape)
+print(X)
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><ul><li><code>features</code> 每行一个市场，两列依次为电视、网络广告。<code>len(y_multi)</code> 返回样本数 4。</li><li><code>np.ones(n)</code> 生成长度为 n 的全 1 数组，表示截距；<code>np.column_stack</code> 把这些数组按列拼起来，得到形状 (4, 3) 的设计矩阵。</li><li><code>shape</code> 是数组各轴长度；数学参数为三维，NumPy 中可以用形状 (3,) 的数组保存。</li></ul></section><h2>实际运行输出</h2><pre>features, X, y: (4, 2) (4, 3) (4,)
+[[ 1. 10.  5.]
+ [ 1. 20. 10.]
+ [ 1. 30.  5.]
+ [ 1. 40. 15.]]
+</pre><p><a href="../../notebooks/ch03/chapter03-through-3.3.3.ipynb" download>下载完整学习笔记与已执行 Notebook</a> · <a href="321-01.py" download>下载本块代码</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

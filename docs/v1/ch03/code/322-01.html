@@ -1,0 +1,25 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.2.2-01 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.2.2-01 · 由设计矩阵计算标准误与 t 检验</h1><p>使用虚构教学数据。请在完整 Notebook 中按章节顺序运行；本块可能依赖前面定义的变量、导入或拟合结果。数学推导和带编号的引用见完整学习笔记。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="17">from scipy.stats import t, f
+n, q = X.shape
+df_resid = n - q
+C = np.linalg.solve(X.T @ X, np.eye(q))
+s2_multi = rss_multi / df_resid
+se_multi = np.sqrt(s2_multi * np.diag(C))
+t_values = coef_ls / se_multi
+p_values = 2 * t.sf(np.abs(t_values), df=df_resid)
+critical = t.ppf(0.975, df=df_resid)
+ci_multi = np.column_stack((coef_ls - critical * se_multi,
+                            coef_ls + critical * se_multi))
+print(&quot;df, s2:&quot;, df_resid, round(s2_multi, 6))
+print(&quot;standard errors:&quot;, np.round(se_multi, 6))
+print(&quot;t values:&quot;, np.round(t_values, 6))
+print(&quot;p values:&quot;, np.round(p_values, 6))
+print(&quot;95% intervals:\n&quot;, np.round(ci_multi, 6))
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><ul><li>沿用代码 3.2.1-01 和 02 的四市场满秩数据；<code>n, q = X.shape</code> 中 q 包括截距，所以自由度是 n-q，仅为 1。这个小样本只演示计算。</li><li><code>np.eye(q)</code> 创建单位矩阵；<code>solve(G, I)</code> 解矩阵方程得到 G 的逆作用。这里直接用正规矩阵只为对应协方差公式，限于本例条件可接受的教学矩阵；秩亏时不能这样求标准误。</li><li><code>np.diag(C)</code> 取对角线，乘估计噪声方差再开平方得到每个系数标准误。数组逐元素相除得到各自 t 值。</li><li><code>np.abs</code> 取绝对值；<code>t.sf</code> 是右尾概率，双侧乘 2。<code>t.ppf(0.975, ...)</code> 返回双侧 95% 区间的正临界值。<code>column_stack</code> 将下界、上界组成每行一个系数的二维表。</li></ul></section><h2>实际运行输出</h2><pre>df, s2: 1 0.3
+standard errors: [0.707107 0.033166 0.089443]
+t values: [7.071068 0.904534 2.236068]
+p values: [0.089439 0.531884 0.26772 ]
+95% intervals:
+ [[-3.984644 13.984644]
+ [-0.391417  0.451417]
+ [-0.936478  1.336478]]
+</pre><p><a href="../../notebooks/ch03/chapter03-through-3.3.3.ipynb" download>下载完整学习笔记与已执行 Notebook</a> · <a href="322-01.py" download>下载本块代码</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

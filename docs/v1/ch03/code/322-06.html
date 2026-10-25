@@ -1,0 +1,8 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.2.2-06 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.2.2-06 · 用调整后的决定系数比较两个模型</h1><p>使用虚构教学数据。请在完整 Notebook 中按章节顺序运行；本块可能依赖前面定义的变量、导入或拟合结果。数学推导和带编号的引用见完整学习笔记。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="6">n_compare, tss_compare = 20, 100.0
+for label, p_count, rss_value in [(&quot;A&quot;, 1, 50.0), (&quot;B&quot;, 3, 45.0)]:
+    r2_value = 1 - rss_value / tss_compare
+    adjusted = 1 - (rss_value / (n_compare - p_count - 1)) / (tss_compare / (n_compare - 1))
+    print(label, &quot;R2, adjusted:&quot;, np.round([r2_value, adjusted], 6))
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><ul><li>列表中每个元组依次保存模型名、预测变量数、RSS。<code>for label, p_count, rss_value in ...</code> 每轮把一个元组解包为三个变量。</li><li>缩进的三行在每轮循环执行。普通 R2 使用总平方和比例；调整指标把 RSS 和 TSS 分别除以各自自由度。</li><li>这段比较虚构汇总量，没有利用验证数据，也不能把指标较大直接解释为泛化必然更好。</li></ul></section><h2>实际运行输出</h2><pre>A R2, adjusted: [0.5      0.472222]
+B R2, adjusted: [0.55     0.465625]
+</pre><p><a href="../../notebooks/ch03/chapter03-through-3.3.3.ipynb" download>下载完整学习笔记与已执行 Notebook</a> · <a href="322-06.py" download>下载本块代码</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

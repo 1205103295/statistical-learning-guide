@@ -1,0 +1,14 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.3.3-04 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.3.3-04 · 辅助回归计算 VIF</h1><p>使用虚构教学数据。请在完整 Notebook 中按章节顺序运行；本块可能依赖前面定义的变量、导入或拟合结果。数学推导和带编号的引用见完整学习笔记。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="11">feature_names = [&quot;TV&quot;, &quot;radio&quot;, &quot;newspaper&quot;]
+vif_values = []
+for j, name in enumerate(feature_names):
+    target = X_ads[:, j]
+    other_features = np.delete(X_ads, j, axis=1)
+    auxiliary = LinearRegression().fit(other_features, target)
+    r2_aux = auxiliary.score(other_features, target)
+    vif = 1 / (1 - r2_aux)
+    vif_values.append(vif)
+    print(name, &quot;auxiliary R2, VIF:&quot;, np.round([r2_aux, vif], 6))
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><ul><li><code>enumerate</code> 每次给出索引 j 与对应名称。<code>target</code> 临时用某个输入列作为辅助回归响应，不是业务销量。</li><li><code>np.delete(..., axis=1)</code> 返回删除第 j 列后的新数组，不改写 X_ads；其余两列共同解释当前变量。</li><li><code>score</code> 在 LinearRegression 中返回决定系数；辅助模型默认含截距。VIF 按 1/(1-R2) 计算，<code>append</code> 把结果放到列表末尾。</li><li>若完全共线使辅助 R2 等于 1，该比值不再有限，应先处理秩问题。本例已检查设计列满秩；经验阈值不能代替业务判断。</li></ul></section><h2>实际运行输出</h2><pre>TV auxiliary R2, VIF: [ 0.977578 44.5986  ]
+radio auxiliary R2, VIF: [ 0.960773 25.49247 ]
+newspaper auxiliary R2, VIF: [ 0.901799 10.183168]
+</pre><p><a href="../../notebooks/ch03/chapter03-through-3.3.3.ipynb" download>下载完整学习笔记与已执行 Notebook</a> · <a href="333-04.py" download>下载本块代码</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

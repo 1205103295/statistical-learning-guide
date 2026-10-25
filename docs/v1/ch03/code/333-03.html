@@ -1,0 +1,16 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.3.3-03 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.3.3-03 · 计算杠杆并检查删除观测后的变化</h1><p>使用虚构教学数据。请在完整 Notebook 中按章节顺序运行；本块可能依赖前面定义的变量、导入或拟合结果。数学推导和带编号的引用见完整学习笔记。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="12">x_influence = np.array([1., 2., 3., 4., 5., 20.])
+y_influence = np.array([5., 8., 11., 14., 17., 40.])
+Xi = np.column_stack((np.ones(6), x_influence))
+bi = np.linalg.lstsq(Xi, y_influence, rcond=None)[0]
+Hi = Xi @ np.linalg.pinv(Xi)
+leverage = np.diag(Hi)
+bi_without = np.linalg.lstsq(Xi[:-1], y_influence[:-1], rcond=None)[0]
+print(&quot;leverage:&quot;, np.round(leverage, 6))
+print(&quot;full coefficients:&quot;, np.round(bi, 6))
+print(&quot;without last point:&quot;, np.round(bi_without, 6))
+print(&quot;last residual:&quot;, round((y_influence - Xi @ bi)[-1], 6))
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><ul><li>前五点沿原关系分布，最后一点输入很远且偏离原趋势；此实验用于展示拉动拟合后的残差可能不大。</li><li><code>Xi @ pinv(Xi)</code> 得到列空间正交投影，<code>diag</code> 取每个训练点的杠杆值。<code>[:-1]</code> 选择除最后一行以外的全部数据。</li><li>删除最后一点后重新求最小二乘，再比较系数，而非只把它的残差去掉。最后一行通过 <code>[-1]</code> 读取该点在完整模型中的残差。</li></ul></section><h2>实际运行输出</h2><pre>leverage: [0.259801 0.225249 0.198671 0.180066 0.169435 0.966777]
+full coefficients: [5.581395 1.757475]
+without last point: [2. 3.]
+last residual: -0.730897
+</pre><p><a href="../../notebooks/ch03/chapter03-through-3.3.3.ipynb" download>下载完整学习笔记与已执行 Notebook</a> · <a href="333-03.py" download>下载本块代码</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

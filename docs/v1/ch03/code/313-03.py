@@ -1,0 +1,11 @@
+scale = 1000.0
+rss_scaled = np.sum((scale * y - scale * y_pred) ** 2)
+tss_scaled = np.sum((scale * y - (scale * y).mean()) ** 2)
+assert np.isclose(rss_scaled / rss, scale ** 2)
+assert np.isclose(1 - rss_scaled / tss_scaled, r2)
+y_test = np.array([2.0, 4.0, 6.0])
+pred_test = np.array([1.0, 2.0, 3.0])
+test_rss = np.sum((y_test - pred_test) ** 2)
+test_tss = np.sum((y_test - y_test.mean()) ** 2)
+print("RSS scale factor:", round(rss_scaled / rss))
+print("test R2:", 1 - test_rss / test_tss)

@@ -5,7 +5,7 @@ print(&quot;squared residuals:&quot;, squared_residual)
 print(&quot;RSS:&quot;, rss)
 print(&quot;training MSE:&quot;, train_mse)
 print(&quot;square of residual sum:&quot;, residual.sum() ** 2)
-</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><ul><li><code>squared_residual</code> 保存逐个残差的平方；<code>np.sum</code> 给出 RSS，<code>np.mean</code> 给出训练 MSE，后者等于前者除以三个样本。</li><li>最后一行故意先求残差和再平方，用来对比两种运算。它不是 RSS：正负残差会相互抵消。</li><li>本例 RSS 为 1/6，训练 MSE 为 1/18。最后一行接近零，只能说明残差和接近零，不能说明每个预测都准确。</li></ul></section><h2>实际运行输出</h2><pre>squared residuals: [0.02777778 0.11111111 0.02777778]
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><ul><li><code>squared_residual</code> 保存逐个残差的平方；<code>np.sum</code> 给出 RSS，<code>np.mean</code> 给出训练 MSE，后者等于前者除以三个样本。</li><li>最后一行故意先求残差和再平方，用来对比两种运算。它不是 RSS：正负残差会相互抵消。</li><li>本例 RSS 为 1/6，训练 MSE 为 1/18。最后一行接近零，只能说明残差和接近零，不能说明每个预测都准确。</li></ul></section><h2>实际运行输出</h2><pre>squared residuals: [0.027778 0.111111 0.027778]
 RSS: 0.16666666666666652
 training MSE: 0.055555555555555504
 square of residual sum: 7.888609052210118e-31

@@ -1,0 +1,12 @@
+x1 = np.array([10., 20., 30., 40.])
+X_col = np.column_stack((np.ones(4), x1, 2 * x1))
+y_col = np.array([7., 10., 12., 15.])
+b_col, sums_col, rank_col, _ = np.linalg.lstsq(X_col, y_col, rcond=None)
+b_mp = np.linalg.pinv(X_col) @ y_col
+b_alt = b_col + 0.01 * np.array([0., -2., 1.])
+assert np.allclose(b_col, b_mp)
+assert np.allclose(X_col @ b_col, X_col @ b_alt)
+print("rank, residual_sums:", rank_col, sums_col)
+print("minimum-norm coefficients:", np.round(b_col, 6))
+print("alternative coefficients:", np.round(b_alt, 6))
+print("RSS:", round(np.sum((y_col - X_col @ b_col) ** 2), 6))

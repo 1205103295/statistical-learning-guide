@@ -1,0 +1,13 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.3.1-02 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.3.1-02 · 拟合组均值并检查完整独热的秩</h1><p>使用虚构教学数据。请在完整 Notebook 中按章节顺序运行；本块可能依赖前面定义的变量、导入或拟合结果。数学推导和带编号的引用见完整学习笔记。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="10">group_model = LinearRegression().fit(X_group, y_group)
+group_predictions = group_model.predict(np.array([[0.,0.], [1.,0.], [0.,1.]]))
+d_community = (groups == &quot;community&quot;).astype(float)
+all_dummies = np.column_stack((d_community, d_mall, d_street))
+X_redundant = np.column_stack((np.ones(len(groups)), all_dummies))
+assert np.allclose(all_dummies.sum(axis=1), 1.0)
+print(&quot;intercept, coefficients:&quot;, group_model.intercept_, group_model.coef_)
+print(&quot;group predictions:&quot;, group_predictions)
+print(&quot;columns, rank with all dummies:&quot;, X_redundant.shape[1], np.linalg.matrix_rank(X_redundant))
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><ul><li>三个待预测行依次对应社区、商场、街边，顺序由我们明确指定。</li><li>完整独热编码每行和为 1，所以与截距列重复；<code>matrix_rank</code> 计算数值秩。4 列只有秩 3，说明全类别列加截距不能唯一识别系数。</li><li>这个断言检查编码规则；它不表示真实数据没有其他质量问题。</li></ul></section><h2>实际运行输出</h2><pre>intercept, coefficients: 10.000000000000002 [4. 2.]
+group predictions: [10. 14. 12.]
+columns, rank with all dummies: 4 3
+</pre><p><a href="../../notebooks/ch03/chapter03-through-3.3.3.ipynb" download>下载完整学习笔记与已执行 Notebook</a> · <a href="331-02.py" download>下载本块代码</a></p></main><script src="../../assets/copy.js" defer></script></body></html>
