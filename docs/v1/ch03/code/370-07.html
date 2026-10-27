@@ -1,0 +1,34 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.7-07 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.7-07 · 第 10 题：类别模型与简化模型</h1><p>按完整 Notebook 的顺序运行；本块可能依赖前面的变量。3.6—3.7包含教材真实数据与模拟实验；全样本统计分析不等于独立测试评估。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="15">car10 = load_data(&#x27;Carseats&#x27;)
+d10 = MS([&#x27;Price&#x27;, &#x27;Urban&#x27;, &#x27;US&#x27;])
+x10 = d10.fit_transform(car10)
+r10 = sm.OLS(car10[&#x27;Sales&#x27;], x10).fit()
+report(r10)
+d10_small = MS([&#x27;Price&#x27;, &#x27;US&#x27;])
+x10_small = d10_small.fit_transform(car10)
+r10_small = sm.OLS(car10[&#x27;Sales&#x27;], x10_small).fit()
+report(r10_small)
+print(&#x27;95% CI:&#x27;); print(r10_small.conf_int().round(4))
+inf10 = r10_small.get_influence()
+print(&#x27;max absolute studentized residual:&#x27;, np.max(np.abs(inf10.resid_studentized_external)))
+print(&#x27;max leverage:&#x27;, np.max(inf10.hat_matrix_diag))
+print(&#x27;mean leverage:&#x27;, np.mean(inf10.hat_matrix_diag))
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><p>MS将Urban、US的二分类变量编码为Yes指示列，参考组为No。先报告完整模型，再按题目拟合去掉Urban的模型。conf_int按系数输出区间。最后提取异常与杠杆指标作筛查；超过经验关注线只提示核查，不证明是错误数据。</p></section><h2>实际运行输出</h2><pre>                 coef         SE          t           p
+intercept     13.0435   0.651012    20.0357  3.6266e-62
+Price      -0.0544588 0.00524186   -10.3892 1.60992e-22
+Urban[Yes] -0.0219162    0.27165 -0.0806778    0.935739
+US[Yes]       1.20057   0.259042    4.63467 4.86024e-06
+R2=0.239275, RSS=2420.834671, RSE=2.472492
+                coef         SE        t           p
+intercept    13.0308   0.630976  20.6518 7.00138e-65
+Price     -0.0544776 0.00523013 -10.4161 1.27216e-22
+US[Yes]      1.19964   0.258461  4.64148 4.70719e-06
+R2=0.239263, RSS=2420.874462, RSE=2.469397
+95% CI:
+                 0        1
+intercept  11.7903  14.2713
+Price      -0.0648  -0.0442
+US[Yes]     0.6915   1.7078
+max absolute studentized residual: 2.891521318630421
+max leverage: 0.0433376570371785
+mean leverage: 0.007499999999999998
+</pre><p><a href="../../notebooks/ch03/chapter03-complete.ipynb" download>下载第三章完整版 Notebook</a> · <a href="370-07.py" download>下载本块代码</a> · <a href="../../notebooks/ch03/requirements.txt">依赖版本</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

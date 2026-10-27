@@ -1,0 +1,17 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.7-04 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.7-04 · 第 9 题：散点矩阵与相关矩阵</h1><p>按完整 Notebook 的顺序运行；本块可能依赖前面的变量。3.6—3.7包含教材真实数据与模拟实验；全样本统计分析不等于独立测试评估。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="8">numeric9 = auto.select_dtypes(include=&#x27;number&#x27;)
+pd.plotting.scatter_matrix(numeric9, figsize=(10, 10),
+                           diagonal=&#x27;hist&#x27;, alpha=.35, s=8)
+plt.tight_layout()
+plt.savefig(image_dir / &#x27;ex09-matrix.png&#x27;, dpi=180)
+plt.close(&#x27;all&#x27;)
+print(numeric9.corr().round(3).to_string())
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><p><code>select_dtypes</code>按数据类型选列，字符串name不参与数值相关；散点矩阵对角线用直方图，其他位置是两两散点。<code>corr()</code>默认计算Pearson相关系数。origin虽以数字编码，本质是类别；本题先遵循教材的数值主效应设定，业务解释时不能忽略编码含义。</p></section><h2>实际运行输出</h2><pre>                mpg  cylinders  displacement  horsepower  weight  acceleration   year  origin
+mpg           1.000     -0.778        -0.805      -0.778  -0.832         0.423  0.581   0.565
+cylinders    -0.778      1.000         0.951       0.843   0.898        -0.505 -0.346  -0.569
+displacement -0.805      0.951         1.000       0.897   0.933        -0.544 -0.370  -0.615
+horsepower   -0.778      0.843         0.897       1.000   0.865        -0.689 -0.416  -0.455
+weight       -0.832      0.898         0.933       0.865   1.000        -0.417 -0.309  -0.585
+acceleration  0.423     -0.505        -0.544      -0.689  -0.417         1.000  0.290   0.213
+year          0.581     -0.346        -0.370      -0.416  -0.309         0.290  1.000   0.182
+origin        0.565     -0.569        -0.615      -0.455  -0.585         0.213  0.182   1.000
+</pre><img style="max-width:100%" alt="第 9 题：散点矩阵与相关矩阵" src="../../notebooks/ch03/图片/ex09-matrix.png"><p><a href="../../notebooks/ch03/chapter03-complete.ipynb" download>下载第三章完整版 Notebook</a> · <a href="370-04.py" download>下载本块代码</a> · <a href="../../notebooks/ch03/requirements.txt">依赖版本</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

@@ -1,0 +1,40 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.7-14 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.7-14 · 第 15 题：简单与多元回归预测犯罪率</h1><p>按完整 Notebook 的顺序运行；本块可能依赖前面的变量。3.6—3.7包含教材真实数据与模拟实验；全样本统计分析不等于独立测试评估。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="27">b15 = load_data(&#x27;Boston&#x27;)
+y15 = b15[&#x27;crim&#x27;]
+names15 = b15.columns.drop(&#x27;crim&#x27;)
+simple15 = {}
+for name in names15:
+    simple15[name] = sm.OLS(y15, sm.add_constant(b15[[name]])).fit()
+full15 = sm.OLS(y15, sm.add_constant(b15[names15])).fit()
+compare15 = pd.DataFrame({
+    &#x27;simple_coef&#x27;: [simple15[n].params[n] for n in names15],
+    &#x27;simple_p&#x27;: [simple15[n].pvalues[n] for n in names15],
+    &#x27;multiple_coef&#x27;: full15.params[names15],
+    &#x27;multiple_p&#x27;: full15.pvalues[names15]}, index=names15)
+print(compare15.to_string(float_format=lambda v: f&#x27;{v:.5g}&#x27;))
+fig, axes = plt.subplots(1, 2, figsize=(10, 4))
+for j, name in enumerate(names15):
+    for ax in axes:
+        ax.scatter(compare15.loc[name, &#x27;simple_coef&#x27;],
+                   compare15.loc[name, &#x27;multiple_coef&#x27;],
+                   color=plt.get_cmap(&#x27;tab20&#x27;)(j), label=name)
+for ax in axes:
+    ax.set(xlabel=&#x27;Simple coefficient&#x27;, ylabel=&#x27;Multiple coefficient&#x27;)
+axes[0].set_title(&#x27;Full range&#x27;)
+axes[1].set(xlim=(-3, 2), ylim=(-1.5, 1), title=&#x27;Zoom near origin&#x27;)
+axes[1].legend(loc=&#x27;center left&#x27;, bbox_to_anchor=(1, 0.5))
+fig.tight_layout(); fig.savefig(image_dir / &#x27;ex15-coefficients.png&#x27;, dpi=180)
+plt.close(fig)
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><p>本题响应改为crim，其余变量包括medv都作为候选输入。每个变量单独拟合，保存到字典；列表推导式按相同变量顺序提取系数与p值。全模型则一次控制全部输入。enumerate同时给出序号j和变量名；get_cmap取调色板，序号确定颜色。内层循环把同一点画到两张图。左图保留完整范围，右图用xlim、ylim放大原点附近；legend根据label生成图例，bbox_to_anchor将图例移到图外，避免文字堆叠。不同变量单位不一样，不能按系数绝对值给“重要性”排名。</p></section><h2>实际运行输出</h2><pre>         simple_coef   simple_p  multiple_coef  multiple_p
+zn         -0.073935 5.5065e-06        0.04571    0.015344
+indus        0.50978 1.4503e-21       -0.05835     0.48571
+chas         -1.8928    0.20943       -0.82538     0.48584
+nox           31.249 3.7517e-23        -9.9576     0.06037
+rm           -2.6841 6.3467e-07        0.62891     0.30074
+age          0.10779 2.8549e-16    -0.00084828     0.96232
+dis          -1.5509 8.5199e-19        -1.0122  0.00037259
+rad          0.61791 2.6938e-56        0.61247  8.5881e-12
+tax         0.029742 2.3571e-47     -0.0037756     0.46576
+ptratio        1.152 2.9429e-11       -0.30407     0.10339
+lstat         0.5488 2.6543e-27         0.1388    0.067398
+medv        -0.36316  1.174e-19       -0.22006  0.00026053
+</pre><img style="max-width:100%" alt="第 15 题：简单与多元回归预测犯罪率" src="../../notebooks/ch03/图片/ex15-coefficients.png"><p><a href="../../notebooks/ch03/chapter03-complete.ipynb" download>下载第三章完整版 Notebook</a> · <a href="370-14.py" download>下载本块代码</a> · <a href="../../notebooks/ch03/requirements.txt">依赖版本</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

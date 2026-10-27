@@ -1,0 +1,43 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.7-06 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.7-06 · 第 9 题：诊断、交互与变换</h1><p>按完整 Notebook 的顺序运行；本块可能依赖前面的变量。3.6—3.7包含教材真实数据与模拟实验；全样本统计分析不等于独立测试评估。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="26">inf9 = r9.get_influence()
+diag9 = pd.DataFrame({&#x27;studentized&#x27;: inf9.resid_studentized_external,
+                     &#x27;leverage&#x27;: inf9.hat_matrix_diag}, index=auto.index)
+print(&#x27;largest absolute studentized residuals:&#x27;)
+print(diag9.loc[diag9[&#x27;studentized&#x27;].abs().nlargest(3).index].round(4))
+print(&#x27;largest leverage:&#x27;)
+print(diag9.nlargest(3, &#x27;leverage&#x27;).round(4))
+fig, ax = plt.subplots(figsize=(6, 4))
+ax.scatter(r9.fittedvalues, r9.resid, s=12, alpha=.5)
+ax.axhline(0, color=&#x27;black&#x27;, linestyle=&#x27;--&#x27;)
+ax.set(xlabel=&#x27;Fitted mpg&#x27;, ylabel=&#x27;Residual&#x27;)
+fig.tight_layout(); fig.savefig(image_dir / &#x27;ex09-residual.png&#x27;, dpi=180)
+plt.close(fig)
+for name, values in {
+    &#x27;hp_weight&#x27;: auto[&#x27;horsepower&#x27;] * auto[&#x27;weight&#x27;],
+    &#x27;weight_year&#x27;: auto[&#x27;weight&#x27;] * auto[&#x27;year&#x27;],
+    &#x27;hp_squared&#x27;: auto[&#x27;horsepower&#x27;] ** 2,
+    &#x27;hp_log&#x27;: np.log(auto[&#x27;horsepower&#x27;]),
+    &#x27;hp_sqrt&#x27;: np.sqrt(auto[&#x27;horsepower&#x27;]),
+}.items():
+    extended = X9.copy()
+    extended[name] = values
+    fitted9 = sm.OLS(auto[&#x27;mpg&#x27;], extended).fit()
+    print(name, &#x27;p=&#x27;, f&#x27;{fitted9.pvalues[name]:.6g}&#x27;,
+          &#x27;adjusted R2=&#x27;, round(fitted9.rsquared_adj, 6))
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><p><code>abs().nlargest(3)</code>找绝对学生化残差最大的3个索引，<code>.loc</code>按标签取原行。每轮copy建立独立扩展矩阵，添加一列交互或变换；不让各轮累积。这里是在保留原线性主效应的基础上添加变换，检验该附加项。对数与平方根要求输入满足定义域，此数据horsepower均正。探索多个模型得到的p值应注明探索性质，训练调整R²并非测试表现。</p></section><h2>实际运行输出</h2><pre>largest absolute studentized residuals:
+                      studentized  leverage
+name                                       
+mazda glc                  4.0295    0.0137
+vw dasher (diesel)         3.6902    0.0287
+vw rabbit c (diesel)       3.4948    0.0196
+largest leverage:
+                         studentized  leverage
+name                                          
+buick estate wagon (sw)      -1.6329    0.1899
+hi 1200d                      0.8037    0.0895
+chevy c20                     0.4940    0.0674
+hp_weight p= 4.11858e-23 adjusted R2= 0.858952
+weight_year p= 1.47316e-14 adjusted R2= 0.843854
+hp_squared p= 3.46978e-19 adjusted R2= 0.852202
+hp_log p= 1.62103e-21 adjusted R2= 0.856246
+hp_sqrt p= 1.953e-21 adjusted R2= 0.856107
+</pre><img style="max-width:100%" alt="第 9 题：诊断、交互与变换" src="../../notebooks/ch03/图片/ex09-residual.png"><p><a href="../../notebooks/ch03/chapter03-complete.ipynb" download>下载第三章完整版 Notebook</a> · <a href="370-06.py" download>下载本块代码</a> · <a href="../../notebooks/ch03/requirements.txt">依赖版本</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

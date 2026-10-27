@@ -1,0 +1,17 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.7-03 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.7-03 · 第 8 题：散点、残差与杠杆</h1><p>按完整 Notebook 的顺序运行；本块可能依赖前面的变量。3.6—3.7包含教材真实数据与模拟实验；全样本统计分析不等于独立测试评估。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="16">fig, axes = plt.subplots(1, 3, figsize=(12, 3.6))
+axes[0].scatter(auto[&#x27;horsepower&#x27;], y8, s=10, alpha=.5)
+grid8 = np.linspace(auto[&#x27;horsepower&#x27;].min(), auto[&#x27;horsepower&#x27;].max(), 100)
+axes[0].plot(grid8, r8.params[&#x27;const&#x27;] + r8.params[&#x27;horsepower&#x27;] * grid8, color=&#x27;red&#x27;)
+axes[0].set(xlabel=&#x27;horsepower&#x27;, ylabel=&#x27;mpg&#x27;)
+axes[1].scatter(r8.fittedvalues, r8.resid, s=10, alpha=.5)
+axes[1].axhline(0, color=&#x27;black&#x27;, linestyle=&#x27;--&#x27;)
+axes[1].set(xlabel=&#x27;Fitted&#x27;, ylabel=&#x27;Residual&#x27;)
+lev8 = r8.get_influence().hat_matrix_diag
+axes[2].scatter(np.arange(len(auto)), lev8, s=10)
+axes[2].set(xlabel=&#x27;Position&#x27;, ylabel=&#x27;Leverage&#x27;)
+fig.tight_layout()
+fig.savefig(image_dir / &#x27;ex08-diagnostics.png&#x27;, dpi=180)
+plt.close(fig)
+print(&#x27;max leverage position:&#x27;, np.argmax(lev8))
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><p><code>np.linspace</code> 生成等间隔横坐标，计算拟合直线高度后作图。<code>axes[0:3]</code>中的每个坐标轴承载不同诊断；<code>set</code>同时设置标签。<code>np.arange</code>生成0到n-1的位置，杠杆值按同样顺序绘制。保存后close释放图；本书插图读取保存文件。位置不是原始行索引标签。</p></section><h2>实际运行输出</h2><pre>max leverage position: 115
+</pre><img style="max-width:100%" alt="第 8 题：散点、残差与杠杆" src="../../notebooks/ch03/图片/ex08-diagnostics.png"><p><a href="../../notebooks/ch03/chapter03-complete.ipynb" download>下载第三章完整版 Notebook</a> · <a href="370-03.py" download>下载本块代码</a> · <a href="../../notebooks/ch03/requirements.txt">依赖版本</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

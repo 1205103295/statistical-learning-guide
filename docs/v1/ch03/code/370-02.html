@@ -1,0 +1,17 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.7-02 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.7-02 · 第 8 题：马力与燃油经济性的简单回归</h1><p>按完整 Notebook 的顺序运行；本块可能依赖前面的变量。3.6—3.7包含教材真实数据与模拟实验；全样本统计分析不等于独立测试评估。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="10">Auto = load_data(&#x27;Auto&#x27;)
+auto = Auto.dropna().copy()
+y8 = auto[&#x27;mpg&#x27;]
+X8 = sm.add_constant(auto[[&#x27;horsepower&#x27;]])
+r8 = sm.OLS(y8, X8).fit()
+print(&#x27;rows:&#x27;, len(auto))
+report(r8)
+new8 = pd.DataFrame({&#x27;const&#x27;: [1.], &#x27;horsepower&#x27;: [98.]})
+print(r8.get_prediction(new8).summary_frame().round(4).to_string())
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><p><code>load_data</code> 加载教材Auto完整数据。<code>dropna</code> 在同一张表中处理缺失，防止输入目标错位。双层方括号选出单列DataFrame，<code>sm.add_constant</code> 加入全1列，列名为const。预测一行数据时显式构造与训练相同的两列，避免单行输入被自动判定为常数列而漏加截距。区间表分别给出平均响应与新车观测的不确定性。</p></section><h2>实际运行输出</h2><pre>rows: 392
+                coef        SE        t            p
+const        39.9359  0.717499  55.6598 1.22036e-187
+horsepower -0.157845 0.0064455 -24.4891  7.03199e-81
+R2=0.605948, RSS=9385.915872, RSE=4.905757
+      mean  mean_se  mean_ci_lower  mean_ci_upper  obs_ci_lower  obs_ci_upper
+0  24.4671   0.2513        23.9731        24.9611       14.8094       34.1248
+</pre><p><a href="../../notebooks/ch03/chapter03-complete.ipynb" download>下载第三章完整版 Notebook</a> · <a href="370-02.py" download>下载本块代码</a> · <a href="../../notebooks/ch03/requirements.txt">依赖版本</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

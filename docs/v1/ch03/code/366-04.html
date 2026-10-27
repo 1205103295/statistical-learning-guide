@@ -1,0 +1,13 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.6.6-04 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.6.6-04 · 比较残差图</h1><p>按完整 Notebook 的顺序运行；本块可能依赖前面的变量。3.6—3.7包含教材真实数据与模拟实验；全样本统计分析不等于独立测试评估。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="12">fig, axes = plt.subplots(1, 2, figsize=(10, 4))
+for ax, result, title in zip(axes, [res_two, res_quad], [&#x27;Linear + age&#x27;, &#x27;Quadratic + age&#x27;]):
+    ax.scatter(result.fittedvalues, result.resid, s=14, alpha=0.5)
+    ax.axhline(0, color=&#x27;black&#x27;, linestyle=&#x27;--&#x27;)
+    ax.set_title(title)
+    ax.set_xlabel(&#x27;Fitted medv&#x27;)
+    ax.set_ylabel(&#x27;Residual&#x27;)
+fig.tight_layout()
+fig.savefig(image_dir / &#x27;366-residuals.png&#x27;, dpi=160)
+plt.show()
+plt.close(fig)
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><p><code>subplots(1,2)</code> 创建一行两图；axes装着两个坐标轴。<code>zip</code> 同时取坐标轴、结果对象和标题，每轮用匹配的三者作图。模型不同，但绘图逻辑相同，所以用循环。</p><p>观察加入二次项后残差弯曲是否减弱，并继续检查异方差、异常点等；不要用一个很小的p值宣布所有假设都正确。</p></section><h2>实际运行输出</h2><pre>No text output. See the figure or explanation below.
+</pre><img style="max-width:100%" alt="比较残差图" src="../../notebooks/ch03/图片/366-residuals.png"><p><a href="../../notebooks/ch03/chapter03-complete.ipynb" download>下载第三章完整版 Notebook</a> · <a href="366-04.py" download>下载本块代码</a> · <a href="../../notebooks/ch03/requirements.txt">依赖版本</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

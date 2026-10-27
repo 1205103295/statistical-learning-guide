@@ -1,0 +1,11 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.6.5-01 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.6.5-01 · 交互项</h1><p>按完整 Notebook 的顺序运行；本块可能依赖前面的变量。3.6—3.7包含教材真实数据与模拟实验；全样本统计分析不等于独立测试评估。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="6">design_interaction = MS([&#x27;lstat&#x27;, &#x27;age&#x27;, (&#x27;lstat&#x27;, &#x27;age&#x27;)])
+X_interaction = design_interaction.fit_transform(Boston)
+res_interaction = sm.OLS(Boston[&#x27;medv&#x27;], X_interaction).fit()
+print(pd.DataFrame({&#x27;coef&#x27;: res_interaction.params,
+                    &#x27;p&#x27;: res_interaction.pvalues}))
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><p>列表中字符串表示主效应，元组 <code>(&#x27;lstat&#x27;,&#x27;age&#x27;)</code> 告诉MS创建两变量乘积项。模型为β0+β1*lstat+β2*age+β3*lstat*age。</p><p>固定age=a时，lstat的斜率是β1+β3*a。不能把β1看成所有地区共同的斜率；β1对应age=0时。保留主效应有助于遵循模型层级原则。</p></section><h2>实际运行输出</h2><pre>                coef             p
+intercept  36.088536  4.907116e-88
+lstat      -1.392117  8.780730e-16
+age        -0.000721  9.710878e-01
+lstat:age   0.004156  2.524911e-02
+</pre><p><a href="../../notebooks/ch03/chapter03-complete.ipynb" download>下载第三章完整版 Notebook</a> · <a href="365-01.py" download>下载本块代码</a> · <a href="../../notebooks/ch03/requirements.txt">依赖版本</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

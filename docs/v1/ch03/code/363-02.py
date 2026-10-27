@@ -1,0 +1,10 @@
+terms_all = Boston.columns.drop('medv')
+design_all = MS(terms_all)
+X_all = design_all.fit_transform(Boston)
+res_all = sm.OLS(Boston['medv'], X_all).fit()
+print(pd.DataFrame({'coef': res_all.params, 'p': res_all.pvalues}))
+
+terms_no_age = Boston.columns.drop(['medv', 'age'])
+X_no_age = MS(terms_no_age).fit_transform(Boston)
+res_no_age = sm.OLS(Boston['medv'], X_no_age).fit()
+print('age p in full model:', res_all.pvalues['age'])

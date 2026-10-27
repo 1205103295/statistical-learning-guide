@@ -1,0 +1,15 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.6.6-03 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.6.6-03 · 正交多项式：换基而不改变拟合空间</h1><p>按完整 Notebook 的顺序运行；本块可能依赖前面的变量。3.6—3.7包含教材真实数据与模拟实验；全样本统计分析不等于独立测试评估。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="8">design_orth = MS([poly(&#x27;lstat&#x27;, degree=2), &#x27;age&#x27;])
+X_orth = design_orth.fit_transform(Boston)
+res_orth = sm.OLS(Boston[&#x27;medv&#x27;], X_orth).fit()
+print(&#x27;same fitted values:&#x27;, np.allclose(res_quad.fittedvalues,
+                                        res_orth.fittedvalues))
+print(&#x27;orthogonal basis coefficients:&#x27;)
+print(res_orth.params)
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><p>poly默认使用正交多项式基，得到的系数不再直接是原始x、x²的系数。两组设计矩阵在本例张成同一列空间，OLS投影相同，因此拟合值与RSS相同，系数坐标不同。这与前面矩阵观点相连，也可改善某些多项式设计的数值条件。</p><p>预测新数据时必须沿用design_orth.transform，不能重新拟合一套基。</p></section><h2>实际运行输出</h2><pre>same fitted values: True
+orthogonal basis coefficients:
+intercept                    17.715113
+poly(lstat, degree=2)[0]   -179.227870
+poly(lstat, degree=2)[1]     72.990755
+age                           0.070254
+dtype: float64
+</pre><p><a href="../../notebooks/ch03/chapter03-complete.ipynb" download>下载第三章完整版 Notebook</a> · <a href="366-03.py" download>下载本块代码</a> · <a href="../../notebooks/ch03/requirements.txt">依赖版本</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

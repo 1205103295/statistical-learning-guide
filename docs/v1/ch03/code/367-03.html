@@ -1,0 +1,7 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.6.7-03 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.6.7-03 · 分类变量新样本预测</h1><p>按完整 Notebook 的顺序运行；本块可能依赖前面的变量。3.6—3.7包含教材真实数据与模拟实验；全样本统计分析不等于独立测试评估。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="4">new_stores = Carseats.iloc[:2].drop(columns=&#x27;Sales&#x27;).copy()
+new_store_X = design_carseats.transform(new_stores)
+print(res_carseats.predict(new_store_X))
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><p>这里取前两行输入只是检查预测接口，不是独立测试。<code>.iloc[:2]</code> 取位置0、1；DataFrame的 <code>.drop(columns=&#x27;Sales&#x27;)</code> 去掉目标列；<code>.copy()</code> 创建副本。新样本必须提供需要的原始特征，沿用原设计器以保持编码和列顺序；未知类别须另行处理，不能悄悄改变参考组。</p></section><h2>实际运行输出</h2><pre>0     7.251552
+1    12.221904
+dtype: float64
+</pre><p><a href="../../notebooks/ch03/chapter03-complete.ipynb" download>下载第三章完整版 Notebook</a> · <a href="367-03.py" download>下载本块代码</a> · <a href="../../notebooks/ch03/requirements.txt">依赖版本</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

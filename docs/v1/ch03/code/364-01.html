@@ -1,0 +1,15 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.6.4-01 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.6.4-01 · 拟合指标</h1><p>按完整 Notebook 的顺序运行；本块可能依赖前面的变量。3.6—3.7包含教材真实数据与模拟实验；全样本统计分析不等于独立测试评估。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="8">print(&#x27;training R2:&#x27;, res_all.rsquared)
+print(&#x27;adjusted R2:&#x27;, res_all.rsquared_adj)
+print(&#x27;RSS:&#x27;, res_all.ssr)
+print(&#x27;residual df:&#x27;, res_all.df_resid)
+print(&#x27;RSE:&#x27;, np.sqrt(res_all.scale))
+print(&#x27;overall F:&#x27;, res_all.fvalue)
+print(&#x27;overall F p:&#x27;, res_all.f_pvalue)
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><p>这里 <code>ssr</code> 指残差平方和RSS；不要把属性名误解成回归解释平方和。<code>scale</code> 是RSS/残差自由度，即s²；开方才是RSE。在含截距、满秩情形，自由度是n-p-1，p为输入项数。</p><p>R²衡量当前拟合数据上的平方误差改善；调整R²惩罚参数增加。整体F检验所有非截距系数同时为0。它们都不是独立测试误差，也不能单独证明模型假设成立。</p></section><h2>实际运行输出</h2><pre>training R2: 0.7343070437613076
+adjusted R2: 0.7278398724126984
+RSS: 11349.418808381903
+residual df: 493.0
+RSE: 4.798034335596367
+overall F: 113.54377426836396
+overall F p: 2.2304199237254893e-133
+</pre><p><a href="../../notebooks/ch03/chapter03-complete.ipynb" download>下载第三章完整版 Notebook</a> · <a href="364-01.py" download>下载本块代码</a> · <a href="../../notebooks/ch03/requirements.txt">依赖版本</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

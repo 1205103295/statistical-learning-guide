@@ -65,3 +65,10 @@ PDF 指向 `v1/ch02/code/212-01.html` 等固定版本地址。内部文件名与
 已追加模型评估、多元最小二乘与 MP 逆、条件数、t/F 推断、预测区间、类别编码、交互、多项式及六类诊断。43 个代码块在同一新 Jupyter 内核中按顺序执行通过。新增 42 组练习与参考答案。
 
 [完整学习笔记与实验](docs/v1/notebooks/ch03/chapter03-through-3.3.3.ipynb) · [在线代码目录](https://1205103295.github.io/statistical-learning-guide/v1/ch03.html)
+
+
+## 第三章更新：完整至3.7
+
+新增营销分析、KNN推导、全部线性回归实验和原书15道习题参考解答；29组小练习含答案。85个代码块已在新的Jupyter内核中按顺序执行，配套12张新增实验图与公式回查。
+
+[完整版Notebook](docs/v1/notebooks/ch03/chapter03-complete.ipynb) · [在线代码目录](https://1205103295.github.io/statistical-learning-guide/v1/ch03.html)

@@ -1,0 +1,10 @@
+fig, ax = plt.subplots(figsize=(7, 4))
+ax.scatter(res_simple.fittedvalues, res_simple.resid,
+           s=18, alpha=0.55, color='steelblue')
+ax.axhline(0, color='black', linestyle='--')
+ax.set_xlabel('Fitted medv')
+ax.set_ylabel('Residual')
+fig.tight_layout()
+fig.savefig(image_dir / '362-residual.png', dpi=160)
+plt.show()
+plt.close(fig)

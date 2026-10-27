@@ -1,0 +1,5 @@
+Carseats = load_data('Carseats')
+print('shape:', Carseats.shape)
+print('missing:', Carseats.isna().sum().sum())
+print(Carseats['ShelveLoc'].dtype)
+print(Carseats['ShelveLoc'].value_counts())

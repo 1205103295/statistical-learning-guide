@@ -1,0 +1,11 @@
+fig, axes = plt.subplots(1, 2, figsize=(10, 4))
+for ax, result, title in zip(axes, [res_two, res_quad], ['Linear + age', 'Quadratic + age']):
+    ax.scatter(result.fittedvalues, result.resid, s=14, alpha=0.5)
+    ax.axhline(0, color='black', linestyle='--')
+    ax.set_title(title)
+    ax.set_xlabel('Fitted medv')
+    ax.set_ylabel('Residual')
+fig.tight_layout()
+fig.savefig(image_dir / '366-residuals.png', dpi=160)
+plt.show()
+plt.close(fig)

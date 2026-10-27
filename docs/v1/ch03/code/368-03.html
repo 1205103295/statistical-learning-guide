@@ -1,0 +1,17 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.6补充-03 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.6补充-03 · 规则确定后重拟合并评估</h1><p>按完整 Notebook 的顺序运行；本块可能依赖前面的变量。3.6—3.7包含教材真实数据与模拟实验；全样本统计分析不等于独立测试评估。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="14">final_design = make_design(best_name)
+development_X = final_design.fit_transform(development)
+final_result = sm.OLS(development[&#x27;medv&#x27;], development_X).fit()
+test_X = final_design.transform(test)
+test_pred = final_result.predict(test_X)
+
+test_mse = mean_squared_error(test[&#x27;medv&#x27;], test_pred)
+baseline_pred = np.full(len(test), development[&#x27;medv&#x27;].mean())
+baseline_mse = mean_squared_error(test[&#x27;medv&#x27;], baseline_pred)
+
+print(&#x27;test MSE:&#x27;, test_mse)
+print(&#x27;test RMSE:&#x27;, np.sqrt(test_mse))
+print(&#x27;constant baseline MSE:&#x27;, baseline_mse)
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><p>验证选择结束后，把开发集（训练+验证）用于最终拟合，提高参数估计的数据利用。此后模型规则固定。<code>np.full</code> 创建常数预测数组，常数仅从开发集目标均值计算。</p><p>RMSE=MSE的平方根，恢复为千美元单位。优于常数基线是基本检查，不意味着可直接部署。严格独立测试流程中，看到分数后不能继续依据测试挑模型，再把同一分数声称为未受选择影响的估计。</p></section><h2>实际运行输出</h2><pre>test MSE: 25.655552362302036
+test RMSE: 5.065131031108873
+constant baseline MSE: 75.04543037399255
+</pre><p><a href="../../notebooks/ch03/chapter03-complete.ipynb" download>下载第三章完整版 Notebook</a> · <a href="368-03.py" download>下载本块代码</a> · <a href="../../notebooks/ch03/requirements.txt">依赖版本</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

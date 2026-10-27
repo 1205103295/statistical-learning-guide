@@ -1,0 +1,5 @@
+design_quad = MS([poly('lstat', degree=2, raw=True), 'age'])
+X_quad = design_quad.fit_transform(Boston)
+res_quad = sm.OLS(Boston['medv'], X_quad).fit()
+print('columns:', list(X_quad.columns))
+print(pd.DataFrame({'coef': res_quad.params, 'p': res_quad.pvalues}))

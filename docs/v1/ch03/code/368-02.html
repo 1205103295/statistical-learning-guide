@@ -1,0 +1,24 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.6补充-02 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.6补充-02 · 只用训练集拟合，只用验证集选模型</h1><p>按完整 Notebook 的顺序运行；本块可能依赖前面的变量。3.6—3.7包含教材真实数据与模拟实验；全样本统计分析不等于独立测试评估。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="20">def make_design(name):
+    if name == &#x27;linear&#x27;:
+        return MS([&#x27;lstat&#x27;, &#x27;age&#x27;])
+    if name == &#x27;quadratic&#x27;:
+        return MS([poly(&#x27;lstat&#x27;, degree=2, raw=True), &#x27;age&#x27;])
+    raise ValueError(&#x27;Unknown model name&#x27;)
+
+validation_errors = {}
+for name in [&#x27;linear&#x27;, &#x27;quadratic&#x27;]:
+    design = make_design(name)
+    train_X = design.fit_transform(train)
+    fitted = sm.OLS(train[&#x27;medv&#x27;], train_X).fit()
+    valid_X = design.transform(valid)
+    valid_pred = fitted.predict(valid_X)
+    validation_errors[name] = mean_squared_error(valid[&#x27;medv&#x27;], valid_pred)
+
+print(pd.Series(validation_errors, name=&#x27;validation MSE&#x27;))
+best_name = min(validation_errors, key=validation_errors.get)
+print(&#x27;selected:&#x27;, best_name)
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><p><code>make_design</code> 根据名称返回全新的设计器；<code>if</code> 判断分支，<code>return</code> 返回对象并结束本次函数调用，<code>raise ValueError</code> 在名称错误时明确报错。每次调用重新创建poly对象，因为其内部拟合状态不能在独立训练之间复用。</p><p><code>validation_errors</code> 是“模型名:验证误差”的字典。每轮新建设计器，fit仅使用train，valid只做transform与predict。<code>mean_squared_error(真实值,预测值)</code> 返回均方误差，单位为目标单位的平方。</p><p><code>min(...,key=validation_errors.get)</code> 返回验证误差最小的键名：比较依据是各名称对应的误差，不是模型名的字母顺序。此时不查看测试误差。候选项少是为初学者演示；不宣称已找到全局最佳模型。</p></section><h2>实际运行输出</h2><pre>linear       36.531512
+quadratic    28.771773
+Name: validation MSE, dtype: float64
+selected: quadratic
+</pre><p><a href="../../notebooks/ch03/chapter03-complete.ipynb" download>下载第三章完整版 Notebook</a> · <a href="368-02.py" download>下载本块代码</a> · <a href="../../notebooks/ch03/requirements.txt">依赖版本</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

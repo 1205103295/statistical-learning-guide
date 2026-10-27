@@ -1,0 +1,5 @@
+design_simple = MS(['lstat'])
+design_simple.fit(data)
+X_ms = design_simple.transform(data)
+print(X_ms.head())
+print('same matrix:', np.allclose(X, X_ms))

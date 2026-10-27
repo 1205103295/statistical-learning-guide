@@ -1,0 +1,5 @@
+Boston = load_data('Boston')
+print('shape:', Boston.shape)
+print(Boston[['lstat', 'age', 'medv']].head())
+print('missing:', Boston.isna().sum().sum())
+print(Boston[['lstat', 'medv']].describe().round(3))

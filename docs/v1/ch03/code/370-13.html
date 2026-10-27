@@ -1,0 +1,35 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.7-13 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.7-13 · 第 14 题：加入测量有误的新观测</h1><p>按完整 Notebook 的顺序运行；本块可能依赖前面的变量。3.6—3.7包含教材真实数据与模拟实验；全样本统计分析不等于独立测试评估。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="16">new14 = pd.concat([data14, pd.DataFrame({&#x27;x1&#x27;:[.1], &#x27;x2&#x27;:[.8]})], ignore_index=True)
+y14_new = np.concatenate([y14, [6.]])
+for name, columns in [(&#x27;both&#x27;,[&#x27;x1&#x27;,&#x27;x2&#x27;]), (&#x27;x1_only&#x27;,[&#x27;x1&#x27;]), (&#x27;x2_only&#x27;,[&#x27;x2&#x27;])]:
+    fit14 = sm.OLS(y14_new, sm.add_constant(new14[columns])).fit()
+    inf14 = fit14.get_influence()
+    print(name); report(fit14)
+    print(&#x27;new point h, external residual, Cook:&#x27;,
+          inf14.hat_matrix_diag[-1], inf14.resid_studentized_external[-1],
+          inf14.cooks_distance[0][-1])
+fig, ax = plt.subplots(figsize=(6, 4))
+ax.scatter(x1, x2, s=16)
+ax.scatter([.1], [.8], color=&#x27;red&#x27;, marker=&#x27;x&#x27;, s=80, label=&#x27;Added point&#x27;)
+ax.set(xlabel=&#x27;x1&#x27;, ylabel=&#x27;x2&#x27;); ax.legend()
+fig.tight_layout(); fig.savefig(image_dir / &#x27;ex14-collinearity.png&#x27;, dpi=180)
+plt.close(fig)
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><p>pd.concat按行拼接原输入表与新增一行；ignore_index=True重新设置连续行标签。响应用np.concatenate按同样顺序拼接，保证配对。[-1]表示最后一个观测。重复拟合后分别查看新点在不同模型中的杠杆、外学生化残差和Cook距离；异常与高杠杆是相对于具体模型而言。</p></section><h2>实际运行输出</h2><pre>both
+          coef       SE       t           p
+const  2.06179  0.19233 10.7201 3.33427e-18
+x1    0.857545 0.466483 1.83832   0.0690444
+x2     2.26632 0.704713 3.21595  0.00176171
+R2=0.291628, RSS=86.185210, RSE=0.937785
+new point h, external residual, Cook: 0.3476716196142664 2.7837306228248013 1.2879875619115893
+x1_only
+         coef       SE       t           p
+const 2.07394 0.201162 10.3098 2.30955e-17
+x1    1.87605 0.358296 5.23602 9.23253e-07
+R2=0.216871, RSS=95.280706, RSE=0.981036
+new point h, external residual, Cook: 0.030283401255103554 4.179207000385163 0.23382962084011039
+x2_only
+         coef       SE       t           p
+const 2.28401 0.151381 15.0879 2.07432e-27
+x2    3.14585 0.523593  6.0082 3.12797e-08
+R2=0.267201, RSS=89.157206, RSE=0.948988
+new point h, external residual, Cook: 0.1102066358797133 1.3452239439030023 0.11115794899921298
+</pre><img style="max-width:100%" alt="第 14 题：加入测量有误的新观测" src="../../notebooks/ch03/图片/ex14-collinearity.png"><p><a href="../../notebooks/ch03/chapter03-complete.ipynb" download>下载第三章完整版 Notebook</a> · <a href="370-13.py" download>下载本块代码</a> · <a href="../../notebooks/ch03/requirements.txt">依赖版本</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

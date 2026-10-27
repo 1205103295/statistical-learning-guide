@@ -1,0 +1,13 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.5-01 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.5-01 · 手工核对 KNN 邻居与平均预测</h1><p>按完整 Notebook 的顺序运行；本块可能依赖前面的变量。3.6—3.7包含教材真实数据与模拟实验；全样本统计分析不等于独立测试评估。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="10">import numpy as np
+x_knn = np.array([10., 20., 30., 40., 50.])
+y_knn = np.array([4., 6., 8., 9., 11.])
+query = 32.
+distance = np.abs(x_knn - query)
+neighbors = np.argsort(distance)[:3]
+print(&#x27;neighbor positions:&#x27;, neighbors)
+print(&#x27;neighbor inputs:&#x27;, x_knn[neighbors])
+print(&#x27;prediction:&#x27;, y_knn[neighbors].mean())
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><p><code>np.abs</code> 对每个差取绝对值；一维欧氏距离就是绝对差。<code>np.argsort</code> 返回距离从小到大的位置，而不是距离本身；<code>[:3]</code> 取前三个位置。用同一组位置选择输入和响应，再对响应求平均。邻居只由输入决定，没有使用目标值来选择。</p></section><h2>实际运行输出</h2><pre>neighbor positions: [2 3 1]
+neighbor inputs: [30. 40. 20.]
+prediction: 7.666666666666667
+</pre><p><a href="../../notebooks/ch03/chapter03-complete.ipynb" download>下载第三章完整版 Notebook</a> · <a href="350-01.py" download>下载本块代码</a> · <a href="../../notebooks/ch03/requirements.txt">依赖版本</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

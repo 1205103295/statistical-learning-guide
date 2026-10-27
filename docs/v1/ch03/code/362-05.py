@@ -1,0 +1,5 @@
+new_data = pd.DataFrame({'lstat': [5.0, 10.0, 15.0]})
+new_X = design_simple.transform(new_data)
+pred = res_simple.get_prediction(new_X)
+prediction_table = pred.summary_frame(alpha=0.05)
+print(prediction_table.round(4).to_string())

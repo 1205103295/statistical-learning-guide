@@ -1,0 +1,23 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.6.2-01 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.6.2-01 · 读取和检查数据</h1><p>按完整 Notebook 的顺序运行；本块可能依赖前面的变量。3.6—3.7包含教材真实数据与模拟实验；全样本统计分析不等于独立测试评估。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="6">Boston = load_data(&#x27;Boston&#x27;)
+print(&#x27;shape:&#x27;, Boston.shape)
+print(Boston[[&#x27;lstat&#x27;, &#x27;age&#x27;, &#x27;medv&#x27;]].head())
+print(&#x27;missing:&#x27;, Boston.isna().sum().sum())
+print(Boston[[&#x27;lstat&#x27;, &#x27;medv&#x27;]].describe().round(3))
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><p><code>shape</code> 是(行数,列数)，当前版本506行、13列，其中一列是目标。<code>[[&#x27;lstat&#x27;, &#x27;age&#x27;, &#x27;medv&#x27;]]</code> 用列名列表选出表格；<code>head()</code> 看前5行。<code>isna()</code> 逐格识别缺失，第一次 <code>sum()</code> 每列计数，第二次求总数。<code>describe()</code> 给出数量、均值、标准差、分位数等。</p><p>一行对应一个地区。<code>lstat</code> 是历史数据中所谓较低社会经济地位人口的百分比，10表示10%，增加1是增加1个百分点。<code>age</code> 是1940年前建成的自住房比例。<code>medv</code> 单位千美元。版本不同可能列数不同，应以实际列名为准。</p></section><h2>实际运行输出</h2><pre>shape: (506, 13)
+   lstat   age  medv
+0   4.98  65.2  24.0
+1   9.14  78.9  21.6
+2   4.03  61.1  34.7
+3   2.94  45.8  33.4
+4   5.33  54.2  36.2
+missing: 0
+         lstat     medv
+count  506.000  506.000
+mean    12.653   22.533
+std      7.141    9.197
+min      1.730    5.000
+25%      6.950   17.025
+50%     11.360   21.200
+75%     16.955   25.000
+max     37.970   50.000
+</pre><p><a href="../../notebooks/ch03/chapter03-complete.ipynb" download>下载第三章完整版 Notebook</a> · <a href="362-01.py" download>下载本块代码</a> · <a href="../../notebooks/ch03/requirements.txt">依赖版本</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

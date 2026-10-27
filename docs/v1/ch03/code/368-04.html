@@ -1,0 +1,12 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.6补充-04 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.6补充-04 · 保存结果和环境信息</h1><p>按完整 Notebook 的顺序运行；本块可能依赖前面的变量。3.6—3.7包含教材真实数据与模拟实验；全样本统计分析不等于独立测试评估。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="7">prediction_table.to_csv(&#x27;简单回归_预测区间.csv&#x27;, index=False)
+vif_table.to_csv(&#x27;全变量模型_VIF.csv&#x27;, index=True)
+
+import importlib.metadata as metadata
+for package in [&#x27;numpy&#x27;, &#x27;pandas&#x27;, &#x27;statsmodels&#x27;, &#x27;ISLP&#x27;, &#x27;scikit-learn&#x27;]:
+    print(package, metadata.version(package))
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><p><code>to_csv</code> 保存表格，<code>index=False</code> 不输出行索引，VIF表保留特征名索引。<code>importlib.metadata.version</code> 记录安装包版本，便于复现。CSV与图片默认保存在当前工作目录；Notebook本身的目录与内核工作目录未必相同，必要时先检查Path.cwd()。</p></section><h2>实际运行输出</h2><pre>numpy 2.2.6
+pandas 2.3.3
+statsmodels 0.15.0
+ISLP 0.4.1
+scikit-learn 1.7.2
+</pre><p><a href="../../notebooks/ch03/chapter03-complete.ipynb" download>下载第三章完整版 Notebook</a> · <a href="368-04.py" download>下载本块代码</a> · <a href="../../notebooks/ch03/requirements.txt">依赖版本</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

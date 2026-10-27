@@ -1,0 +1,16 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.6补充-05 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.6补充-05 · 补答实验思考：改用 rm 与 lstat</h1><p>按完整 Notebook 的顺序运行；本块可能依赖前面的变量。3.6—3.7包含教材真实数据与模拟实验；全样本统计分析不等于独立测试评估。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="14">rm_errors = {}
+for degree in [1, 2]:
+    terms_rm = [&#x27;rm&#x27;, &#x27;lstat&#x27;] if degree == 1 else [
+        poly(&#x27;rm&#x27;, degree=2, raw=True), &#x27;lstat&#x27;]
+    design_rm = MS(terms_rm)
+    train_rm = Boston.loc[train.index]
+    valid_rm = Boston.loc[valid.index]
+    fitted_rm = sm.OLS(train_rm[&#x27;medv&#x27;],
+                      design_rm.fit_transform(train_rm)).fit()
+    prediction_rm = fitted_rm.predict(design_rm.transform(valid_rm))
+    rm_errors[degree] = mean_squared_error(valid_rm[&#x27;medv&#x27;], prediction_rm)
+print(&#x27;validation MSE by rm degree:&#x27;, rm_errors)
+print(&#x27;selected degree:&#x27;, min(rm_errors, key=rm_errors.get))
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><p>这是此前实验最后一道开放思考题的可复现答案。继续沿用同一训练、验证行索引，不按结果重新划分。degree=1使用rm与lstat，degree=2使用rm、rm平方与lstat；每轮重建变换对象。loc按原始标签取出完整表中同一批地区。这里只用验证误差比较，没有再用已查看的测试分数挑模型；结果不等于其他划分下必然相同。</p></section><h2>实际运行输出</h2><pre>validation MSE by rm degree: {1: 28.44208381935123, 2: 20.55967243996897}
+selected degree: 2
+</pre><p><a href="../../notebooks/ch03/chapter03-complete.ipynb" download>下载第三章完整版 Notebook</a> · <a href="368-05.py" download>下载本块代码</a> · <a href="../../notebooks/ch03/requirements.txt">依赖版本</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

@@ -1,0 +1,7 @@
+print('training R2:', res_all.rsquared)
+print('adjusted R2:', res_all.rsquared_adj)
+print('RSS:', res_all.ssr)
+print('residual df:', res_all.df_resid)
+print('RSE:', np.sqrt(res_all.scale))
+print('overall F:', res_all.fvalue)
+print('overall F p:', res_all.f_pvalue)

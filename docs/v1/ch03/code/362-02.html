@@ -1,0 +1,19 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.6.2-02 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.6.2-02 · 手工建立设计矩阵</h1><p>按完整 Notebook 的顺序运行；本块可能依赖前面的变量。3.6—3.7包含教材真实数据与模拟实验；全样本统计分析不等于独立测试评估。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="12">data = Boston[[&#x27;lstat&#x27;, &#x27;medv&#x27;]].dropna().copy()
+y = data[&#x27;medv&#x27;]
+X = pd.DataFrame({
+    &#x27;intercept&#x27;: np.ones(len(data)),
+    &#x27;lstat&#x27;: data[&#x27;lstat&#x27;],
+}, index=data.index)
+
+assert X.index.equals(y.index)
+assert X.notna().all().all() and y.notna().all()
+print(X.head())
+print(&#x27;shapes:&#x27;, X.shape, y.shape)
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><p><code>dropna()</code> 在这一小张表内统一删掉缺失行，确保X和y来源相同；<code>copy()</code> 创建独立副本。这只是本例的处理方式，不是所有业务都应直接删除缺失样本。</p><p><code>np.ones(len(data))</code> 生成n个1；<code>pd.DataFrame({...})</code> 根据“列名:列值”的字典创建表格；<code>index=data.index</code> 保留行标识。第一列乘截距，第二列乘斜率，所以X为(n,2)，y为(n,)。</p><p><code>assert 条件</code> 在条件为假时抛出 AssertionError，中断执行。<code>.equals()</code> 检查索引一致；<code>.notna()</code> 判断非缺失；DataFrame第一次 <code>.all()</code> 检查各列，第二次检查所有列；Series只需要一次。<code>and</code> 要求两边都为真。assert适合教学调试，生产输入校验通常应显式抛出异常。</p></section><h2>实际运行输出</h2><pre>   intercept  lstat
+0        1.0   4.98
+1        1.0   9.14
+2        1.0   4.03
+3        1.0   2.94
+4        1.0   5.33
+shapes: (506, 2) (506,)
+</pre><p><a href="../../notebooks/ch03/chapter03-complete.ipynb" download>下载第三章完整版 Notebook</a> · <a href="362-02.py" download>下载本块代码</a> · <a href="../../notebooks/ch03/requirements.txt">依赖版本</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

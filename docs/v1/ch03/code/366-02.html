@@ -1,0 +1,12 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.6.6-02 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.6.6-02 · 用部分F检验比较嵌套模型</h1><p>按完整 Notebook 的顺序运行；本块可能依赖前面的变量。3.6—3.7包含教材真实数据与模拟实验；全样本统计分析不等于独立测试评估。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="8">comparison = anova_lm(res_two, res_quad)
+print(comparison.to_string())
+
+F_manual = ((res_two.ssr - res_quad.ssr) /
+            (res_two.df_resid - res_quad.df_resid)) / (
+                res_quad.ssr / res_quad.df_resid)
+print(&#x27;F by hand:&#x27;, F_manual)
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><p>按简模型、复杂模型顺序传入。两者使用完全相同的506行响应，只差一个二次项，属于嵌套模型。</p><p>F=((RSS_R-RSS_F)/q)/(RSS_F/df_F)，这里q=1。检验的是二次项系数为0；F约177.28，p约7.47e-35，不是数学意义的0。第一行NaN是没有前一模型可比较。</p><p>经典F推断需要适当误差假设。训练拟合显著改善不等于测试误差必然改善；不能用此函数直接套在非嵌套模型或不同样本上。</p></section><h2>实际运行输出</h2><pre>   df_resid           ssr  df_diff      ss_diff           F        Pr(&gt;F)
+0     503.0  19168.128609      0.0          NaN         NaN           NaN
+1     502.0  14165.613251      1.0  5002.515357  177.278785  7.468491e-35
+F by hand: 177.27878523965015
+</pre><p><a href="../../notebooks/ch03/chapter03-complete.ipynb" download>下载第三章完整版 Notebook</a> · <a href="366-02.py" download>下载本块代码</a> · <a href="../../notebooks/ch03/requirements.txt">依赖版本</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

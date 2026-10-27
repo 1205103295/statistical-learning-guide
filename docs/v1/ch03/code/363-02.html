@@ -1,0 +1,26 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.6.3-02 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.6.3-02 · 全变量与去掉一个变量</h1><p>按完整 Notebook 的顺序运行；本块可能依赖前面的变量。3.6—3.7包含教材真实数据与模拟实验；全样本统计分析不等于独立测试评估。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="11">terms_all = Boston.columns.drop(&#x27;medv&#x27;)
+design_all = MS(terms_all)
+X_all = design_all.fit_transform(Boston)
+res_all = sm.OLS(Boston[&#x27;medv&#x27;], X_all).fit()
+print(pd.DataFrame({&#x27;coef&#x27;: res_all.params, &#x27;p&#x27;: res_all.pvalues}))
+
+terms_no_age = Boston.columns.drop([&#x27;medv&#x27;, &#x27;age&#x27;])
+X_no_age = MS(terms_no_age).fit_transform(Boston)
+res_no_age = sm.OLS(Boston[&#x27;medv&#x27;], X_no_age).fit()
+print(&#x27;age p in full model:&#x27;, res_all.pvalues[&#x27;age&#x27;])
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><p><code>Boston.columns</code> 是列名索引；其 <code>.drop(&#x27;medv&#x27;)</code> 返回去掉目标名称后的列名，不会删除原数据列。必须排除目标，不能让y成为自己的输入。</p><p>去掉age只是演示怎样指定模型，不是按p值机械筛选。加入其他变量后age的p值会变化；p大不是证明真实效应为0。为避免覆盖此前结果，我们分别命名res_simple/res_two/res_all。</p></section><h2>实际运行输出</h2><pre>                coef             p
+intercept  41.617270  3.794467e-16
+crim       -0.121389  2.605302e-04
+zn          0.046963  7.719966e-04
+indus       0.013468  8.285201e-01
+chas        2.839993  1.173458e-03
+nox       -18.758022  1.502073e-06
+rm          3.658119  4.808025e-17
+age         0.003611  7.865948e-01
+dis        -1.490754  6.170894e-13
+rad         0.289405  1.843595e-05
+tax        -0.012682  9.124487e-04
+ptratio    -0.937533  4.630167e-12
+lstat      -0.552019  6.392118e-25
+age p in full model: 0.78659481144319
+</pre><p><a href="../../notebooks/ch03/chapter03-complete.ipynb" download>下载第三章完整版 Notebook</a> · <a href="363-02.py" download>下载本块代码</a> · <a href="../../notebooks/ch03/requirements.txt">依赖版本</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

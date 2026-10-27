@@ -1,0 +1,9 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.6补充-01 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.6补充-01 · 在拟合前划分训练、验证、测试</h1><p>按完整 Notebook 的顺序运行；本块可能依赖前面的变量。3.6—3.7包含教材真实数据与模拟实验；全样本统计分析不等于独立测试评估。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="8">from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error
+
+project_data = Boston[[&#x27;lstat&#x27;, &#x27;age&#x27;, &#x27;medv&#x27;]].dropna().copy()
+development, test = train_test_split(project_data, test_size=0.2, random_state=42)
+train, valid = train_test_split(development, test_size=0.25, random_state=42)
+print(&#x27;train, valid, test:&#x27;, len(train), len(valid), len(test))
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><p>先留20%为测试；再从80%开发集取25%作验证，约为总量20%，余下约60%训练。506不能整除，实际303、101、102。整张表划分保证输入目标配对；random_state固定伪随机划分便于复现。</p><p>这是教材外的工程补充。真实任务须在首次探索/选择前留出测试，并按时间、地域、群组等部署情境合理拆分。本例此前已查看全数据，因此末尾分数只能用于流程练习，不能包装成完全独立的最终研究证据。</p></section><h2>实际运行输出</h2><pre>train, valid, test: 303 101 102
+</pre><p><a href="../../notebooks/ch03/chapter03-complete.ipynb" download>下载第三章完整版 Notebook</a> · <a href="368-01.py" download>下载本块代码</a> · <a href="../../notebooks/ch03/requirements.txt">依赖版本</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

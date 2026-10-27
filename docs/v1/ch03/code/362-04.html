@@ -1,0 +1,13 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.6.2-04 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.6.2-04 · 使用 ModelSpec：fit 与 transform</h1><p>按完整 Notebook 的顺序运行；本块可能依赖前面的变量。3.6—3.7包含教材真实数据与模拟实验；全样本统计分析不等于独立测试评估。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="6">design_simple = MS([&#x27;lstat&#x27;])
+design_simple.fit(data)
+X_ms = design_simple.transform(data)
+print(X_ms.head())
+print(&#x27;same matrix:&#x27;, np.allclose(X, X_ms))
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><p><code>MS([&#x27;lstat&#x27;])</code> 定义要使用的特征，并默认加截距。这里 <code>.fit(data)</code> 检查变量、记录变换规则；复杂变换还可能估计缩放或基函数参数。<code>.transform(data)</code> 按既定规则生成设计矩阵。</p><p>这是特征构造的fit，不是回归系数拟合；后者由 <code>sm.OLS(...).fit()</code> 完成。两步可合写 <code>design_simple.fit_transform(data)</code>。新数据只用已拟合设计器的transform；不能在新数据上重新fit。<code>np.allclose</code> 允许微小浮点误差地比较数值。</p></section><h2>实际运行输出</h2><pre>   intercept  lstat
+0        1.0   4.98
+1        1.0   9.14
+2        1.0   4.03
+3        1.0   2.94
+4        1.0   5.33
+same matrix: True
+</pre><p><a href="../../notebooks/ch03/chapter03-complete.ipynb" download>下载第三章完整版 Notebook</a> · <a href="362-04.py" download>下载本块代码</a> · <a href="../../notebooks/ch03/requirements.txt">依赖版本</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

@@ -1,0 +1,21 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.6.4-02 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.6.4-02 · VIF 与列表推导式</h1><p>按完整 Notebook 的顺序运行；本块可能依赖前面的变量。3.6—3.7包含教材真实数据与模拟实验；全样本统计分析不等于独立测试评估。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="8">vif_values = []
+for j in range(1, X_all.shape[1]):
+    value = variance_inflation_factor(X_all.to_numpy(), j)
+    vif_values.append(value)
+
+vif_table = pd.DataFrame({&#x27;VIF&#x27;: vif_values}, index=X_all.columns[1:])
+print(vif_table.round(3))
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><p><code>[]</code> 创建空列表；<code>range(1,列数)</code> 从1开始到列数减1，跳过第0列截距；但完整矩阵仍传入VIF函数，使辅助回归包含截距。<code>append</code> 逐个添加值；列名切片 <code>[1:]</code> 与结果一一对应。</p><p>等价简写：<code>vif_values = [variance_inflation_factor(X_all.to_numpy(), j) for j in range(1, X_all.shape[1])]</code>。</p><p>VIF_j=1/(1-R_j²)，其中R_j²来自用其他输入解释第j个输入的辅助回归。VIF是方差膨胀倍数，标准误膨胀倍数为其平方根。高VIF提示系数辨识不稳定，不代表预测必然差，也不自动要求删变量。</p></section><h2>实际运行输出</h2><pre>           VIF
+crim     1.767
+zn       2.298
+indus    3.987
+chas     1.071
+nox      4.369
+rm       1.913
+age      3.088
+dis      3.954
+rad      7.445
+tax      9.002
+ptratio  1.797
+lstat    2.871
+</pre><p><a href="../../notebooks/ch03/chapter03-complete.ipynb" download>下载第三章完整版 Notebook</a> · <a href="364-02.py" download>下载本块代码</a> · <a href="../../notebooks/ch03/requirements.txt">依赖版本</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

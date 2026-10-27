@@ -1,0 +1,6 @@
+features9 = auto.select_dtypes(include='number').drop(columns='mpg')
+X9 = sm.add_constant(features9)
+r9 = sm.OLS(auto['mpg'], X9).fit()
+r9_null = sm.OLS(auto['mpg'], np.ones((len(auto), 1))).fit()
+report(r9)
+print(anova_lm(r9_null, r9).to_string())

@@ -1,0 +1,17 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 3.6.2-06 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch03.html">第三章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 3.6.2-06 · 自定义函数并画拟合线</h1><p>按完整 Notebook 的顺序运行；本块可能依赖前面的变量。3.6—3.7包含教材真实数据与模拟实验；全样本统计分析不等于独立测试评估。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="16">def abline(ax, intercept, slope, *args, **kwargs):
+    x_limits = np.asarray(ax.get_xlim())
+    y_limits = intercept + slope * x_limits
+    ax.plot(x_limits, y_limits, *args, **kwargs)
+
+fig, ax = plt.subplots(figsize=(7, 4))
+ax.scatter(data[&#x27;lstat&#x27;], y, s=18, alpha=0.55, color=&#x27;steelblue&#x27;)
+abline(ax, res_simple.params[&#x27;intercept&#x27;],
+       res_simple.params[&#x27;lstat&#x27;], &#x27;r--&#x27;, linewidth=2)
+ax.set_xlabel(&#x27;lstat (%)&#x27;)
+ax.set_ylabel(&#x27;medv (thousand dollars)&#x27;)
+fig.tight_layout()
+fig.savefig(image_dir / &#x27;362-fit.png&#x27;, dpi=160)
+plt.show()
+plt.close(fig)
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><p><code>def</code> 定义函数；ax是画布中的坐标轴，intercept/slope是截距和斜率。<code>get_xlim()</code> 取当前横轴两个端点；<code>np.asarray</code> 转成数组以便逐元素运算。计算端点y值，再连成直线。</p><p><code>*args</code> 收集额外位置参数，如 <code>&#x27;r--&#x27;</code>（红色虚线）；<code>**kwargs</code> 收集关键字参数，如 <code>linewidth=2</code>。调用ax.plot时再把它们展开传入。可以先记住这个“把绘图参数传下去”的用途。</p><p><code>figsize</code> 的单位是英寸；<code>s</code> 是点大小；<code>alpha</code> 是透明度；颜色仅服务辨认。<code>tight_layout</code> 调整留白；<code>savefig</code> 保存图；Path之间的 <code>/</code> 拼路径；<code>dpi</code> 决定位图分辨率；<code>show</code> 显示、<code>close</code> 释放图。散点有明显弯曲趋势。</p></section><h2>实际运行输出</h2><pre>No text output. See the figure or explanation below.
+</pre><img style="max-width:100%" alt="自定义函数并画拟合线" src="../../notebooks/ch03/图片/362-fit.png"><p><a href="../../notebooks/ch03/chapter03-complete.ipynb" download>下载第三章完整版 Notebook</a> · <a href="362-06.py" download>下载本块代码</a> · <a href="../../notebooks/ch03/requirements.txt">依赖版本</a></p></main><script src="../../assets/copy.js" defer></script></body></html>
