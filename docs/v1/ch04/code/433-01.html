@@ -1,0 +1,6 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 4.3.3-01 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch04.html">第四章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 4.3.3-01 · 余额预测：系数和输入单位</h1><p>按完整Notebook顺序运行。本章使用教学数组与给定舍入系数，尚不包含4.4；本块可能依赖前面变量。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="5">balance_intercept = -10.6513
+balance_slope = 0.0055
+balance_new = np.array([1000.0, 2000.0])
+print(&#x27;balances in dollars:&#x27;, balance_new)
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><p>两个系数是教材余额单变量模型的舍入值；与前面的三样本教学参数无关，使用不同变量名避免误覆盖。</p><p>balance_new存两位新客户的余额，单位为美元而不是千美元。预测阶段只代入已估计系数，不为每一位新客户重新拟合。</p></section><h2>实际运行输出</h2><pre>balances in dollars: [1000. 2000.]
+</pre><p><a href="../../notebooks/ch04/chapter04-sections-4.1-4.3.ipynb" download>下载第四章Notebook（至4.3.5）</a> · <a href="433-01.py" download>下载本块代码</a> · <a href="../../notebooks/ch04/requirements.txt">依赖版本</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

@@ -1,0 +1,10 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 4.3.5-02 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch04.html">第四章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 4.3.5-02 · 稳定计算 softmax 概率</h1><p>按完整Notebook顺序运行。本章使用教学数组与给定舍入系数，尚不包含4.4；本块可能依赖前面变量。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="7">shifted_scores = scores - scores.max()
+softmax_weights = np.exp(shifted_scores)
+probabilities = softmax_weights / softmax_weights.sum()
+print(&#x27;weights:&#x27;, softmax_weights)
+print(&#x27;probabilities:&#x27;, np.round(probabilities, 6))
+print(&#x27;probability sum:&#x27;, probabilities.sum())
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><p>max()取当前分数中的最大值，所有元素都减去它。共同平移不改变softmax概率；最大新分数为0，避免对很大的正数求指数而溢出。</p><p>np.exp把三个分数变为正权重；sum()把它们加起来；每个权重除以同一个总和，概率之和为1。这里是一张工单的一维数组，批量二维输入时要按每行的类别轴归一化。</p></section><h2>实际运行输出</h2><pre>weights: [0.5  1.   0.75]
+probabilities: [0.222222 0.444444 0.333333]
+probability sum: 1.0
+</pre><p><a href="../../notebooks/ch04/chapter04-sections-4.1-4.3.ipynb" download>下载第四章Notebook（至4.3.5）</a> · <a href="435-02.py" download>下载本块代码</a> · <a href="../../notebooks/ch04/requirements.txt">依赖版本</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

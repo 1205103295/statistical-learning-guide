@@ -1,0 +1,8 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 4.3.4-03 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch04.html">第四章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 4.3.4-03 · 控制相同输入后的概率与赔率比</h1><p>按完整Notebook顺序运行。本章使用教学数组与给定舍入系数，尚不包含4.4；本块可能依赖前面变量。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="5">p_multi = 1.0 / (1.0 + np.exp(-eta_multi))
+print(&#x27;linear scores:&#x27;, eta_multi)
+print(&#x27;probabilities:&#x27;, np.round(p_multi, 6))
+print(f&#x27;conditional student odds ratio = {np.exp(beta_multi[3]):.6f}&#x27;)
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><p>先将两个分数转换为概率；第一行学生、第二行非学生，不能凭概率高低猜行的身份。</p><p>beta_multi[3]是第4个系数，即学生系数。它的指数是保持余额和收入不变的赔率比，不能解释为因果效果。</p></section><h2>实际运行输出</h2><pre>linear scores: [-2.7858 -2.139 ]
+probabilities: [0.058096 0.105364]
+conditional student odds ratio = 0.523719
+</pre><p><a href="../../notebooks/ch04/chapter04-sections-4.1-4.3.ipynb" download>下载第四章Notebook（至4.3.5）</a> · <a href="434-03.py" download>下载本块代码</a> · <a href="../../notebooks/ch04/requirements.txt">依赖版本</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

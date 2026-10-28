@@ -1,0 +1,9 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 4.3.2-05 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch04.html">第四章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 4.3.2-05 · 解线性方程得到牛顿步</h1><p>按完整Notebook顺序运行。本章使用教学数组与给定舍入系数，尚不包含4.4；本块可能依赖前面变量。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="6">step = np.linalg.solve(H, grad)
+beta_newton = beta - step
+print(&#x27;step:&#x27;, np.round(step, 6))
+print(&#x27;beta after Newton step:&#x27;, np.round(beta_newton, 6))
+print(&#x27;equation check:&#x27;, np.allclose(H @ step, grad))
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><p>linalg是线性代数工具集合。solve(H, grad)求满足H @ step = grad的向量；不是逐元素相除。本例H可逆，才能这样求解。</p><p>beta_newton = beta-step等价于减去H逆乘梯度，但代码没有显式求逆。两分量对应截距和斜率；H的非对角元素让参数方向联合调整。</p><p>allclose检查两组浮点数是否在容差内接近，不要求每一位完全相同。打印True只核验该线性方程求解，不证明整个模型已经收敛。</p></section><h2>实际运行输出</h2><pre>step: [0.666667 0.      ]
+beta after Newton step: [-0.666667  0.      ]
+equation check: True
+</pre><p><a href="../../notebooks/ch04/chapter04-sections-4.1-4.3.ipynb" download>下载第四章Notebook（至4.3.5）</a> · <a href="432-05.py" download>下载本块代码</a> · <a href="../../notebooks/ch04/requirements.txt">依赖版本</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

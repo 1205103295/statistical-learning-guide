@@ -1,0 +1,6 @@
+shifted_scores = scores - scores.max()
+softmax_weights = np.exp(shifted_scores)
+probabilities = softmax_weights / softmax_weights.sum()
+print('weights:', softmax_weights)
+print('probabilities:', np.round(probabilities, 6))
+print('probability sum:', probabilities.sum())

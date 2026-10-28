@@ -1,0 +1,13 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 4.3.5-03 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch04.html">第四章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 4.3.5-03 · 选择类别并验证共同平移不变</h1><p>按完整Notebook顺序运行。本章使用教学数组与给定舍入系数，尚不包含4.4；本块可能依赖前面变量。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="10">predicted_index = np.argmax(probabilities)
+predicted_class = classes[predicted_index]
+shifted_again = scores + 100.0
+shifted_again = shifted_again - shifted_again.max()
+probabilities_again = np.exp(shifted_again)
+probabilities_again = probabilities_again / probabilities_again.sum()
+print(&#x27;predicted index:&#x27;, predicted_index)
+print(&#x27;predicted class:&#x27;, predicted_class)
+print(&#x27;same probabilities:&#x27;, np.allclose(probabilities, probabilities_again))
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><p>argmax返回最大值所在的位置，不是最大概率本身；位置从0开始，本例返回1，再用classes[1]取出“退款处理”。并列时argmax返回第一个最大位置，可另行约定并列规则。</p><p>scores+100给三个分数共同加常数，再用同样的稳定方法计算。allclose核验概率在浮点容差下相同。最大类别概率即使小于0.5，在相同0–1损失下仍可选它。</p></section><h2>实际运行输出</h2><pre>predicted index: 1
+predicted class: 退款处理
+same probabilities: True
+</pre><p><a href="../../notebooks/ch04/chapter04-sections-4.1-4.3.ipynb" download>下载第四章Notebook（至4.3.5）</a> · <a href="435-03.py" download>下载本块代码</a> · <a href="../../notebooks/ch04/requirements.txt">依赖版本</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

@@ -1,0 +1,17 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 4.3.2-04 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch04.html">第四章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 4.3.2-04 · 用逐行加权计算 Hessian</h1><p>按完整Notebook顺序运行。本章使用教学数组与给定舍入系数，尚不包含4.4；本块可能依赖前面变量。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="9">weights = p * (1.0 - p)
+weighted_X = weights[:, None] * X
+H = X.T @ weighted_X / n
+print(&#x27;weights:&#x27;, weights)
+print(&#x27;weighted X:&#x27;)
+print(weighted_X)
+print(&#x27;Hessian:&#x27;)
+print(np.round(H, 6))
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><p>继续使用初始beta对应的p；weights的每个元素是p_i(1-p_i)，形状(3,)。这些权重随参数变化，不是固定常数。</p><p>weights[:, None]取出所有元素并增加一个轴，把(3,)变为(3, 1)。它与(3, 2)的X相乘时广播到两列，每个样本的一整行乘同一个权重。</p><p>weighted_X等于W @ X，但不必显式保存一个n×n的对角矩阵。X.T @ weighted_X / n得到(2, 2)的平均负对数似然Hessian。</p></section><h2>实际运行输出</h2><pre>weights: [0.25 0.25 0.25]
+weighted X:
+[[0.25 0.  ]
+ [0.25 0.25]
+ [0.25 0.5 ]]
+Hessian:
+[[0.25     0.25    ]
+ [0.25     0.416667]]
+</pre><p><a href="../../notebooks/ch04/chapter04-sections-4.1-4.3.ipynb" download>下载第四章Notebook（至4.3.5）</a> · <a href="432-04.py" download>下载本块代码</a> · <a href="../../notebooks/ch04/requirements.txt">依赖版本</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

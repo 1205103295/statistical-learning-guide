@@ -1,0 +1,11 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 4.3.4-02 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch04.html">第四章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 4.3.4-02 · 加入截距列并做矩阵乘法</h1><p>按完整Notebook顺序运行。本章使用教学数组与给定舍入系数，尚不包含4.4；本块可能依赖前面变量。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="8">X_new = np.column_stack([
+    np.ones(len(new_customers)),
+    new_customers,
+])
+eta_multi = X_new @ beta_multi
+print(X_new)
+print(&#x27;shapes:&#x27;, X_new.shape, beta_multi.shape, eta_multi.shape)
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><p>len(new_customers)返回行数2。column_stack将两个1添加为第一列，得到(2, 4)矩阵，不要再次在其他位置重复添加截距。</p><p>@把每行四个输入与四个系数对应相乘再求和，得到形状(2,)的线性分数。系数顺序错误时，形状仍可能合法但业务计算已经错误。</p></section><h2>实际运行输出</h2><pre>[[1.0e+00 1.5e+03 4.0e+01 1.0e+00]
+ [1.0e+00 1.5e+03 4.0e+01 0.0e+00]]
+shapes: (2, 4) (4,) (2,)
+</pre><p><a href="../../notebooks/ch04/chapter04-sections-4.1-4.3.ipynb" download>下载第四章Notebook（至4.3.5）</a> · <a href="434-02.py" download>下载本块代码</a> · <a href="../../notebooks/ch04/requirements.txt">依赖版本</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

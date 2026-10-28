@@ -1,0 +1,6 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 4.3.3-04 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch04.html">第四章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 4.3.3-04 · 学生身份：参考组编码</h1><p>按完整Notebook顺序运行。本章使用教学数组与给定舍入系数，尚不包含4.4；本块可能依赖前面变量。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="5">student = np.array([0, 1])
+student_intercept = -3.5041
+student_slope = 0.4049
+print(&#x27;student indicators:&#x27;, student)
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><p>0表示非学生，1表示学生，非学生是参考组。这两个元素是查询模型的两种输入状态，不表示训练数据只有两个客户。</p><p>这是另一个单独拟合的模型。不能把student_slope直接拼到余额单变量模型上，当作已经拟合好的多元模型。</p></section><h2>实际运行输出</h2><pre>student indicators: [0 1]
+</pre><p><a href="../../notebooks/ch04/chapter04-sections-4.1-4.3.ipynb" download>下载第四章Notebook（至4.3.5）</a> · <a href="433-04.py" download>下载本块代码</a> · <a href="../../notebooks/ch04/requirements.txt">依赖版本</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

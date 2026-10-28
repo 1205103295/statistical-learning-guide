@@ -1,0 +1,20 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 4.3.1-01 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch04.html">第四章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 4.3.1-01 · 观察概率曲线与局部变化率</h1><p>按完整Notebook顺序运行。本章使用教学数组与给定舍入系数，尚不包含4.4；本块可能依赖前面变量。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="19">import numpy as np
+import matplotlib.pyplot as plt
+from pathlib import Path
+
+image_dir = Path(&#x27;图片&#x27;)
+image_dir.mkdir(exist_ok=True)
+x_curve = np.linspace(-8.0, 8.0, 201)
+p_curve = 1.0 / (1.0 + np.exp(-x_curve))
+slope_curve = p_curve * (1.0 - p_curve)
+fig, axes = plt.subplots(1, 2, figsize=(9, 3.5))
+axes[0].plot(x_curve, p_curve, color=&#x27;#314887&#x27;)
+axes[0].set(xlabel=&#x27;x&#x27;, ylabel=&#x27;Probability&#x27;, title=&#x27;Intercept = 0, slope = 1&#x27;)
+axes[1].plot(x_curve, slope_curve, color=&#x27;#24735A&#x27;)
+axes[1].set(xlabel=&#x27;x&#x27;, ylabel=&#x27;Derivative&#x27;, title=&#x27;p(x) [1 - p(x)]&#x27;)
+fig.tight_layout()
+fig.savefig(image_dir / &#x27;431-logistic.png&#x27;, dpi=180)
+plt.close(fig)
+print(f&#x27;p(0) = {0.5:.2f}, derivative at 0 = {0.25:.2f}&#x27;)
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><p>本块可直接作为Notebook起点。np是NumPy，plt是绘图模块，Path管理文件路径。image_dir指向当前工作目录下的“图片”；mkdir(exist_ok=True)创建目录，已存在时不因重复创建而报错。</p><p>linspace(-8, 8, 201)包含两端点，均匀生成201个输入；np.exp逐元素计算指数。这里截距0、斜率1，所以导数为p_curve * (1-p_curve)。数组乘法*是逐元素乘法。</p><p>subplots(1, 2)创建一行两张子图；axes[0]和axes[1]分别指向它们。plot绘制曲线；set一次设置横轴、纵轴和标题。十六进制颜色只是外观设置，不必背诵。</p><p>tight_layout调整间距；savefig把图保存到图片目录，dpi控制位图分辨率；close释放图对象。f字符串中的:.2f表示保留两位小数。此图仅呈现已推导公式，不是根据客户数据拟合的结果。</p></section><h2>实际运行输出</h2><pre>p(0) = 0.50, derivative at 0 = 0.25
+</pre><img style="max-width:100%" alt="观察概率曲线与局部变化率" src="../../notebooks/ch04/图片/431-logistic.png"><p><a href="../../notebooks/ch04/chapter04-sections-4.1-4.3.ipynb" download>下载第四章Notebook（至4.3.5）</a> · <a href="431-01.py" download>下载本块代码</a> · <a href="../../notebooks/ch04/requirements.txt">依赖版本</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

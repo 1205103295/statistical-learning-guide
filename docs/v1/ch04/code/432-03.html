@@ -1,0 +1,16 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 4.3.2-03 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch04.html">第四章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 4.3.2-03 · 一次梯度下降及损失核对</h1><p>按完整Notebook顺序运行。本章使用教学数组与给定舍入系数，尚不包含4.4；本块可能依赖前面变量。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="12">learning_rate = 0.6
+beta_gradient = beta - learning_rate * grad
+p_gradient = 1.0 / (1.0 + np.exp(-(X @ beta_gradient)))
+loss_before = -np.mean(y * np.log(p) + (1-y) * np.log(1-p))
+loss_gradient = -np.mean(
+    y * np.log(p_gradient) + (1-y) * np.log(1-p_gradient)
+)
+print(&#x27;beta after gradient step:&#x27;, np.round(beta_gradient, 6))
+print(&#x27;probabilities:&#x27;, np.round(p_gradient, 6))
+print(f&#x27;loss before = {loss_before:.6f}&#x27;)
+print(f&#x27;loss after = {loss_gradient:.6f}&#x27;)
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><p>learning_rate控制步长；beta_gradient是新数组，原beta仍是[0, 0]，后面可从同一起点比较牛顿法。一次更新不等于训练完成。</p><p>更新参数后必须重新计算线性预测子和概率，不能拿旧概率评价新参数。np.log是自然对数；y=1时保留log(p)，y=0时保留log(1-p)。</p><p>np.mean对三个样本的对数概率取平均，前面的负号转成损失。本例概率远离0和1，可以直接取对数；正式优化应考虑稳定实现、步长与收敛条件。某个样本可能变差，但整体平均损失仍下降。</p></section><h2>实际运行输出</h2><pre>beta after gradient step: [-0.1 -0.1]
+probabilities: [0.475021 0.450166 0.425557]
+loss before = 0.693147
+loss after = 0.665630
+</pre><p><a href="../../notebooks/ch04/chapter04-sections-4.1-4.3.ipynb" download>下载第四章Notebook（至4.3.5）</a> · <a href="432-03.py" download>下载本块代码</a> · <a href="../../notebooks/ch04/requirements.txt">依赖版本</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

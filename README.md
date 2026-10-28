@@ -72,3 +72,10 @@ PDF 指向 `v1/ch02/code/212-01.html` 等固定版本地址。内部文件名与
 新增营销分析、KNN推导、全部线性回归实验和原书15道习题参考解答；29组小练习含答案。85个代码块已在新的Jupyter内核中按顺序执行，配套12张新增实验图与公式回查。
 
 [完整版Notebook](docs/v1/notebooks/ch03/chapter03-complete.ipynb) · [在线代码目录](https://1205103295.github.io/statistical-learning-guide/v1/ch03.html)
+
+
+## 第四章更新：4.1—4.3.5
+
+新增分类基础、逻辑回归模型、MLE、梯度和Newton更新、信息矩阵与Wald推断、预测、多元及多项逻辑回归。51个编号公式、26道小练习及参考答案、22个已执行代码块和2张图。尚不含4.4。
+
+[在线代码目录](https://1205103295.github.io/statistical-learning-guide/v1/ch04.html) · [Notebook](docs/v1/notebooks/ch04/chapter04-sections-4.1-4.3.ipynb)

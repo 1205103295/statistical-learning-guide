@@ -1,0 +1,7 @@
+x = np.array([0.0, 1.0, 2.0])
+y = np.array([0.0, 1.0, 0.0])
+X = np.column_stack([np.ones(len(x)), x])
+beta = np.array([0.0, 0.0])
+n = len(y)
+print(X)
+print('shapes:', X.shape, y.shape, beta.shape)

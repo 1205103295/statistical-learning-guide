@@ -1,0 +1,12 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 4.3.2-01 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch04.html">第四章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 4.3.2-01 · 准备三个样本与截距列</h1><p>按完整Notebook顺序运行。本章使用教学数组与给定舍入系数，尚不包含4.4；本块可能依赖前面变量。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="8">x = np.array([0.0, 1.0, 2.0])
+y = np.array([0.0, 1.0, 0.0])
+X = np.column_stack([np.ones(len(x)), x])
+beta = np.array([0.0, 0.0])
+n = len(y)
+print(X)
+print(&#x27;shapes:&#x27;, X.shape, y.shape, beta.shape)
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><p>x和y逐行对应三个虚构客户。np.array创建数组；0.0和1.0是浮点数。x、y的形状均为(3,)。</p><p>len(x)给出样本数3；ones生成3个1。column_stack把全1数组和x并排组成(3, 2)矩阵：第一列对应截距，第二列对应斜率。beta按相同列顺序存两个初始参数，不能颠倒顺序。</p><p>n保存样本数；shape查看各轴长度，属于属性，因此后面没有括号。本块只准备数据和初始参数，还没有完成拟合。</p></section><h2>实际运行输出</h2><pre>[[1. 0.]
+ [1. 1.]
+ [1. 2.]]
+shapes: (3, 2) (3,) (2,)
+</pre><p><a href="../../notebooks/ch04/chapter04-sections-4.1-4.3.ipynb" download>下载第四章Notebook（至4.3.5）</a> · <a href="432-01.py" download>下载本块代码</a> · <a href="../../notebooks/ch04/requirements.txt">依赖版本</a></p></main><script src="../../assets/copy.js" defer></script></body></html>

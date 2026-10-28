@@ -1,0 +1,8 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码 4.3.4-01 · 零基础统计学习指南</title><link rel="stylesheet" href="../../assets/style.css"></head><body><header><div><a href="../../ch04.html">第四章代码目录</a><span>林泓浩 · 零基础统计学习指南</span></div></header><main><h1>代码 4.3.4-01 · 多元预测的输入顺序与单位</h1><p>按完整Notebook顺序运行。本章使用教学数组与给定舍入系数，尚不包含4.4；本块可能依赖前面变量。</p><section class="codepanel"><button id="copy" type="button">复制整块代码</button><textarea id="code" readonly spellcheck="false" aria-label="Python 代码" rows="7">beta_multi = np.array([-10.8690, 0.00574, 0.0030, -0.6468])
+new_customers = np.array([
+    [1500.0, 40.0, 1.0],
+    [1500.0, 40.0, 0.0],
+])
+print(&#x27;new input shape:&#x27;, new_customers.shape)
+</textarea><p id="status" role="status" aria-live="polite"></p></section><section><h2>逐步读代码</h2><p>beta_multi依次对应截距、余额、收入、学生指示变量。余额系数使用教材预测公式中的0.00574，比系数表0.0057多保留一位。</p><p>每行是一个客户，三列顺序固定。余额单位美元；收入单位千美元，年收入40000美元输入40。两行只在学生身份上不同。</p></section><h2>实际运行输出</h2><pre>new input shape: (2, 3)
+</pre><p><a href="../../notebooks/ch04/chapter04-sections-4.1-4.3.ipynb" download>下载第四章Notebook（至4.3.5）</a> · <a href="434-01.py" download>下载本块代码</a> · <a href="../../notebooks/ch04/requirements.txt">依赖版本</a></p></main><script src="../../assets/copy.js" defer></script></body></html>
